@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF7EE">
+<!-- 폰트: Pretendard (CDN) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 로고타입용 (포장 서체와 유사한 둥근 볼드) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap">
+<link rel="stylesheet" href="../skin/css/sapyung.css">
+<script src="../skin/js/sapyung.js" defer></script>
+</head>
+<body>
+<div id="wrap">
+    <!-- =====================================================================
+     헤더 (layout/basic/header.html)
+     - 공지 스트립 → 헤더(로고/GNB/아이콘) → 검색 레이어 → 모바일 드로어
+     - 상품분류는 카페24 Layout_category 모듈이 자동 출력 (관리자 > 상품분류 관리)
+     ===================================================================== -->
+<div class="topbar">
+    <a href="list.html?cate_no=1">3만원 이상 무료배송</a>
+    <span class="dot">·</span>
+    <span>오후 2시 30분까지 주문 시 오늘 출발</span>
+</div>
+
+<header class="header" id="header">
+    <div class="container inner">
+        <div class="left">
+            <button type="button" class="iconbtn menu" data-open-drawer aria-label="메뉴 열기">
+                <svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <h1 class="logo xans-element- xans-layout xans-layout-logotop" module="Layout_LogoTop">
+                <a href="index.html" aria-label="사평 홈">
+                    <img src="../skin/img/logo.png" alt="사평">
+                </a>
+            </h1>
+        </div>
+
+        <nav class="gnb-wrap" aria-label="주 메뉴">
+            <ul class="gnb">
+                <li class="has-mega">
+                    <button type="button">SHOP
+                        <svg class="ico" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <!-- 메가메뉴: 좌측 분류에 마우스를 올리면 우측 상품 4개가 바뀜 (data-tab ↔ data-panel)
+                         상품 카드는 고정 코딩 — 적용 시 product_no / 가격 / 이미지 / 분류 링크(cate_no)를 실제 값으로 수정 -->
+                    <div class="mega">
+                        <div class="container mega-inner">
+                            <ul class="mega-cats">
+                                <li><a href="index.html#best" class="on" data-tab="best">베스트셀러</a></li>
+                                <li><a href="list_24.html?cate_no=24" data-tab="keema">키마카레</a></li>
+                                <li><a href="list_25.html?cate_no=25" data-tab="jjajang">드라이짜장</a></li>
+                                <li><a href="list_26.html?cate_no=26" data-tab="new">말차 · 마라</a></li>
+                                <li><a href="list_27.html?cate_no=27" data-tab="set">세트 · 선물</a></li>
+                                <li><a href="list.html?cate_no=1">전체 상품</a></li>
+                            </ul>
+                            <div class="mega-panels">
+                                <ul class="mega-prds on" data-panel="best">
+                                    <li><a href="detail_11.html"><div class="img"><img src="../skin/img/d_org_bowl.jpg" alt=""></div><strong>저수분 키마카레 오리지널 200g</strong><span>5,900원</span></a></li>
+                                    <li><a href="detail_15.html"><div class="img"><img src="../skin/img/d_mat_plate.jpg" alt=""></div><strong>크리미 말차카레 160g × 2</strong><span>11,900원</span></a></li>
+                                    <li><a href="detail_17.html"><div class="img"><img src="../skin/img/prd_gift.jpg" alt=""></div><strong>홈런치 커리 세트</strong><span>35,900원 · 무료배송</span></a></li>
+                                    <li><a href="detail_18.html"><div class="img"><img src="../skin/img/d_org_table.jpg" alt=""></div><strong>[맛보기] 오리지널 + 토마토 + 짜장</strong><span>14,900원 · 무료배송</span></a></li>
+                                </ul>
+                                <ul class="mega-prds" data-panel="keema">
+                                    <li><a href="detail_11.html"><div class="img"><img src="../skin/img/d_org_bowl.jpg" alt=""></div><strong>저수분 키마카레 오리지널 200g</strong><span>5,900원</span></a></li>
+                                    <li><a href="detail_12.html"><div class="img"><img src="../skin/img/d_spicy_close.jpg" alt=""></div><strong>저수분 키마카레 매콤한맛 200g</strong><span>6,100원</span></a></li>
+                                    <li><a href="detail_13.html"><div class="img"><img src="../skin/img/d_tom_bowl.jpg" alt=""></div><strong>산마르자노 토마토카레 180g</strong><span>4,900원</span></a></li>
+                                    <li><a href="detail_18.html"><div class="img"><img src="../skin/img/d_org_table.jpg" alt=""></div><strong>[맛보기] 오리지널 + 토마토 + 짜장</strong><span>14,900원 · 무료배송</span></a></li>
+                                </ul>
+                                <ul class="mega-prds" data-panel="jjajang">
+                                    <li><a href="detail_14.html"><div class="img"><img src="../skin/img/d_jja_egg.jpg" alt=""></div><strong>드라이짜장 키마카레 190g</strong><span>4,900원</span></a></li>
+                                    <li><a href="detail_18.html"><div class="img"><img src="../skin/img/d_org_table.jpg" alt=""></div><strong>[맛보기] 오리지널 + 토마토 + 짜장</strong><span>14,900원 · 무료배송</span></a></li>
+                                    <li><a href="detail_21.html"><div class="img"><img src="../skin/img/d_spicy_set.jpg" alt=""></div><strong>[Mix] 오리지널 + 매콤 + 짜장 각 2팩</strong><span>34,900원 · 무료배송</span></a></li>
+                                    <li><a href="detail_23.html"><div class="img"><img src="../skin/img/col_best.jpg" alt=""></div><strong>[대용량] 저수분 카레 6종 25팩</strong><span>129,000원 · 무료배송</span></a></li>
+                                </ul>
+                                <ul class="mega-prds" data-panel="new">
+                                    <li><a href="detail_15.html"><div class="img"><img src="../skin/img/d_mat_plate.jpg" alt=""></div><strong>크리미 말차카레 160g × 2</strong><span>11,900원</span></a></li>
+                                    <li><a href="detail_16.html"><div class="img"><img src="../skin/img/d_mara_bowl.jpg" alt=""></div><strong>스트레스킬러 마라카레 160g</strong><span>5,900원</span></a></li>
+                                    <li><a href="detail_22.html"><div class="img"><img src="../skin/img/d_both_box.jpg" alt=""></div><strong>[맛보기] 말차 1팩 + 마라 1팩</strong><span>11,900원 · 무료배송</span></a></li>
+                                    <li><a href="detail_17.html"><div class="img"><img src="../skin/img/prd_gift.jpg" alt=""></div><strong>홈런치 커리 세트</strong><span>35,900원 · 무료배송</span></a></li>
+                                </ul>
+                                <ul class="mega-prds" data-panel="set">
+                                    <li><a href="detail_17.html"><div class="img"><img src="../skin/img/gift_set.jpg" alt=""></div><strong>홈런치 커리 세트 (선물상자)</strong><span>35,900원 · 무료배송</span></a></li>
+                                    <li><a href="detail_18.html"><div class="img"><img src="../skin/img/d_org_table.jpg" alt=""></div><strong>[맛보기] 오리지널 + 토마토 + 짜장</strong><span>14,900원 · 무료배송</span></a></li>
+                                    <li><a href="detail_21.html"><div class="img"><img src="../skin/img/d_spicy_set.jpg" alt=""></div><strong>[Mix] 오리지널 + 매콤 + 짜장 각 2팩</strong><span>34,900원 · 무료배송</span></a></li>
+                                    <li><a href="detail_23.html"><div class="img"><img src="../skin/img/col_best.jpg" alt=""></div><strong>[대용량] 저수분 카레 6종 25팩</strong><span>129,000원 · 무료배송</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- 분류 메뉴: cate_no 는 관리자 > 상품분류 관리의 실제 번호로 수정 -->
+                <li><a href="list_24.html?cate_no=24">키마카레</a></li>
+                <li><a href="list_25.html?cate_no=25">드라이짜장</a></li>
+                <li><a href="list_26.html?cate_no=26">말차 · 마라</a></li>
+                <li><a href="list_27.html?cate_no=27">선물세트</a></li>
+                <li><a href="index.html#story">브랜드</a></li>
+                <li><a href="index.html#recipes">레시피</a></li>
+                <li><a href="/board/review/list.html?board_no=4">리뷰</a></li>
+            </ul>
+        </nav>
+
+        <div class="right">
+            <button type="button" class="iconbtn" data-toggle-search aria-label="검색">
+                <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            </button>
+            <!-- 로그인 전 -->
+            <div class="xans-element- xans-layout xans-layout-statelogoff pc-only" module="Layout_statelogoff" style="display:inline-flex">
+                <a href="/member/login.html" class="iconbtn" aria-label="로그인">
+                    <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                </a>
+            </div>
+            <!-- 로그인 후 -->
+            <div class="xans-element- xans-layout xans-layout-statelogon pc-only" module="Layout_statelogon" style="display:inline-flex">
+                <a href="/myshop/index.html" class="iconbtn" aria-label="마이페이지">
+                    <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                </a>
+            </div>
+            <div class="xans-element- xans-layout xans-layout-orderbasketcount" module="Layout_orderbasketcount">
+                <a href="/order/basket.html" class="iconbtn" aria-label="장바구니">
+                    <svg class="ico" viewBox="0 0 24 24"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+                    <span class="cart-count">2</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-layer" id="searchLayer">
+        <form action="/product/search.html" method="get">
+            <input type="text" name="keyword" placeholder="찾는 카레가 있나요? 예) 말차카레" aria-label="검색어">
+            <button type="submit" class="btn btn-ink">검색</button>
+        </form>
+    </div>
+</header>
+
+<!-- 모바일 드로어 -->
+<div class="drawer" id="drawer" aria-hidden="true">
+    <div class="dim" data-close-drawer></div>
+    <div class="panel">
+        <div class="head">
+            <strong>메뉴</strong>
+            <button type="button" class="iconbtn close" data-close-drawer aria-label="닫기">
+                <svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+        </div>
+        <div class="member">
+            <div class="xans-element- xans-layout xans-layout-statelogoff" module="Layout_statelogoff" style="display:flex;gap:8px;width:100%">
+                <a href="/member/login.html" class="btn btn-ink btn-sm" style="flex:1">로그인</a>
+                <a href="/member/join.html" class="btn btn-line btn-sm" style="flex:1">회원가입</a>
+            </div>
+            <div class="xans-element- xans-layout xans-layout-statelogon" module="Layout_statelogon" style="display:flex;gap:8px;width:100%">
+                <a href="/myshop/index.html" class="btn btn-ink btn-sm" style="flex:1">마이페이지</a>
+                <a href="/member/logout.html" class="btn btn-line btn-sm" style="flex:1">로그아웃</a>
+            </div>
+        </div>
+        <ul class="nav">
+            <li>
+                <strong>SHOP</strong>
+                <div class="sub">
+                    <a href="list.html?cate_no=1">전체 상품</a>
+                    <div class="xans-element- xans-layout xans-layout-category" module="Layout_category">
+                        <a href="list_24.html?cate_no=24" class="xans-record-">키마카레</a>
+<a href="list_25.html?cate_no=25" class="xans-record-">드라이짜장</a>
+<a href="list_26.html?cate_no=26" class="xans-record-">말차 · 마라</a>
+<a href="list_27.html?cate_no=27" class="xans-record-">세트 · 선물</a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="index.html#best">베스트셀러</a></li>
+            <li><a href="index.html#story">브랜드 스토리</a></li>
+            <li><a href="index.html#recipes">레시피</a></li>
+            <li><a href="/board/review/list.html?board_no=4">리뷰</a></li>
+            <li><a href="/order/basket.html">장바구니</a></li>
+            <li><a href="/myshop/order/list.html">주문조회</a></li>
+        </ul>
+        <p class="foot">고객센터 운영 평일 10:00 ~ 17:00<br>(점심 12:00 ~ 13:00 · 주말/공휴일 휴무)</p>
+    </div>
+</div>
+
+    <div id="container">
+        <div id="contents">
+            
+<!-- =====================================================================
+     상품 목록 (product/list.html)
+     - 분류명: product_headcategory / 분류 탭: Layout_category / 목록: product_listnormal / 페이징: product_normalpaging
+     ===================================================================== -->
+<div class="list-page">
+    <div class="container">
+        <div class="list-head">
+            <span class="eyebrow">Shop</span>
+            <div class="xans-element- xans-product xans-product-headcategory" module="product_headcategory">
+                <h2>드라이짜장</h2>
+            </div>
+            <p>물 없이 양파로 끓인 저수분 카레 · 키마카레 라인은 냉동, 말차·마라는 실온 배송</p>
+        </div>
+
+        <div class="cate-tabs">
+            <!-- 현재 분류는 JS가 주소의 cate_no 로 판단해 on 처리 -->
+            <a href="list.html?cate_no=1">전체</a>
+            <div class="xans-element- xans-layout xans-layout-category" module="Layout_category" style="display:contents">
+                <a href="list_24.html?cate_no=24" class="xans-record-">키마카레</a>
+<a href="list_25.html?cate_no=25" class="xans-record-">드라이짜장</a>
+<a href="list_26.html?cate_no=26" class="xans-record-">말차 · 마라</a>
+<a href="list_27.html?cate_no=27" class="xans-record-">세트 · 선물</a>
+            </div>
+        </div>
+
+        <div class="list-tools xans-element- xans-product xans-product-normalmenu" module="product_normalmenu">
+            <span class="count">총 <strong>3</strong>개</span>
+            <div class="sort">
+                <a href="#">상품명</a>
+                <a href="#">낮은가격</a>
+                <a href="#">높은가격</a>
+                <a href="#">판매인기</a>
+                <a href="#">리뷰많은순</a>
+            </div>
+        </div>
+
+        <div class="xans-element- xans-product xans-product-listnormal ec-base-product" module="product_listnormal">
+            <!--
+                $basket_result = /product/add_basket.html
+                $basket_option = /product/basket_option.html
+            -->
+            <ul class="prdList">
+                
+                <li id="anchorBoxId_14" class="prd xans-record-">
+                    <div class="thumb">
+                        <a href="detail_14.html" name="anchorBoxName_14" class="thumb-slides"><img src="../skin/img/d_jja_egg.jpg" alt="드라이짜장 키마카레 190g" loading="lazy" class="s1"><img src="../skin/img/prd_jjajang.png" alt="" loading="lazy" class="s2"></a><span class="thumb-dots"><i class="on"></i><i></i></span>
+                        <div class="icon"></div>
+                        <a href="detail_14.html" class="quick" aria-label="상품 보기"><svg class="ico" viewBox="0 0 24 24"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></a>
+                        <span class="soldout-badge">SOLD OUT</span>
+                    </div>
+                    <div class="desc">
+                        <a href="detail_14.html" class="name">드라이짜장 키마카레 190g</a>
+                        <p class="summary">물 없이 볶은 되직한 유니짜장</p>
+                        <div class="price">
+                            <span class="rate"></span>
+                            <span class="sale">4,900원</span>
+                            <span class="custom">5,700원</span>
+                        </div>
+                    </div>
+                </li>
+                
+
+                <li id="anchorBoxId_18" class="prd xans-record-">
+                    <div class="thumb">
+                        <a href="detail_18.html" name="anchorBoxName_18" class="thumb-slides"><img src="../skin/img/d_org_table.jpg" alt="[맛보기] 오리지널 + 토마토 + 드라이짜장 3팩" loading="lazy" class="s1"><img src="../skin/img/prd_sampler.jpg" alt="" loading="lazy" class="s2"></a><span class="thumb-dots"><i class="on"></i><i></i></span>
+                        <div class="icon"></div>
+                        <a href="detail_18.html" class="quick" aria-label="상품 보기"><svg class="ico" viewBox="0 0 24 24"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></a>
+                        <span class="soldout-badge">SOLD OUT</span>
+                    </div>
+                    <div class="desc">
+                        <a href="detail_18.html" class="name">[맛보기] 오리지널 + 토마토 + 드라이짜장 3팩</a>
+                        <p class="summary">처음이라면 이 조합 · 무료배송</p>
+                        <div class="price">
+                            <span class="rate"></span>
+                            <span class="sale">14,900원</span>
+                            <span class="custom"></span>
+                        </div>
+                    </div>
+                </li>
+                
+
+                <li id="anchorBoxId_21" class="prd xans-record-">
+                    <div class="thumb">
+                        <a href="detail_21.html" name="anchorBoxName_21" class="thumb-slides"><img src="../skin/img/d_spicy_set.jpg" alt="[Mix] 오리지널 + 매콤 + 드라이짜장 각 2팩" loading="lazy" class="s1"><img src="../skin/img/prd_mix.jpg" alt="" loading="lazy" class="s2"></a><span class="thumb-dots"><i class="on"></i><i></i></span>
+                        <div class="icon"></div>
+                        <a href="detail_21.html" class="quick" aria-label="상품 보기"><svg class="ico" viewBox="0 0 24 24"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></a>
+                        <span class="soldout-badge">SOLD OUT</span>
+                    </div>
+                    <div class="desc">
+                        <a href="detail_21.html" class="name">[Mix] 오리지널 + 매콤 + 드라이짜장 각 2팩</a>
+                        <p class="summary">6팩 · 무료배송</p>
+                        <div class="price">
+                            <span class="rate"></span>
+                            <span class="sale">34,900원</span>
+                            <span class="custom">40,900원</span>
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+            <p class="nodata displaynone" style="padding:60px 0;text-align:center;color:var(--muted)">등록된 상품이 없습니다.</p>
+        </div>
+
+        <div class="paginate xans-element- xans-product xans-product-normalpaging" module="product_normalpaging">
+            <a href="#" class="first">처음</a>
+            <a href="#" class="prev">이전</a>
+            <ol style="display:contents">
+                <li class="xans-record-" style="display:contents"><a href="#" class="this">1</a></li>
+<li class="xans-record-" style="display:contents"><a href="#" class="">2</a></li>
+            </ol>
+            <a href="#" class="next">다음</a>
+            <a href="#" class="last">끝</a>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <!-- =====================================================================
+     푸터 (layout/basic/footer.html)
+     - 사업자 정보는 카페24 Layout_footer 모듈 변수 사용 (관리자 > 쇼핑몰 설정 > 기본정보)
+     - 고객센터 번호/운영시간, SNS 링크는 아래 텍스트를 직접 수정
+     ===================================================================== -->
+<footer class="footer">
+    <div class="news">
+        <div class="container">
+            <div class="mark" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24"><path d="M4 11c0 4.4 3.6 8 8 8s8-3.6 8-8"/><path d="M3 11h18"/><path d="M8 11c0-3 1.5-5 4-7 2.5 2 4 4 4 7"/><path d="M9 19v2M15 19v2"/></svg>
+            </div>
+            <h3 class="h-card">신제품·레시피·할인 소식을 가장 먼저</h3>
+            <p>카카오톡 채널을 추가하면 출시 알림과 회원 전용 쿠폰을 보내드립니다.</p>
+            <div class="btns">
+                <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="btn btn-gold btn-sm">카카오톡 채널 추가</a>
+                <a href="/member/join.html" class="btn btn-line btn-sm">회원가입 혜택 보기</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container cols">
+        <div class="about">
+            <div class="logo"><img src="../skin/img/logo.png" alt="사평"></div>
+            <p>사평은 물 한 방울 없이 국산 양파로 끓여낸 저수분 카레를 만듭니다. 대구의 작은 식당에서 시작해, 집에서도 같은 한 그릇을 드실 수 있도록 냉동 팩에 담았습니다.</p>
+        </div>
+        <div>
+            <h4>Shop</h4>
+            <ul>
+                <li><a href="list.html?cate_no=1">전체 상품</a></li>
+                <li><a href="list.html?cate_no=1#best">베스트셀러</a></li>
+                <li><a href="list.html?cate_no=1#gift">선물세트</a></li>
+                <li><a href="list.html?cate_no=1#set">맛보기 세트</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Help</h4>
+            <ul>
+                <li><a href="/myshop/order/list.html">주문/배송 조회</a></li>
+                <li><a href="/board/product/list.html?board_no=6">상품 문의</a></li>
+                <li><a href="/board/free/list.html?board_no=1">공지사항</a></li>
+                <li><a href="/board/faq/list.html?board_no=2">자주 묻는 질문</a></li>
+                <li><a href="/shopinfo/guide.html">이용안내</a></li>
+            </ul>
+        </div>
+        <div class="cs">
+            <h4>고객센터</h4>
+            <strong>1588-0000</strong>
+            <p>평일 10:00 ~ 17:00 (점심 12:00 ~ 13:00)<br>주말 · 공휴일 휴무</p>
+            <p style="margin-top:10px">대량구매 · 단체선물 문의<br><a href="/board/inquiry/write.html">기업/단체 문의하기 →</a></p>
+        </div>
+    </div>
+
+    <div class="legal">
+        <div class="container">
+            <div class="links">
+                <a href="/shopinfo/company.html">회사소개</a>
+                <a href="/member/agreement.html">이용약관</a>
+                <a href="/member/privacy.html"><strong>개인정보처리방침</strong></a>
+                <a href="/shopinfo/guide.html">이용안내</a>
+            </div>
+            <div class="xans-element- xans-layout xans-layout-footer" module="Layout_footer">
+                <p>
+                    <span>상호 사평</span>
+                    <span>대표 홍길동</span>
+                    <span>사업자등록번호 000-00-00000</span>
+                    <span>통신판매업신고 2026-대구동구-0000</span>
+                </p>
+                <p>
+                    <span>주소 대구광역시 동구 송라로 13 1층</span>
+                    <span>전화 1588-0000</span>
+                    <span>이메일 hello@sapyung.co.kr</span>
+                    <span>개인정보보호책임자 홍길동</span>
+                </p>
+                <p>Copyright © 사평. All rights reserved.</p>
+            </div>
+            <div class="sns">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램"><svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+                <a href="https://brand.naver.com/sapyung" target="_blank" rel="noopener" aria-label="네이버 스마트스토어"><svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 19V5h4l6 9V5h4v14h-4L9 10v9z"/></svg></a>
+                <a href="https://pf.kakao.com/" target="_blank" rel="noopener" aria-label="카카오톡 채널"><svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M12 4C7 4 3 7.2 3 11c0 2.4 1.6 4.5 4 5.8L6 21l4.6-2.6c.5.1.9.1 1.4.1 5 0 9-3.2 9-7.5S17 4 12 4z"/></svg></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>
