@@ -3,25 +3,32 @@
 <head><title>사평 SAPYUNG | 저수분 키마카레 (스킨 프리뷰)</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FBF7EE">
-<!-- 폰트: Pretendard (CDN) -->
+<meta name="theme-color" content="#f7f4eb">
+<!-- 폰트
+     · Pretendard : 본문 · 상단 카테고리 바 · 상품 상세 (가독성)
+     · Noto Serif KR : 메인 페이지 강조 헤드라인 (격동 명조2 대체 — 격동명조2는 산돌 유료 서체라 라이선스 보유 시 --font-serif 값만 교체)
+     · 마루 부리 : 메인 페이지 긴 설명·서브 카피 (네이버 무료 웹폰트) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<!-- 로고타입용 (포장 서체와 유사한 둥근 볼드) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap">
+<link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
+<!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
+<script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
 <link rel="stylesheet" href="../skin/css/sapyung.css">
 <script src="../skin/js/sapyung.js" defer></script>
-</head>
+<style>.xans-layout-statelogon{display:none !important}</style></head>
 <body>
 <div id="wrap">
     <!-- =====================================================================
      헤더 (layout/basic/header.html)
-     - 공지 스트립 → 헤더(로고/GNB/아이콘) → 검색 레이어 → 모바일 드로어
+     - 최상단 이벤트 바 → 헤더(로고 / PC GNB / 아이콘: 검색·회원·장바구니) → 모바일 카테고리 바(3개씩 보임) → 검색 레이어 → 모바일 드로어
      - 상품분류는 카페24 Layout_category 모듈이 자동 출력 (관리자 > 상품분류 관리)
      ===================================================================== -->
+<!-- 최상단 이벤트/세일 소식: 문구와 링크만 교체해 사용 (fishwife 모바일 메인 상단 참고) -->
 <div class="topbar">
-    <a href="list.html?cate_no=1">3만원 이상 무료배송</a>
+    <a href="list_27.html?cate_no=27"><em>EVENT</em>홈런치 커리 세트 출시 기념 10% 할인</a>
     <span class="dot">·</span>
-    <span>오후 2시 30분까지 주문 시 오늘 출발</span>
+    <span class="pc-only-inline">3만원 이상 무료배송</span>
 </div>
 
 <header class="header" id="header">
@@ -101,18 +108,19 @@
             </ul>
         </nav>
 
+        <!-- 우측 아이콘: 검색 · 회원(로그인/마이페이지) · 장바구니 — 모바일에서도 회원·장바구니 아이콘 노출 -->
         <div class="right">
             <button type="button" class="iconbtn" data-toggle-search aria-label="검색">
                 <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
             </button>
             <!-- 로그인 전 -->
-            <div class="xans-element- xans-layout xans-layout-statelogoff pc-only" module="Layout_statelogoff" style="display:inline-flex">
+            <div class="xans-element- xans-layout xans-layout-statelogoff" module="Layout_statelogoff" style="display:inline-flex">
                 <a href="system.html?p=%2Fmember%2Flogin.html" class="iconbtn" aria-label="로그인">
                     <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
                 </a>
             </div>
             <!-- 로그인 후 -->
-            <div class="xans-element- xans-layout xans-layout-statelogon pc-only" module="Layout_statelogon" style="display:inline-flex">
+            <div class="xans-element- xans-layout xans-layout-statelogon" module="Layout_statelogon" style="display:inline-flex">
                 <a href="system.html?p=%2Fmyshop%2Findex.html" class="iconbtn" aria-label="마이페이지">
                     <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
                 </a>
@@ -125,6 +133,22 @@
             </div>
         </div>
     </div>
+
+    <!-- 모바일 카테고리 바 (PC에서는 숨김): 한 화면에 3개씩, 옆으로 밀어 더 보기. 분류는 Layout_category 자동 출력 -->
+    <nav class="m-cats" aria-label="상품 분류">
+        <div class="container">
+            <a href="list.html?cate_no=1">전체</a>
+            <div class="xans-element- xans-layout xans-layout-category" module="Layout_category" style="display:contents">
+                <a href="list_24.html?cate_no=24" class="xans-record-">키마카레</a>
+<a href="list_25.html?cate_no=25" class="xans-record-">드라이짜장</a>
+<a href="list_26.html?cate_no=26" class="xans-record-">말차 · 마라</a>
+<a href="list_27.html?cate_no=27" class="xans-record-">세트 · 선물</a>
+            </div>
+            <a href="index.html#story">브랜드</a>
+            <a href="index.html#recipes">레시피</a>
+            <a href="system.html?p=%2Fboard%2Freview%2Flist.html%3Fboard_no%3D4">리뷰</a>
+        </div>
+    </nav>
 
     <div class="search-layer" id="searchLayer">
         <form action="system.html?p=%2Fproduct%2Fsearch.html" method="get">
@@ -207,7 +231,7 @@
         </div>
 
         <div class="list-tools xans-element- xans-product xans-product-normalmenu" module="product_normalmenu">
-            <span class="count">총 <strong>3</strong>개</span>
+            <span class="count">총 <strong>2</strong>개</span>
             <div class="sort">
                 <a href="#">상품명</a>
                 <a href="#">낮은가격</a>
@@ -238,25 +262,6 @@
                             <span class="rate"></span>
                             <span class="sale">4,900원</span>
                             <span class="custom">5,700원</span>
-                        </div>
-                    </div>
-                </li>
-                
-
-                <li id="anchorBoxId_18" class="prd xans-record-">
-                    <div class="thumb">
-                        <a href="detail_18.html" name="anchorBoxName_18" class="thumb-slides"><img src="../skin/img/d_org_table.jpg" alt="[맛보기] 오리지널 + 토마토 + 드라이짜장 3팩" loading="lazy" class="s1"><img src="../skin/img/prd_sampler.jpg" alt="" loading="lazy" class="s2"></a><span class="thumb-dots"><i class="on"></i><i></i></span>
-                        <div class="icon"></div>
-                        <a href="detail_18.html" class="quick" aria-label="상품 보기"><svg class="ico" viewBox="0 0 24 24"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></a>
-                        <span class="soldout-badge">SOLD OUT</span>
-                    </div>
-                    <div class="desc">
-                        <a href="detail_18.html" class="name">[맛보기] 오리지널 + 토마토 + 드라이짜장 3팩</a>
-                        <p class="summary">처음이라면 이 조합 · 무료배송</p>
-                        <div class="price">
-                            <span class="rate"></span>
-                            <span class="sale">14,900원</span>
-                            <span class="custom"></span>
                         </div>
                     </div>
                 </li>
@@ -301,20 +306,20 @@
     </div>
     <!-- =====================================================================
      푸터 (layout/basic/footer.html)
+     - 구성: 채널 소식 받기(한 줄) → 회사소개/메뉴/고객센터 → 사업자·개인정보 영역(네이비 밴드로 색 분리)
      - 사업자 정보는 카페24 Layout_footer 모듈 변수 사용 (관리자 > 쇼핑몰 설정 > 기본정보)
-     - 고객센터 번호/운영시간, SNS 링크는 아래 텍스트를 직접 수정
+     - 고객센터 번호/운영시간, SNS·채널 링크는 아래 텍스트를 직접 수정
      ===================================================================== -->
 <footer class="footer">
     <div class="news">
-        <div class="container">
-            <div class="mark" aria-hidden="true">
-                <svg class="ico" viewBox="0 0 24 24"><path d="M4 11c0 4.4 3.6 8 8 8s8-3.6 8-8"/><path d="M3 11h18"/><path d="M8 11c0-3 1.5-5 4-7 2.5 2 4 4 4 7"/><path d="M9 19v2M15 19v2"/></svg>
+        <div class="container row">
+            <div class="txt">
+                <h3 class="h-card">채널 소식 받기</h3>
+                <p>신제품 · 레시피 · 할인 소식을 카카오톡으로 가장 먼저 보내드립니다.</p>
             </div>
-            <h3 class="h-card">신제품·레시피·할인 소식을 가장 먼저</h3>
-            <p>카카오톡 채널을 추가하면 출시 알림과 회원 전용 쿠폰을 보내드립니다.</p>
             <div class="btns">
                 <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="btn btn-gold btn-sm">카카오톡 채널 추가</a>
-                <a href="system.html?p=%2Fmember%2Fjoin.html" class="btn btn-line btn-sm">회원가입 혜택 보기</a>
+                <a href="system.html?p=%2Fmember%2Fjoin.html" class="btn btn-line btn-sm">회원가입 혜택</a>
             </div>
         </div>
     </div>
@@ -322,15 +327,15 @@
     <div class="container cols">
         <div class="about">
             <div class="logo"><img src="../skin/img/logo.png" alt="사평"></div>
-            <p>사평은 물 한 방울 없이 국산 양파로 끓여낸 저수분 카레를 만듭니다. 대구의 작은 식당에서 시작해, 집에서도 같은 한 그릇을 드실 수 있도록 냉동 팩에 담았습니다.</p>
+            <p>물 한 방울 없이 국산 양파로 끓인 저수분 카레. 대구 교동 네 평 식당에서 시작해, 집에서도 같은 한 그릇을 드실 수 있도록 팩에 담았습니다.</p>
         </div>
         <div>
             <h4>Shop</h4>
             <ul>
                 <li><a href="list.html?cate_no=1">전체 상품</a></li>
-                <li><a href="list.html?cate_no=1#best">베스트셀러</a></li>
-                <li><a href="list.html?cate_no=1#gift">선물세트</a></li>
-                <li><a href="list.html?cate_no=1#set">맛보기 세트</a></li>
+                <li><a href="index.html#best">베스트셀러</a></li>
+                <li><a href="list_27.html?cate_no=27">선물세트</a></li>
+                <li><a href="index.html#recipes">레시피</a></li>
             </ul>
         </div>
         <div>
@@ -338,19 +343,19 @@
             <ul>
                 <li><a href="system.html?p=%2Fmyshop%2Forder%2Flist.html">주문/배송 조회</a></li>
                 <li><a href="system.html?p=%2Fboard%2Fproduct%2Flist.html%3Fboard_no%3D6">상품 문의</a></li>
-                <li><a href="system.html?p=%2Fboard%2Ffree%2Flist.html%3Fboard_no%3D1">공지사항</a></li>
+                <li><a href="system.html?p=%2Fboard%2Ffree%2Flist.html%3Fboard_no%3D1">사평 소식</a></li>
                 <li><a href="system.html?p=%2Fboard%2Ffaq%2Flist.html%3Fboard_no%3D2">자주 묻는 질문</a></li>
-                <li><a href="system.html?p=%2Fshopinfo%2Fguide.html">이용안내</a></li>
             </ul>
         </div>
         <div class="cs">
             <h4>고객센터</h4>
             <strong>1588-0000</strong>
-            <p>평일 10:00 ~ 17:00 (점심 12:00 ~ 13:00)<br>주말 · 공휴일 휴무</p>
-            <p style="margin-top:10px">대량구매 · 단체선물 문의<br><a href="system.html?p=%2Fboard%2Finquiry%2Fwrite.html">기업/단체 문의하기 →</a></p>
+            <p>평일 10:00 ~ 17:00 (점심 12:00 ~ 13:00) · 주말/공휴일 휴무</p>
+            <p><a href="system.html?p=%2Fboard%2Finquiry%2Fwrite.html">대량구매 · 단체선물 문의 →</a></p>
         </div>
     </div>
 
+    <!-- 사업자 정보 + 약관: 위 영역과 색을 다르게(네이비 밴드) -->
     <div class="legal">
         <div class="container">
             <div class="links">
@@ -372,16 +377,27 @@
                     <span>이메일 hello@sapyung.co.kr</span>
                     <span>개인정보보호책임자 홍길동</span>
                 </p>
-                <p>Copyright © 사평. All rights reserved.</p>
-            </div>
-            <div class="sns">
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램"><svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
-                <a href="https://brand.naver.com/sapyung" target="_blank" rel="noopener" aria-label="네이버 스마트스토어"><svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 19V5h4l6 9V5h4v14h-4L9 10v9z"/></svg></a>
-                <a href="https://pf.kakao.com/" target="_blank" rel="noopener" aria-label="카카오톡 채널"><svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M12 4C7 4 3 7.2 3 11c0 2.4 1.6 4.5 4 5.8L6 21l4.6-2.6c.5.1.9.1 1.4.1 5 0 9-3.2 9-7.5S17 4 12 4z"/></svg></a>
+                <p class="copy">Copyright © 사평. All rights reserved.</p>
             </div>
         </div>
     </div>
 </footer>
+
+<!-- 따라다니는 채널 바: 네이버 블로그 · 인스타그램 · 카카오톡 채널 (PC 우측 중앙 / 모바일 우측 하단). 링크 3개는 실제 주소로 교체 -->
+<div class="float-sns" aria-label="사평 채널">
+    <a href="https://blog.naver.com/" target="_blank" rel="noopener" class="blog" aria-label="네이버 블로그">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A3.5 3.5 0 0 1 7.5 4h9A3.5 3.5 0 0 1 20 7.5v7a3.5 3.5 0 0 1-3.5 3.5H12l-3.6 3.2c-.5.4-1.2.1-1.2-.6V18A3.5 3.5 0 0 1 4 14.5z" fill="currentColor"/><path d="M8.6 8.8h2.6c1.3 0 2 .6 2 1.5 0 .6-.3 1-.8 1.2.7.2 1.2.7 1.2 1.5 0 1.1-.8 1.8-2.2 1.8H8.6zm1.4 2.3h1c.5 0 .8-.2.8-.6s-.3-.6-.8-.6h-1zm0 2.6h1.2c.6 0 .9-.2.9-.7s-.3-.7-.9-.7H10z" fill="#fff"/></svg>
+        <span>블로그</span>
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="insta" aria-label="인스타그램">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
+        <span>인스타</span>
+    </a>
+    <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="kakao" aria-label="카카오톡 채널">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5C6.8 3.5 2.5 6.8 2.5 10.9c0 2.6 1.7 4.9 4.3 6.2l-1 3.8c-.1.3.3.6.6.4l4.4-2.9c.4 0 .8.1 1.2.1 5.2 0 9.5-3.3 9.5-7.6S17.2 3.5 12 3.5z" fill="currentColor"/></svg>
+        <span>채널</span>
+    </a>
+</div>
 
 </div>
 </body>

@@ -21,11 +21,24 @@
     /* 현재 분류 표시: GNB / 목록 탭에서 현재 주소와 같은 링크에 on */
     var cur = (location.pathname + location.search).replace(/[?&]page=\d+/, '');
     var curCate = (location.search.match(/cate_no=(\d+)/) || [])[1];
-    $$('.gnb > li > a, .cate-tabs a').forEach(function (a) {
+    $$('.gnb > li > a, .cate-tabs a, .m-cats a').forEach(function (a) {
       var href = a.getAttribute('href') || '';
       var ac = (href.match(/cate_no=(\d+)/) || [])[1];
       var hit = (curCate && ac === curCate) || (!curCate && href.split('#')[0] === cur);
-      if (hit) { a.classList.add('on'); if (a.closest('.cate-tabs')) $$('.cate-tabs a').forEach(function (x) { if (x !== a) x.classList.remove('on'); }); }
+      if (hit) {
+        a.classList.add('on');
+        if (a.closest('.cate-tabs')) $$('.cate-tabs a').forEach(function (x) { if (x !== a) x.classList.remove('on'); });
+        /* 모바일 카테고리 바: 현재 분류가 보이도록 스크롤 */
+        if (a.closest('.m-cats')) { var mc = a.closest('.container'); if (mc && a.offsetLeft > mc.clientWidth * .6) mc.scrollLeft = a.offsetLeft - 20; }
+      }
+    });
+    /* 브랜드 스토리 사진: 터치 기기에서는 첫 탭에 제품 사진으로 뒤집고, 두 번째 탭에 링크 이동 */
+    $$('.story-pics li').forEach(function (li) {
+      li.addEventListener('click', function (e) {
+        if (!window.matchMedia('(hover:none)').matches || li.classList.contains('on')) return;
+        e.preventDefault();
+        $$('.story-pics li').forEach(function (x) { x.classList.toggle('on', x === li); });
+      });
     });
     /* 메가메뉴: 분류에 마우스를 올리면 해당 패널 표시 */
     $$('.mega-cats a[data-tab]').forEach(function (a) {
