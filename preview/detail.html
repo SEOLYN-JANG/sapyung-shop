@@ -6,12 +6,15 @@
 <meta name="theme-color" content="#f7f4eb">
 <!-- 폰트
      · Pretendard : 본문 · 상단 카테고리 바 · 상품 상세 (가독성)
-     · Noto Serif KR : 메인 페이지 강조 헤드라인 (격동 명조2 대체 — 격동명조2는 산돌 유료 서체라 라이선스 보유 시 --font-serif 값만 교체)
+     · Noto Serif KR : 메인 페이지 강조 헤드라인 — SD 격동명조2 적용 전까지의 대체 서체
      · 마루 부리 : 메인 페이지 긴 설명·서브 카피 (네이버 무료 웹폰트) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap">
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
+<!-- [SD 격동명조2] 산돌구름 "웹폰트" 서비스(데스크톱 산돌구름 구독과 별개 상품)에서 프로젝트 생성 → 프로젝트관리 화면의 <script> 코드를 아래 줄에 붙여넣기.
+     붙여넣은 뒤 css/sapyung.css 의 --font-serif 맨 앞에 생성된 폰트명을 넣고 --serif-w 를 700 으로 (README 2-2) -->
+<!-- SANDOLL_WEBFONT_SCRIPT_HERE -->
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
 <link rel="stylesheet" href="../skin/css/sapyung.css">

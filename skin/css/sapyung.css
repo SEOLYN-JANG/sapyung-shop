@@ -26,7 +26,9 @@
   --header-h:108px;      /* 고정 헤더 전체 높이 (모바일 = 본체 64 + 카테고리 바 44) */
   /* 서체: 본문 Pretendard / 메인 헤드라인 명조 / 메인 설명 마루부리 */
   --font-sans:"Pretendard","Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  /* 격동명조2 적용 시: 산돌 웹폰트가 생성해 준 폰트명을 --font-serif 맨 앞에 추가(예 "Sandoll 격동명조2"), --serif-w 는 700 (격동명조2 최대 굵기 Bold; 900이면 가짜 볼드 처리됨) */
   --font-serif:"Noto Serif KR","Nanum Myeongjo","Apple Myungjo",serif;
+  --serif-w:900;
   --font-buri:"MaruBuri","Noto Serif KR",serif;
   --font-buri-b:"MaruBuriSemiBold","MaruBuri","Noto Serif KR",serif;
   /* 섹션별 컬러 훅 — 기본 = 시안 C 옐로 웜 (2026-10-29 확정). A/B/D 는 파일 끝 [data-theme] 블록(비교용) */
@@ -76,7 +78,7 @@ html[data-vw] .hero-clean .word{font-size:calc(var(--shot-vw) * .24)}
 @media(min-width:768px){.h-display{font-size:54px}.h-section{font-size:40px}.lead{font-size:20px}}
 @media(min-width:1024px){.h-display{font-size:66px}}
 /* 메인 페이지(.main-page)만 서체 교체: 헤드라인 = 명조(격동명조2 느낌), 긴 설명·서브 카피 = 마루부리. 상세·목록·카테고리 바는 Pretendard 유지 */
-.main-page .h-display,.main-page .h-section,.main-page .col-card h3,.main-page .rc-big h3{font-family:var(--font-serif);font-weight:900;letter-spacing:-.02em;line-height:1.22}
+.main-page .h-display,.main-page .h-section,.main-page .col-card h3,.main-page .rc-big h3{font-family:var(--font-serif);font-weight:var(--serif-w);letter-spacing:-.02em;line-height:1.22}
 .main-page .lead,.main-page .col-card p,.main-page .promise p,.main-page .giftbanner .body>p,.main-page .reviews .summary p,.main-page .rc-big p,.main-page .story-text p{font-family:var(--font-buri)}
 .main-page .hero .lead{font-family:var(--font-buri-b)}
 /* 플랫 일러스트 공통 (네이비 선 + 오렌지/옐로 면) */
