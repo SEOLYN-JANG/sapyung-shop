@@ -61,7 +61,8 @@ html[data-shot] #wrap{min-height:0} /* 전체 페이지 캡처용(?shot=1): 푸�
 /* 모바일 캡처용(?vw=390): Edge 헤드리스 최소 창 너비(500) 안에 390px 본문을 가운데 배치 → 캡처 후 가운데만 잘라 씀 */
 html[data-vw] body{width:var(--shot-vw);margin:0 auto;position:relative}
 html[data-vw] .float-sns{right:calc(12px + (100vw - var(--shot-vw)) / 2)}
-html[data-shot] .float-sns{position:absolute;top:560px;bottom:auto !important;transform:none} /* 캡처에서는 히어로 옆에 보이도록 고정 해제 */
+html[data-shot] .float-sns{position:absolute;top:560px;bottom:auto !important;transform:none}
+html[data-shot] #themeSwitch,html[data-shot] #heroSwitch{display:none !important} /* 프리뷰 전용 전환 버튼은 캡처에서 제외 */ /* 캡처에서는 히어로 옆에 보이도록 고정 해제 */
 html[data-vw] .hero-clean .word{font-size:calc(var(--shot-vw) * .24)}
 #container{flex:1}
 .xans-element-{min-width:0}
