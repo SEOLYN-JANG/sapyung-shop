@@ -894,5 +894,6 @@
 </div>
 
 </div>
+<div id="themeSwitch" style="position:fixed;left:12px;bottom:12px;z-index:999;display:flex;gap:5px;align-items:center;background:#1a2b4c;padding:6px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3);font:700 12px Pretendard,sans-serif"><span style="color:#f7f4eb;padding:0 4px 0 8px">컬러 시안</span><button data-t="a">A 크림</button><button data-t="b">B 네이비</button><button data-t="c">C 옐로</button><button data-t="d">D 오렌지</button><a href="sian.html" style="color:#fdeea7;padding:0 8px 0 4px;text-decoration:underline">이미지</a></div><script>(function(){var bs=document.querySelectorAll("#themeSwitch button");function paint(v){bs.forEach(function(b){var on=b.dataset.t===v;b.style.cssText="border:0;border-radius:999px;padding:7px 11px;cursor:pointer;font:700 12px Pretendard,sans-serif;background:"+(on?"#ff7d18":"#f7f4eb")+";color:#1a2b4c"})}function set(v){document.documentElement.setAttribute("data-theme",v);paint(v);try{var u=new URL(location.href);u.searchParams.set("theme",v);history.replaceState(null,"",u)}catch(e){}}bs.forEach(function(b){b.addEventListener("click",function(){set(b.dataset.t)})});paint(document.documentElement.getAttribute("data-theme")||"a");})();</script>
 </body>
 </html>
