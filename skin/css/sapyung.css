@@ -236,13 +236,15 @@ body.has-sticky .float-sns{bottom:calc(92px + env(safe-area-inset-bottom))}
 .hero-clean .btn-line:hover{background:var(--hero-ink);color:var(--hero-bg)}
 /* 숟가락: 손잡이가 잘린 쪽(오른쪽)이 화면 밖으로 이어지도록 오른쪽으로 밀어 배치 (PNG 끝은 투명 페이드) */
 .hero-clean .pic{position:relative;z-index:1;margin:14px -14% 0 auto;width:114%;max-width:none;filter:drop-shadow(0 24px 28px rgba(26,43,76,.22))}
-.hero-clean .pic::before{content:"";position:absolute;inset:-6% 10% -4% -2%;border-radius:44px;background:var(--hero-blob);z-index:-1;transform:rotate(-5deg)}
 .hero-clean .pic img{width:100%;height:auto;display:block}
-/* 히어로 배경 도형 시안 (html[data-hero]) — 1 둥근 패널(기본) / 2 세로 컬러 밴드 / 3 소프트 글로우 + 아웃라인 타이포 */
-html[data-hero="2"] .hero-clean .pic::before{display:none}
-html[data-hero="2"] .hero-clean .slide::before{content:"";position:absolute;top:0;bottom:0;right:0;width:46%;background:var(--hero-blob)}
-html[data-hero="2"] .hero-clean .word{color:rgba(26,43,76,.06)}
-html[data-hero="3"] .hero-clean .pic::before{inset:-16% -4% -10% -8%;border-radius:50%;transform:none;background:radial-gradient(closest-side,var(--hero-blob) 50%,rgba(253,238,167,0) 100%)}
+/* 히어로 배경 도형 — 기본 = 2 세로 컬러 밴드 (2026-10-29 확정). 1 둥근 패널 / 3 소프트 글로우는 html[data-hero] 비교용 */
+.hero-clean .slide::before{content:"";position:absolute;top:0;bottom:0;right:0;width:46%;background:var(--hero-blob)}
+.hero-clean .word{color:rgba(26,43,76,.06)}
+.hero-clean .pic::before{content:"";position:absolute;inset:-6% 10% -4% -2%;border-radius:44px;background:var(--hero-blob);z-index:-1;transform:rotate(-5deg);display:none}
+html[data-hero="1"] .hero-clean .slide::before,html[data-hero="3"] .hero-clean .slide::before{display:none}
+html[data-hero="1"] .hero-clean .pic::before{display:block}
+html[data-hero="1"] .hero-clean .word{color:var(--hero-word)}
+html[data-hero="3"] .hero-clean .pic::before{display:block;inset:-16% -4% -10% -8%;border-radius:50%;transform:none;background:radial-gradient(closest-side,var(--hero-blob) 50%,rgba(253,238,167,0) 100%)}
 html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px rgba(26,43,76,.16);right:4%;bottom:-6px}
 .hero-clean .word{position:absolute;right:-3%;bottom:-10px;font-weight:900;font-size:clamp(90px,24vw,240px);letter-spacing:-.05em;line-height:1;color:var(--hero-word);pointer-events:none;z-index:0;user-select:none;font-family:var(--font-sans)}
 /* 슬라이드 연출 */
@@ -267,7 +269,7 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
   .hero-clean .btns{margin-top:28px}
   .hero-clean .pic{margin:0 -18% 0 0;width:118%;max-width:none}
   .hero-clean .word{right:0;bottom:-16px}
-  html[data-hero="2"] .hero-clean .slide::before{width:42%}
+  .hero-clean .slide::before{width:42%}
   .hero-slider .hero-nav{right:max(var(--gutter),calc((100vw - var(--container))/2 + var(--gutter)));bottom:36px}
   .hero-slider .hero-dots{left:max(var(--gutter),calc((100vw - var(--container))/2 + var(--gutter)));bottom:48px}
 }
