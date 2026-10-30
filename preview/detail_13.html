@@ -6,19 +6,13 @@
 <meta name="theme-color" content="#f7f4eb">
 <!-- 폰트
      · Pretendard : 본문 · 상단 카테고리 바 · 상품 상세 (가독성)
-     · Noto Serif KR : 메인 페이지 강조 헤드라인 — SD 격동명조2 적용 전까지의 대체 서체
-     · 마루 부리 : 메인 페이지 긴 설명·서브 카피 (네이버 무료 웹폰트) -->
+     · 에스코어드림 ExtraBold : 메인 페이지 강조 헤드라인 (무료, 눈누 CDN — @font-face 는 css/sapyung.css. 2026-10-30 업체 확정 "고딕 B")
+     · 마루 부리 : 메인 페이지 긴 설명·서브 카피 (네이버 무료 웹폰트)
+     (격동명조2·Noto Serif KR 은 업체가 고딕으로 변경 요청해 제거 — 복원 절차는 README 1-6) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap">
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
-<!-- [SD 격동명조2] 산돌구름 "웹폰트" 서비스(데스크톱 산돌구름 구독과 별개 상품)에서 프로젝트 생성 → 프로젝트관리 화면의 <script> 코드를 아래 줄에 붙여넣기.
-     붙여넣은 뒤 css/sapyung.css 의 --font-serif 맨 앞에 생성된 폰트명을 넣고 --serif-w 를 700 으로 (README 2-2) -->
-<!-- SANDOLL_WEBFONT_SCRIPT_HERE — 2026-10-30 트라이얼 프로젝트 "사평 쇼핑몰"(도메인 seolyn-jang.github.io, SD 격동명조2 10 Bd). 실제 몰 도메인용 프로젝트를 만들면 이 두 줄을 그 코드로 교체 -->
-<link rel="preconnect" href="https://o6cdhdutve.execute-api.ap-northeast-2.amazonaws.com">
-<link rel="stylesheet" href="https://o6cdhdutve.execute-api.ap-northeast-2.amazonaws.com/v1/api/css/drop_fontstream_css/?sid=gAAAAABq4-OLj1k9NG0lmObhsuwTgYOyRxhfsQAXQqWZH1P0aVpW8MDhuTDcIPHW9h1JQOD69atKYAhW9VoveFGKcOnZHvY0ZTFAGaiaCqwQRUb_MEbbI5pCjiBGhoqhXup2Mh7OIF5N0683m8WlqGE6JOdkhXtzX-aSJbbaaQpW0QCCeSIt-fsDr53c_Qee4HmhuqXLBhMrjOjOtYLZoqLarZv8WRwAJlTicDgMYa22or5QE4Q2toS2TjN7pj4I83H4aJJRp9bW" charset="utf-8" referrerpolicy="origin">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
-<script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(noto|gm|sc)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
+<script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
 <link rel="stylesheet" href="../skin/css/sapyung.css">
 <script src="../skin/js/sapyung.js" defer></script>
 <style>.xans-layout-statelogon{display:none !important}</style></head>
@@ -810,7 +804,7 @@
                 <p>신제품 · 레시피 · 할인 소식을 카카오톡으로 가장 먼저 보내드립니다.</p>
             </div>
             <div class="btns">
-                <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="btn btn-gold btn-sm">카카오톡 채널 추가</a>
+                <a href="https://pf.kakao.com/_DCxgxaK" target="_blank" rel="noopener" class="btn btn-gold btn-sm">카카오톡 채널 추가</a>
                 <a href="system.html?p=%2Fmember%2Fjoin.html" class="btn btn-line btn-sm">회원가입 혜택</a>
             </div>
         </div>
@@ -875,17 +869,17 @@
     </div>
 </footer>
 
-<!-- 따라다니는 채널 바: 네이버 블로그 · 인스타그램 · 카카오톡 채널 (PC 우측 중앙 / 모바일 우측 하단). 링크 3개는 실제 주소로 교체 -->
+<!-- 따라다니는 채널 바: 네이버 블로그 · 인스타그램 · 카카오톡 채널 (PC 우측 중앙 / 모바일 우측 하단). 주소는 2026-10-30 업체 제공 -->
 <div class="float-sns" aria-label="사평 채널">
-    <a href="https://blog.naver.com/" target="_blank" rel="noopener" class="blog" aria-label="네이버 블로그">
+    <a href="https://blog.naver.com/sapyung96" target="_blank" rel="noopener" class="blog" aria-label="네이버 블로그">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A3.5 3.5 0 0 1 7.5 4h9A3.5 3.5 0 0 1 20 7.5v7a3.5 3.5 0 0 1-3.5 3.5H12l-3.6 3.2c-.5.4-1.2.1-1.2-.6V18A3.5 3.5 0 0 1 4 14.5z" fill="currentColor"/><path d="M8.6 8.8h2.6c1.3 0 2 .6 2 1.5 0 .6-.3 1-.8 1.2.7.2 1.2.7 1.2 1.5 0 1.1-.8 1.8-2.2 1.8H8.6zm1.4 2.3h1c.5 0 .8-.2.8-.6s-.3-.6-.8-.6h-1zm0 2.6h1.2c.6 0 .9-.2.9-.7s-.3-.7-.9-.7H10z" fill="#fff"/></svg>
         <span>블로그</span>
     </a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="insta" aria-label="인스타그램">
+    <a href="https://www.instagram.com/sapyung.official" target="_blank" rel="noopener" class="insta" aria-label="인스타그램">
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
         <span>인스타</span>
     </a>
-    <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="kakao" aria-label="카카오톡 채널">
+    <a href="https://pf.kakao.com/_DCxgxaK" target="_blank" rel="noopener" class="kakao" aria-label="카카오톡 채널">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5C6.8 3.5 2.5 6.8 2.5 10.9c0 2.6 1.7 4.9 4.3 6.2l-1 3.8c-.1.3.3.6.6.4l4.4-2.9c.4 0 .8.1 1.2.1 5.2 0 9.5-3.3 9.5-7.6S17.2 3.5 12 3.5z" fill="currentColor"/></svg>
         <span>채널</span>
     </a>

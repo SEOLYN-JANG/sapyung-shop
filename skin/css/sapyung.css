@@ -26,10 +26,9 @@
   --header-h:108px;      /* 고정 헤더 전체 높이 (모바일 = 본체 64 + 카테고리 바 44) */
   /* 서체: 본문 Pretendard / 메인 헤드라인 명조 / 메인 설명 마루부리 */
   --font-sans:"Pretendard","Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
-  /* SD 격동명조2(산돌 웹폰트, layout.html 의 link 2줄) — 생성 CSS가 "SD Gyeokdong Mj2" / font-weight 400 으로 Bold 1종을 선언하므로 --serif-w 는 400 (700·900이면 가짜 볼드로 뭉개짐).
-     웹폰트가 안 뜨는 도메인(미등록·트라이얼 종료)에서는 Noto Serif KR 로 폴백 */
-  --font-serif:"SD Gyeokdong Mj2","Noto Serif KR","Nanum Myeongjo","Apple Myungjo",serif;
-  --serif-w:400;
+  /* 메인 헤드라인 = 에스코어드림 7 ExtraBold(무료) — 2026-10-30 업체 확정 "고딕 B". 변수명 serif 는 역사적 이름(헤드라인 서체 슬롯) */
+  --font-serif:"S-CoreDream","Pretendard",sans-serif;
+  --serif-w:800;
   --font-buri:"MaruBuri","Noto Serif KR",serif;
   --font-buri-b:"MaruBuriSemiBold","MaruBuri","Noto Serif KR",serif;
   /* 섹션별 컬러 훅 — 기본 = 시안 C 옐로 웜 (2026-10-29 확정). A/B/D 는 파일 끝 [data-theme] 블록(비교용) */
@@ -40,12 +39,11 @@
   --footer-bg:var(--yellow); --legal-bg:var(--navy);
 }
 /* 미리보기: ?serif=noto → 산돌 웹폰트가 없을 때(트라이얼 종료·미구독) 보이는 폴백 상태 */
-html[data-serif="noto"]{--font-serif:"Noto Serif KR","Nanum Myeongjo","Apple Myungjo",serif;--serif-w:900}
-/* 고딕 대안 2종(무료, 눈누 CDN) — ?serif=gm 지마켓 산스 Bold / ?serif=sc 에스코어드림 7 ExtraBold. 확정 시 :root --font-serif/--serif-w 로 이관 */
-@font-face{font-family:"GmarketSans";font-weight:700;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff")}
+/* 헤드라인 서체(눈누 CDN, 무료·상업 사용 가능) */
 @font-face{font-family:"S-CoreDream";font-weight:800;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff") format("woff")}
+/* 비교용: ?serif=gm 지마켓 산스 Bold (적용 시 삭제 가능) */
+@font-face{font-family:"GmarketSans";font-weight:700;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff")}
 html[data-serif="gm"]{--font-serif:"GmarketSans","Pretendard",sans-serif;--serif-w:700}
-html[data-serif="sc"]{--font-serif:"S-CoreDream","Pretendard",sans-serif;--serif-w:800}
 @media(min-width:1024px){:root{--inner-h:84px;--header-h:84px}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
