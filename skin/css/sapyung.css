@@ -41,6 +41,11 @@
 }
 /* 미리보기: ?serif=noto → 산돌 웹폰트가 없을 때(트라이얼 종료·미구독) 보이는 폴백 상태 */
 html[data-serif="noto"]{--font-serif:"Noto Serif KR","Nanum Myeongjo","Apple Myungjo",serif;--serif-w:900}
+/* 고딕 대안 2종(무료, 눈누 CDN) — ?serif=gm 지마켓 산스 Bold / ?serif=sc 에스코어드림 7 ExtraBold. 확정 시 :root --font-serif/--serif-w 로 이관 */
+@font-face{font-family:"GmarketSans";font-weight:700;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff")}
+@font-face{font-family:"S-CoreDream";font-weight:800;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff") format("woff")}
+html[data-serif="gm"]{--font-serif:"GmarketSans","Pretendard",sans-serif;--serif-w:700}
+html[data-serif="sc"]{--font-serif:"S-CoreDream","Pretendard",sans-serif;--serif-w:800}
 @media(min-width:1024px){:root{--inner-h:84px;--header-h:84px}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
