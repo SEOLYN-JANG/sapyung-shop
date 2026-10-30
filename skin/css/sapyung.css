@@ -26,9 +26,10 @@
   --header-h:108px;      /* 고정 헤더 전체 높이 (모바일 = 본체 64 + 카테고리 바 44) */
   /* 서체: 본문 Pretendard / 메인 헤드라인 명조 / 메인 설명 마루부리 */
   --font-sans:"Pretendard","Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
-  /* 격동명조2 적용 시: 산돌 웹폰트가 생성해 준 폰트명을 --font-serif 맨 앞에 추가(예 "Sandoll 격동명조2"), --serif-w 는 700 (격동명조2 최대 굵기 Bold; 900이면 가짜 볼드 처리됨) */
-  --font-serif:"Noto Serif KR","Nanum Myeongjo","Apple Myungjo",serif;
-  --serif-w:900;
+  /* SD 격동명조2(산돌 웹폰트, layout.html 의 link 2줄) — 생성 CSS가 "SD Gyeokdong Mj2" / font-weight 400 으로 Bold 1종을 선언하므로 --serif-w 는 400 (700·900이면 가짜 볼드로 뭉개짐).
+     웹폰트가 안 뜨는 도메인(미등록·트라이얼 종료)에서는 Noto Serif KR 로 폴백 */
+  --font-serif:"SD Gyeokdong Mj2","Noto Serif KR","Nanum Myeongjo","Apple Myungjo",serif;
+  --serif-w:400;
   --font-buri:"MaruBuri","Noto Serif KR",serif;
   --font-buri-b:"MaruBuriSemiBold","MaruBuri","Noto Serif KR",serif;
   /* 섹션별 컬러 훅 — 기본 = 시안 C 옐로 웜 (2026-10-29 확정). A/B/D 는 파일 끝 [data-theme] 블록(비교용) */
