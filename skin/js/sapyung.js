@@ -65,7 +65,7 @@
       slides.forEach(function (s, k) { s.classList.toggle('on', k === idx); });
       dl.forEach(function (d, k) { d.classList.remove('on'); if (k === idx) { void d.offsetWidth; d.classList.add('on'); } });
     };
-    var start = function () { timer = setInterval(function () { go(idx + 1); }, iv); };
+    var start = function () { if (document.documentElement.hasAttribute('data-shot')) return; timer = setInterval(function () { go(idx + 1); }, iv); }; /* ?shot=1 캡처 시 자동 넘김 정지 */
     var stop = function () { clearInterval(timer); };
     var restart = function () { stop(); start(); };
     $('.hero-nav .prev', h).addEventListener('click', function () { go(idx - 1); restart(); });
