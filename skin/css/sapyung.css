@@ -30,6 +30,9 @@
      웹폰트가 안 뜨는 도메인(미등록·트라이얼 종료)에서는 Noto Serif KR 로 폴백 */
   --font-serif:"SD Gyeokdong Mj2","Noto Serif KR","Nanum Myeongjo","Apple Myungjo",serif;
   --serif-w:400;
+}
+/* 미리보기: ?serif=noto → 산돌 웹폰트가 없을 때(트라이얼 종료·미구독) 보이는 폴백 상태 */
+html[data-serif="noto"]{--font-serif:"Noto Serif KR","Nanum Myeongjo","Apple Myungjo",serif;--serif-w:900;
   --font-buri:"MaruBuri","Noto Serif KR",serif;
   --font-buri-b:"MaruBuriSemiBold","MaruBuri","Noto Serif KR",serif;
   /* 섹션별 컬러 훅 — 기본 = 시안 C 옐로 웜 (2026-10-29 확정). A/B/D 는 파일 끝 [data-theme] 블록(비교용) */
