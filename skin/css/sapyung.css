@@ -522,8 +522,8 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 @media(min-width:1024px){
   .detail-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;row-gap:28px;align-items:start}
   .detail-top>*{grid-column:1}
-  .detail-top>.info{grid-column:2;grid-row:1 / span 12;position:sticky;top:calc(var(--header-h) + 12px);align-self:start;max-height:calc(100vh - var(--header-h) - 24px);overflow-y:auto;scrollbar-width:none;padding-bottom:4px}
-  .detail-top>.info::-webkit-scrollbar{display:none}
+  /* 구매 창이 화면보다 길면 JS(detail 1-5)가 top 을 음수로 잡아 아래쪽(버튼)이 화면 바닥에 붙은 채 따라옴 */
+  .detail-top>.info{grid-column:2;grid-row:1 / span 12;position:sticky;top:calc(var(--header-h) + 12px);align-self:start}
 }
 
 /* 갤러리 */

@@ -186,6 +186,20 @@
       tick(); setInterval(tick, 1000);
     }
 
+    /* 1-5) PC 구매 창 sticky: 창이 화면보다 길면 아래 끝(구매 버튼)이 화면 바닥에 오도록 top 을 음수로 */
+    var infoEl = $('.detail-top > .info', root);
+    if (infoEl) {
+      var fitInfo = function () {
+        if (window.innerWidth < 1024) { infoEl.style.top = ''; return; }
+        var hh = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 84;
+        var want = hh + 12, room = window.innerHeight - infoEl.offsetHeight - 12;
+        infoEl.style.top = Math.min(want, room) + 'px';
+      };
+      fitInfo(); window.addEventListener('resize', fitInfo);
+      if ('MutationObserver' in window) new MutationObserver(fitInfo).observe(infoEl, { childList: true, subtree: true, attributes: true });
+      window.addEventListener('load', fitInfo);
+    }
+
     /* 1-3) 장바구니 문구: 숫자가 비어 있으면 줄 전체 숨김 */
     var cpop = $('.cart-pop', root);
     if (cpop && !($('[data-cart-count]', cpop) || {}).textContent.trim()) cpop.style.display = 'none';
