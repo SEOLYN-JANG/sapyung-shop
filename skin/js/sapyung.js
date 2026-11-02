@@ -143,8 +143,60 @@
     var bd = $('.badges[data-summary]', root);
     if (bd) {
       var parts = (bd.getAttribute('data-summary') || '').split('|').map(function (s) { return s.trim(); }).filter(Boolean);
-      parts.forEach(function (p) { var sp = document.createElement('span'); sp.textContent = p; bd.insertBefore(sp, bd.firstChild); });
+      var firstImg = bd.querySelector('img');
+      parts.forEach(function (p) {
+        var sp = document.createElement('span'); sp.textContent = p;
+        if (/\d+(\.\d+)?\s*%|국산|무첨가|유기농|무료배송/.test(p)) sp.className = 'pt'; /* 포인트 단어 → 네이비 강조 */
+        bd.insertBefore(sp, firstImg);
+      });
       if (!bd.children.length) bd.style.display = 'none';
+    }
+
+    /* 1-2) 오늘 출발 타이머: 평일 data-cutoff 전이면 마감까지 카운트다운, 마감 뒤·주말이면 다음 영업일 출고 안내 */
+    var ts = $('.today-ship', root);
+    if (ts) {
+      var HOLIDAYS = []; /* 공휴일(출고 없는 날)을 'YYYY-MM-DD'로 추가 — 예: '2026-12-25' */
+      var cut = (ts.getAttribute('data-cutoff') || '14:30').split(':').map(Number);
+      var ymd = function (d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); };
+      var isBiz = function (d) { var w = d.getDay(); return w >= 1 && w <= 5 && HOLIDAYS.indexOf(ymd(d)) < 0; };
+      var DAYS = ['일', '월', '화', '수', '목', '금', '토'];
+      var head = $('.head', ts), msg = $('.msg', ts), lbl = $('.lbl', ts), clock = $('.clock', ts);
+      var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+      var tick = function () {
+        var now = new Date();
+        var today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), cut[0], cut[1], 0);
+        if (isBiz(now) && now < today) {
+          ts.classList.remove('closed');
+          head.textContent = '오늘 출발';
+          msg.innerHTML = '지금 결제하면 <em>오늘 출고</em> · 내일 도착 예정';
+          lbl.textContent = '출발 마감까지';
+          var left = Math.floor((today - now) / 1000);
+          clock.textContent = pad(Math.floor(left / 3600)) + ':' + pad(Math.floor(left % 3600 / 60)) + ':' + pad(left % 60);
+        } else {
+          var nx = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+          while (!isBiz(nx)) nx.setDate(nx.getDate() + 1);
+          var label = (nx - new Date(now.getFullYear(), now.getMonth(), now.getDate())) <= 864e5 ? '내일' : DAYS[nx.getDay()] + '요일';
+          ts.classList.add('closed');
+          head.textContent = label + ' 출발';
+          msg.innerHTML = '오늘 출발 마감 · 지금 결제하면 <em>' + label + ' 출고</em>';
+          lbl.textContent = '다음 출발';
+          clock.textContent = (nx.getMonth() + 1) + '/' + nx.getDate() + ' (' + DAYS[nx.getDay()] + ') ' + pad(cut[0]) + ':' + pad(cut[1]);
+        }
+      };
+      tick(); setInterval(tick, 1000);
+    }
+
+    /* 1-3) 장바구니 문구: 숫자가 비어 있으면 줄 전체 숨김 */
+    var cpop = $('.cart-pop', root);
+    if (cpop && !($('[data-cart-count]', cpop) || {}).textContent.trim()) cpop.style.display = 'none';
+
+    /* 1-4) 포토리뷰 화살표: 보이는 폭만큼 넘김 */
+    var pw = $('.rv-summary .photos-wrap', root);
+    if (pw) {
+      var ul = $('.photos', pw);
+      var pvb = $('.arrow.prev', pw), nxb = $('.arrow.next', pw);
+      pvb && pvb.addEventListener('click', function () { ul.scrollBy({ left: -ul.clientWidth, behavior: 'smooth' }); });
+      nxb && nxb.addEventListener('click', function () { ul.scrollBy({ left: ul.clientWidth, behavior: 'smooth' }); });
     }
 
     /* 2) 갤러리: 카페24 addimage 목록을 썸네일로, 메인 슬라이드 동기화 */
@@ -220,6 +272,9 @@
       });
     };
     if (tp) { fmtPrices(); if ('MutationObserver' in window) new MutationObserver(fmtPrices).observe(tp, { childList: true, subtree: true }); }
+    /* 옵션 없는 상품: 비어 있는 옵션 행(#totalProductsOption)이 빈 칸으로 보이지 않게 */
+    var tpo = $('#totalProductsOption');
+    if (tpo && !tpo.textContent.trim() && !$('select,input', tpo)) tpo.style.display = 'none';
 
     /* 8) 리뷰/상세 탭 카운트: 카페24가 렌더한 게시글 수 추정 */
     var rvRows = $$('#prdReview .board-list tbody tr'), rvCnt = $('.dtabs .cnt-review');

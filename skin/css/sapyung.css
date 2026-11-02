@@ -516,8 +516,15 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .crumb{display:flex;gap:8px;font-size:14px;color:var(--muted);padding:18px 0 6px;flex-wrap:wrap}
 .crumb li+li::before{content:"/";margin-right:8px;opacity:.5}
 .crumb a:hover{color:var(--ink)}
-.detail-top{display:grid;grid-template-columns:1fr;gap:28px}
-@media(min-width:1024px){.detail-top{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:start}.detail .info{position:sticky;top:calc(var(--header-h) + 16px)}}
+/* 반분할(2026-11-02 업체 요청, 명가삼대떡집식): PC는 왼쪽 열에 갤러리·포토리뷰·탭·상세·리뷰·Q&A, 오른쪽 열에 구매 창이 끝까지 따라 내려옴 */
+.detail-top{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+.detail-top>*{min-width:0} /* 표(옵션·선택상품)의 최소 너비가 열을 폰 화면보다 넓게 밀어내던 문제 방지 */
+@media(min-width:1024px){
+  .detail-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;row-gap:28px;align-items:start}
+  .detail-top>*{grid-column:1}
+  .detail-top>.info{grid-column:2;grid-row:1 / span 12;position:sticky;top:calc(var(--header-h) + 12px);align-self:start;max-height:calc(100vh - var(--header-h) - 24px);overflow-y:auto;scrollbar-width:none;padding-bottom:4px}
+  .detail-top>.info::-webkit-scrollbar{display:none}
+}
 
 /* 갤러리 */
 .gallery{margin:0 calc(var(--gutter) * -1)}
@@ -543,9 +550,11 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .info .rv-line .star{color:var(--gold)}
 .info .rv-line a{text-decoration:underline;text-underline-offset:3px}
 .info h1{font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.3;margin:8px 0 10px}
-.info .badges{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
-.info .badges span,.info .badges img{font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--cream-2);color:var(--ink-2);height:auto}
-.info .badges img{padding:0;background:none;height:22px;width:auto}
+/* 포인트 배지(요약설명): 옐로 칩, 핵심 단어(%·국산·무첨가…)가 든 칩은 네이비로 강조 */
+.info .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.info .badges span,.info .badges img{font-size:14px;font-weight:800;padding:7px 13px;border-radius:999px;background:var(--yellow);color:var(--navy);height:auto;letter-spacing:-.01em;line-height:1.2}
+.info .badges span.pt{background:var(--navy);color:var(--yellow)}
+.info .badges img{padding:0;background:none;height:24px;width:auto}
 .info .price-box{padding:16px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
 .info .price-box .custom{font-size:15px;color:var(--muted);text-decoration:line-through}
 .info .price-box .custom:empty{display:none}
@@ -558,9 +567,18 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .info .price-box .mileage:empty{display:none}
 /* 카페24 기본정보 테이블(product_detaildesign)은 숨기고 값만 JS로 끌어옴 */
 .info .xans-product-detaildesign{display:none}
+/* 특징 아이콘 바: PC 한 줄 / 모바일 타일 3개(크게), 오늘 출발 타일 네이비 강조 */
 .info .benefit{display:flex;gap:10px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);flex-wrap:wrap}
 .info .benefit span{display:inline-flex;align-items:center;gap:6px}
 .info .benefit svg{width:16px;height:16px;color:var(--brown)}
+.info .benefit span.hot{color:var(--navy);font-weight:700}
+@media(max-width:1023px){
+  .info .benefit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:14px 0 0;border:0}
+  .info .benefit span{flex-direction:column;justify-content:center;text-align:center;gap:7px;padding:13px 6px;border-radius:12px;background:var(--paper);border:1px solid var(--line);font-size:13px;font-weight:700;line-height:1.3;color:var(--ink);word-break:keep-all}
+  .info .benefit svg{width:26px;height:26px;color:var(--orange-3)}
+  .info .benefit span.hot{background:var(--navy);color:var(--yellow);border-color:var(--navy)}
+  .info .benefit span.hot svg{color:var(--yellow)}
+}
 
 /* 옵션 아코디언 */
 .opt-acc{margin-top:16px;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}
@@ -587,11 +605,18 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .opt-acc .selectButton a{display:inline-flex;height:40px;padding:0 18px;align-items:center;border-radius:999px;background:var(--ink);color:var(--cream);font-weight:700;font-size:14px}
 .opt-acc .ec-shop-front-product-option-desc-trigger{display:none}
 
-/* 배송 안내 박스 */
-.ship-box{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:14px 16px;border-radius:14px;background:var(--cream-2);font-size:14px;color:var(--ink-2)}
-.ship-box svg{width:22px;height:22px;flex:none;color:var(--brown);margin-top:1px}
-.ship-box strong{color:var(--ink)}
-.ship-box em{font-style:normal;color:var(--red);font-weight:700}
+/* 오늘 출발 타이머 바 (한 줄, 긴 보관 안내문은 제거 — 모바일 스크롤 뎁스) */
+.today-ship{display:flex;gap:12px;align-items:center;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--yellow);color:var(--navy)}
+.today-ship>svg{width:24px;height:24px;flex:none;color:var(--navy)}
+.today-ship .t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.today-ship .head{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.today-ship .msg{font-size:12.5px;color:var(--ink-2);line-height:1.35}
+.today-ship .msg em{font-style:normal;font-weight:700;color:var(--orange-3)}
+.today-ship .timer{flex:none;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+.today-ship .lbl{font-size:11px;font-weight:700;color:var(--ink-2);letter-spacing:.02em}
+.today-ship .clock{font-size:22px;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums;line-height:1}
+.today-ship.closed{background:var(--cream-2)}
+.today-ship.closed .clock{font-size:16px}
 
 /* 선택 상품/수량 (카페24 totalProducts) */
 #totalProducts{margin-top:14px}
@@ -625,9 +650,17 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 
 /* 구매 버튼 (카페24 product_action) */
 .xans-product-action{margin-top:14px}
-.action-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.action-btns .btn{height:58px;font-size:18px}
-.action-btns .gift{grid-column:1/-1}
+/* 장바구니 문구 (말풍선) */
+.cart-pop{display:inline-flex;align-items:center;gap:4px;margin:4px 0 10px;padding:7px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:13px;color:var(--ink-2);position:relative}
+.cart-pop strong{color:var(--red);font-weight:800}
+.cart-pop::after{content:"";position:absolute;left:22px;bottom:-6px;width:10px;height:10px;background:var(--paper);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+/* 구매 버튼: 크게 (장바구니 · 바로 구매 2열, 선물하기 한 줄) */
+.action-btns.ec-base-button{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0} /* 17장 .ec-base-button(flex) 공통 규칙보다 우선 */
+.action-btns .btn{height:64px;font-size:19px;border-radius:16px}
+.action-btns .btn svg{width:22px;height:22px}
+.action-btns .gift{grid-column:1/-1;height:58px;font-size:18px}
+.btn-gift{background:var(--paper);color:var(--navy);border-color:var(--line)}
+.btn-gift:hover{border-color:var(--navy)}
 .pay-btns{margin-top:12px}
 .pay-btns #NaverChk_Button,.pay-btns #appPaymentButtonBox{margin:10px 0 0 !important;float:none !important;display:block !important;clear:both}
 .pay-btns #NaverChk_Button:empty,.pay-btns #appPaymentButtonBox:empty{display:none !important}
@@ -636,20 +669,26 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .info .share svg{width:16px;height:16px}
 
 /* 리뷰 요약 + 포토 스트립 */
-.rv-summary{margin-top:44px;padding:22px 20px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius)}
+.rv-summary{margin-top:0;padding:22px 20px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius)}
 .rv-summary .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .rv-summary .top strong{font-size:22px;font-weight:800}
 .rv-summary .top strong .star{color:var(--gold)}
 .rv-summary .top a{font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 .rv-summary .satisfy{margin-top:10px;font-size:16px;color:var(--ink-2);display:flex;align-items:center;gap:6px}
 .rv-summary .satisfy svg{width:16px;height:16px;color:var(--red)}
-.rv-summary .photos{display:flex;gap:8px;overflow-x:auto;margin-top:16px;scrollbar-width:none}
+/* 포토리뷰: 크게 — 모바일 한 화면 3장, PC 한 화면 4장, 오른쪽으로 넘김(스와이프 + PC 화살표) */
+.rv-summary .photos-wrap{position:relative;margin-top:16px}
+.rv-summary .photos{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-behavior:smooth}
 .rv-summary .photos::-webkit-scrollbar{display:none}
-.rv-summary .photos li{flex:none;width:96px;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--cream-2)}
+.rv-summary .photos li{flex:none;width:calc((100% - 16px) / 3);aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:var(--cream-2);scroll-snap-align:start}
 .rv-summary .photos img{width:100%;height:100%;object-fit:cover}
+.rv-summary .arrow{display:none;position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--paper);box-shadow:0 6px 16px rgba(26,43,76,.18);border:1px solid var(--line);align-items:center;justify-content:center;color:var(--navy);z-index:2}
+.rv-summary .arrow svg{width:18px;height:18px}
+.rv-summary .arrow.prev{left:-14px}.rv-summary .arrow.next{right:-14px}
+@media(min-width:1024px){.rv-summary .photos{gap:10px}.rv-summary .photos li{width:calc((100% - 30px) / 4)}.rv-summary .arrow{display:flex}}
 
 /* 탭 */
-.dtabs{position:sticky;top:var(--header-h);z-index:50;background:var(--cream);border-bottom:1px solid var(--line);margin-top:40px}
+.dtabs{position:sticky;top:var(--header-h);z-index:50;background:var(--cream);border-bottom:1px solid var(--line);margin-top:8px}
 .dtabs ul{display:flex}
 .dtabs li{flex:1}
 .dtabs a{display:flex;align-items:center;justify-content:center;gap:6px;height:56px;font-weight:700;font-size:17px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
@@ -801,9 +840,9 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 
 /* 모바일 하단 고정 구매바 */
 .sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;gap:8px;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));background:rgba(251,247,238,.96);border-top:1px solid var(--line);backdrop-filter:blur(8px)}
-.sticky-buy .btn{flex:1;height:54px;font-size:17px}
-.sticky-buy .wish{flex:none;width:50px;padding:0}
-body.has-sticky{padding-bottom:80px}
+.sticky-buy .btn{flex:1;height:58px;font-size:18px;border-radius:14px}
+.sticky-buy .wish{flex:none;width:54px;padding:0}
+body.has-sticky{padding-bottom:84px}
 @media(min-width:1024px){.sticky-buy{display:none}body.has-sticky{padding-bottom:0}}
 
 /* ---------- 17. 공통 폼/서브페이지(회원·주문·게시판) 톤 맞춤 ---------- */
