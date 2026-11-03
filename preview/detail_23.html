@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
-<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611031742">
-<script src="../skin/js/sapyung.js?v=202611031742" defer></script>
+<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611031753">
+<script src="../skin/js/sapyung.js?v=202611031753" defer></script>
 <style>.xans-layout-statelogon{display:none !important}</style></head>
 <body>
 <div id="wrap">
@@ -33,8 +33,9 @@
 <header class="header" id="header">
     <div class="container inner">
         <div class="left">
+            <!-- 모바일 메뉴 버튼: 카테고리 칩 줄을 없앤 대신 네이비 알약 버튼으로 강조 (2026-11-03) -->
             <button type="button" class="iconbtn menu" data-open-drawer aria-label="메뉴 열기">
-                <svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                <svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>메뉴</span>
             </button>
             <h1 class="logo xans-element- xans-layout xans-layout-logotop" module="Layout_LogoTop">
                 <a href="index.html" aria-label="사평 홈">
@@ -133,21 +134,8 @@
         </div>
     </div>
 
-    <!-- 모바일 카테고리 바 (PC에서는 숨김): 한 화면에 3개씩, 옆으로 밀어 더 보기. 분류는 Layout_category 자동 출력 -->
-    <nav class="m-cats" aria-label="상품 분류">
-        <div class="container">
-            <a href="list.html?cate_no=1">전체</a>
-            <div class="xans-element- xans-layout xans-layout-category" module="Layout_category" style="display:contents">
-                <a href="list_24.html?cate_no=24" class="xans-record-">키마카레</a>
-<a href="list_25.html?cate_no=25" class="xans-record-">드라이짜장</a>
-<a href="list_26.html?cate_no=26" class="xans-record-">말차 · 마라</a>
-<a href="list_27.html?cate_no=27" class="xans-record-">세트 · 선물</a>
-            </div>
-            <a href="index.html#story">브랜드</a>
-            <a href="index.html#recipes">레시피</a>
-            <a href="system.html?p=%2Fboard%2Freview%2Flist.html%3Fboard_no%3D4">리뷰</a>
-        </div>
-    </nav>
+    <!-- 모바일 카테고리 칩 줄(.m-cats)은 2026-11-03 업체 요청으로 삭제 — 분류 이동은 왼쪽 "메뉴" 버튼(드로어)으로 -->
+
 
     <div class="search-layer" id="searchLayer">
         <form action="system.html?p=%2Fproduct%2Fsearch.html" method="get">

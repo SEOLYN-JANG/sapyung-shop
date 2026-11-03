@@ -23,7 +23,7 @@
   --radius-s:10px;
   --shadow:0 10px 30px rgba(26,43,76,.08);
   --inner-h:64px;        /* 헤더 본체 높이 */
-  --header-h:108px;      /* 고정 헤더 전체 높이 (모바일 = 본체 64 + 카테고리 바 44) */
+  --header-h:64px;       /* 고정 헤더 전체 높이 (모바일 카테고리 바 44px는 2026-11-03 삭제 → 본체 64만) */
   /* 서체: 본문 Pretendard / 메인 헤드라인 명조 / 메인 설명 마루부리 */
   --font-sans:"Pretendard","Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
   /* 메인 헤드라인 = 에스코어드림 7 ExtraBold(무료) — 2026-10-30 업체 확정 "고딕 B". 변수명 serif 는 역사적 이름(헤드라인 서체 슬롯) */
@@ -121,7 +121,7 @@ html[data-vw] .hero-clean .word{font-size:calc(var(--shot-vw) * .24)}
 @media(min-width:768px){.topbar .dot,.pc-only-inline{display:inline}.pc-only-inline{opacity:.85}}
 .header{position:sticky;top:0;z-index:100;background:var(--header-bg);color:var(--header-ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .header .inner{height:var(--inner-h);display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
-.header .left{display:flex;align-items:center;gap:2px}
+.header .left{display:flex;align-items:center;gap:8px}
 .header .right{display:flex;align-items:center;justify-content:flex-end;gap:0}
 .iconbtn{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;position:relative}
 .iconbtn:hover{background:var(--bg-2)}
@@ -130,13 +130,10 @@ html[data-vw] .hero-clean .word{font-size:calc(var(--shot-vw) * .24)}
 @media(min-width:1024px){.logo img{height:56px}.iconbtn{width:42px;height:42px}.header .right{gap:4px}}
 .cart-count{position:absolute;top:3px;right:1px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--orange);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;line-height:1}
 .cart-count:empty{display:none}
-/* 모바일 카테고리 바: 3개씩 보이고 옆으로 스크롤 (fishwife 모바일 메인 참고) */
-.m-cats{border-top:1px solid var(--line)}
-.m-cats .container{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding:7px var(--gutter);scrollbar-width:none}
-.m-cats .container::-webkit-scrollbar{display:none}
-.m-cats a{flex:0 0 calc((100% - 16px) / 3);scroll-snap-align:start;text-align:center;padding:7px 8px;border-radius:999px;background:var(--bg-2);font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2}
-.m-cats a.on{background:var(--navy);color:var(--bg)}
-@media(min-width:1024px){.m-cats{display:none}}
+/* 모바일 메뉴 버튼 강조: 카테고리 칩 줄(.m-cats) 삭제 대신 네이비 알약 "≡ 메뉴" (2026-11-03 업체 요청). PC에서는 숨김 */
+.iconbtn.menu{width:auto;height:40px;padding:0 14px 0 11px;border-radius:999px;background:var(--navy);color:var(--yellow);gap:6px;font-size:15px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.iconbtn.menu:hover{background:var(--navy-2)}
+.iconbtn.menu svg{width:20px;height:20px;flex:none}
 /* 따라다니는 채널 바 (블로그 · 인스타 · 카카오 채널) */
 .float-sns{position:fixed;right:12px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:95;display:flex;flex-direction:column;gap:8px}
 /* 디자인 = 3안 "가장자리 탭" (2026-11-02 업체 확정): 채널색 탭, 모바일은 색 원형 / PC는 화면 오른쪽 끝에 붙고 마우스 올리면 왼쪽으로 펼쳐지며 이름 표시 */
@@ -881,9 +878,6 @@ body.has-sticky{padding-bottom:84px}
 [data-theme=b] .iconbtn:hover,[data-theme=b] .gnb>li>a:hover,[data-theme=b] .gnb>li>button:hover,[data-theme=b] .gnb>li.open>button{background:rgba(255,255,255,.12)}
 [data-theme=b] .gnb>li>a.on{background:var(--yellow);color:var(--navy)}
 [data-theme=b] .cart-count{background:var(--yellow);color:var(--navy)}
-[data-theme=b] .m-cats{border-top-color:rgba(255,255,255,.12)}
-[data-theme=b] .m-cats a{background:rgba(255,255,255,.1)}
-[data-theme=b] .m-cats a.on{background:var(--yellow);color:var(--navy)}
 [data-theme=b] .search-layer{background:var(--navy-2);border-top-color:rgba(255,255,255,.12)}
 [data-theme=b] .hero-slider .hero-dots li.on{background:rgba(247,244,235,.25)}
 [data-theme=b] .hero-slider .hero-dots li.on::after{background:var(--yellow)}
@@ -892,17 +886,13 @@ body.has-sticky{padding-bottom:84px}
 [data-theme=b] .collections{background:var(--bg)}
 [data-theme=b] .compare thead th.hl{background:var(--yellow);color:var(--navy)}
 [data-theme=b] .compare .table-wrap{border-color:var(--line)}
-[data-theme=b] .m-cats a{background:rgba(255,255,255,.1)}
 [data-theme=d] .collections{background:var(--bg)}
 [data-theme=d] .header{border-bottom-color:var(--line)}
 [data-theme=d] .iconbtn:hover,[data-theme=d] .gnb>li>a:hover,[data-theme=d] .gnb>li>button:hover{background:var(--bg-2)}
-[data-theme=d] .m-cats a{background:var(--bg-2)}
 [data-theme=d] .compare .table-wrap{border-color:var(--line)}
 /* C 옐로 웜 = 기본 (확정) */
 .header{border-bottom-color:rgba(26,43,76,.1)}
 .iconbtn:hover,.gnb>li>a:hover,.gnb>li>button:hover,.gnb>li.open>button{background:rgba(255,255,255,.55)}
-.m-cats{border-top-color:rgba(26,43,76,.1)}
-.m-cats a{background:rgba(255,255,255,.65)}
 .collections{background:var(--yellow-2)}
 .promise .eyebrow{color:var(--yellow)}
 .compare .table-wrap{border-color:var(--orange-2)}
@@ -914,7 +904,6 @@ body.has-sticky{padding-bottom:84px}
 [data-theme=a]{--hero-bg:var(--yellow);--hero-word:rgba(26,43,76,.07);--hero-blob:transparent;--header-bg:rgba(247,244,235,.94);--promise-bg:var(--navy);--promise-ink:var(--bg);--promise-num:var(--yellow);--promise-ill:var(--bg);--compare-bg:var(--bg-2);--footer-bg:var(--bg-2)}
 [data-theme=a] .header{border-bottom-color:var(--line)}
 [data-theme=a] .iconbtn:hover,[data-theme=a] .gnb>li>a:hover,[data-theme=a] .gnb>li>button:hover{background:var(--bg-2)}
-[data-theme=a] .m-cats a{background:var(--bg-2)}
 [data-theme=a] .collections{background:var(--bg)}
 [data-theme=a] .promise .eyebrow{color:var(--yellow)}
 [data-theme=a] .compare .table-wrap{border-color:var(--line)}
