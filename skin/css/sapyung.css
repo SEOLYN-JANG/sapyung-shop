@@ -328,9 +328,10 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .promise .eyebrow{color:var(--promise-num)}
 .promise .h-section{color:inherit}
 .promise .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px 14px;margin-top:38px}
-.promise .ill{width:128px;height:128px;margin:0 auto 12px;border-radius:50%;background:var(--promise-ill);display:flex;align-items:center;justify-content:center;transition:transform .3s}
+/* 2026-11-03: 원 배경 없이 접시 일러스트를 크게 (업체 요청). 예전 원형은 --promise-ill 배경 + 128/160px */
+.promise .ill{width:auto;height:auto;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;transition:transform .3s}
 .promise .item:hover .ill{transform:translateY(-4px) rotate(-3deg)}
-.promise .ill svg{width:112px;height:84px}
+.promise .ill svg{width:168px;height:126px}
 .promise .num{display:flex;flex-direction:column;align-items:center;margin-bottom:10px}
 .promise .num b{font-size:42px;font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--promise-num);font-family:var(--font-sans)}
 .promise .num b i{font-style:normal;font-size:22px;margin-left:2px}
@@ -338,7 +339,7 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .promise h3{font-size:21px;font-weight:800;letter-spacing:-.02em;color:inherit}
 .promise p{font-size:15.5px;line-height:1.7;margin-top:8px;opacity:.9;color:inherit;word-break:keep-all}
 @media(max-width:767px){.promise p br,.col-card p br{display:none}}
-@media(min-width:768px){.promise .grid{grid-template-columns:repeat(4,1fr);margin-top:50px;gap:20px}.promise .ill{width:160px;height:160px;margin-bottom:16px}.promise .ill svg{width:140px;height:105px}.promise .num b{font-size:52px}.promise .num small{font-size:13px}.promise h3{font-size:23px}.promise p{font-size:17px}}
+@media(min-width:768px){.promise .grid{grid-template-columns:repeat(4,1fr);margin-top:50px;gap:20px}.promise .ill{margin-bottom:6px}.promise .ill svg{width:236px;height:177px}.promise .num b{font-size:52px}.promise .num small{font-size:13px}.promise h3{font-size:23px}.promise p{font-size:17px}}
 
 /* ---------- 8. 섹션 제목 옆 포인트 일러스트 ---------- */
 .section-head.with-ill{flex-direction:column;align-items:center;text-align:center}
@@ -408,7 +409,8 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 /* 메인 베스트/세트: 한 줄 4개 (모바일은 옆으로 넘기는 한 줄) */
 .prdList.row4{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 8px;scrollbar-width:none}
 .prdList.row4::-webkit-scrollbar{display:none}
-.prdList.row4>li{flex:0 0 46%;scroll-snap-align:start}
+.prdList.row4>li{flex:0 0 46%;min-width:0;scroll-snap-align:start}   /* min-width:0 — nowrap 요약문 때문에 카드가 46%보다 넓어져 썸네일 높이가 들쭉날쭉하던 것 (2026-11-03) */
+.prdList.row4>li .desc{min-width:0}
 @media(min-width:768px){.prdList.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 18px;margin:0;padding:0;overflow:visible}.prdList.row4>li{flex:none}}
 
 /* ---------- 11. 브랜드 스토리 (업체 문안 + 사진 4장 호버 시 제품 사진) ---------- */
@@ -486,7 +488,12 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .giftbanner .media .tag{position:absolute;left:18px;top:18px;background:var(--orange);color:#fff;font-weight:800;font-size:12px;letter-spacing:.12em;padding:7px 12px;border-radius:999px}
 .giftbanner .body{padding:30px 24px 34px}
 .giftbanner .body .eyebrow{color:var(--orange)}
-.giftbanner .body h2{margin:8px 0 12px}
+.giftbanner .body h2{margin:8px 0 12px;word-break:keep-all}
+/* 모바일: "취향을 몰라도 되는 선물," 한 줄 + "홈런치 커리 세트" 한 줄 (2026-11-03 업체 요청) */
+@media(max-width:767px){.giftbanner .body h2{font-size:25px;letter-spacing:-.035em}}
+/* 모바일 전용 줄바꿈 (<br class="mo-br">): PC에서는 무시 */
+.mo-br{display:none}
+@media(max-width:767px){.mo-br{display:inline}}
 .giftbanner .body p{color:var(--ink-2)}
 .giftbanner .body ul{margin-top:18px;display:grid;gap:8px}
 .giftbanner .body li{display:flex;gap:8px;align-items:flex-start;font-size:16px;color:var(--ink-2)}
