@@ -330,7 +330,7 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .promise .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px 14px;margin-top:38px}
 .promise .ill{width:128px;height:128px;margin:0 auto 12px;border-radius:50%;background:var(--promise-ill);display:flex;align-items:center;justify-content:center;transition:transform .3s}
 .promise .item:hover .ill{transform:translateY(-4px) rotate(-3deg)}
-.promise .ill svg{width:100px;height:100px}
+.promise .ill svg{width:112px;height:84px}
 .promise .num{display:flex;flex-direction:column;align-items:center;margin-bottom:10px}
 .promise .num b{font-size:42px;font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--promise-num);font-family:var(--font-sans)}
 .promise .num b i{font-style:normal;font-size:22px;margin-left:2px}
@@ -338,7 +338,7 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .promise h3{font-size:21px;font-weight:800;letter-spacing:-.02em;color:inherit}
 .promise p{font-size:15.5px;line-height:1.7;margin-top:8px;opacity:.9;color:inherit;word-break:keep-all}
 @media(max-width:767px){.promise p br,.col-card p br{display:none}}
-@media(min-width:768px){.promise .grid{grid-template-columns:repeat(4,1fr);margin-top:50px;gap:20px}.promise .ill{width:160px;height:160px;margin-bottom:16px}.promise .ill svg{width:124px;height:124px}.promise .num b{font-size:52px}.promise .num small{font-size:13px}.promise h3{font-size:23px}.promise p{font-size:17px}}
+@media(min-width:768px){.promise .grid{grid-template-columns:repeat(4,1fr);margin-top:50px;gap:20px}.promise .ill{width:160px;height:160px;margin-bottom:16px}.promise .ill svg{width:140px;height:105px}.promise .num b{font-size:52px}.promise .num small{font-size:13px}.promise h3{font-size:23px}.promise p{font-size:17px}}
 
 /* ---------- 8. 섹션 제목 옆 포인트 일러스트 ---------- */
 .section-head.with-ill{flex-direction:column;align-items:center;text-align:center}
