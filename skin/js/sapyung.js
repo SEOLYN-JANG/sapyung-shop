@@ -21,7 +21,7 @@
     /* 현재 분류 표시: GNB / 목록 탭에서 현재 주소와 같은 링크에 on */
     var cur = (location.pathname + location.search).replace(/[?&]page=\d+/, '');
     var curCate = (location.search.match(/cate_no=(\d+)/) || [])[1];
-    $$('.gnb > li > a, .cate-tabs a, .m-cats a').forEach(function (a) {
+    $$('.gnb > li > a, .gnb .xans-layout-category > a, .cate-tabs a').forEach(function (a) {
       var href = a.getAttribute('href') || '';
       var ac = (href.match(/cate_no=(\d+)/) || [])[1];
       var hit = (curCate && ac === curCate) || (!curCate && href.split('#')[0] === cur);
@@ -40,14 +40,12 @@
         $$('.story-pics li').forEach(function (x) { x.classList.toggle('on', x === li); });
       });
     });
-    /* 메가메뉴: 분류에 마우스를 올리면 해당 패널 표시 */
-    $$('.mega-cats a[data-tab]').forEach(function (a) {
-      var show = function () {
-        $$('.mega-cats a').forEach(function (x) { x.classList.toggle('on', x === a); });
-        $$('.mega-prds').forEach(function (p) { p.classList.toggle('on', p.dataset.panel === a.dataset.tab); });
-      };
-      a.addEventListener('mouseenter', show); a.addEventListener('focus', show);
-    });
+    /* 분류 링크 자동 연결 (2026-11-04): cate_no 를 코드에 박지 않고, 드로어에 카페24가 출력한 Layout_category 목록의
+       N번째 링크를 data-cat="N" 요소의 href 로 복사. 관리자 상품분류 순서 = 키마카레 / 드라이짜장 / 말차·마라 / 세트·선물 */
+    var cats = $$('.drawer .xans-layout-category a');
+    if (cats.length) $$('[data-cat]').forEach(function (a) { var c = cats[parseInt(a.dataset.cat, 10)]; if (c) a.setAttribute('href', c.getAttribute('href')); });
+    /* 메가메뉴 우측 패널(메인진열 1)이 비어 있으면 패널 영역 숨김 */
+    $$('.mega-prds').forEach(function (p) { if (!p.querySelector('li')) p.style.display = 'none'; });
     document.addEventListener('click', function (e) { if (!e.target.closest('.gnb')) $$('.gnb > li.open').forEach(function (l) { l.classList.remove('open'); }); });
   }
 

@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
-<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611041108">
-<script src="../skin/js/sapyung.js?v=202611041108" defer></script>
+<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611041131">
+<script src="../skin/js/sapyung.js?v=202611041131" defer></script>
 <style>.xans-layout-statelogon{display:none !important}</style></head>
 <body>
 <div id="wrap">
@@ -25,7 +25,8 @@
      ===================================================================== -->
 <!-- 최상단 이벤트/세일 소식: 문구와 링크만 교체해 사용 (fishwife 모바일 메인 상단 참고) -->
 <div class="topbar">
-    <a href="list_27.html?cate_no=27"><em>EVENT</em>홈런치 커리 세트 출시 기념 10% 할인</a>
+    <!-- data-cat="N": 관리자 상품분류의 N번째(0부터) 분류 링크를 JS가 드로어의 Layout_category 목록에서 읽어 href 에 넣음 (cate_no 하드코딩 제거, 2026-11-04). href 는 JS 실패 시 예비값 -->
+    <a href="list_27.html?cate_no=27" data-cat="3"><em>EVENT</em>홈런치 커리 세트 출시 기념 10% 할인</a>
     <span class="dot">·</span>
     <span class="pc-only-inline">3만원 이상 무료배송</span>
 </div>
@@ -50,58 +51,46 @@
                     <button type="button">SHOP
                         <svg class="ico" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <!-- 메가메뉴: 좌측 분류에 마우스를 올리면 우측 상품 4개가 바뀜 (data-tab ↔ data-panel)
-                         상품 카드는 고정 코딩 — 적용 시 product_no / 가격 / 이미지 / 분류 링크(cate_no)를 실제 값으로 수정 -->
+                    <!-- 메가메뉴 (2026-11-04 카페24 모듈화): 좌측 = 베스트셀러 + 상품분류(Layout_category 자동) + 전체 상품,
+                         우측 = 메인진열 1(베스트셀러) 상품 4개 자동 출력. 고정 product_no / cate_no 없음.
+                         ※ 메인진열 모듈이 레이아웃(헤더)에서 비면: index.html 의 베스트 블록처럼 진열 1 지정 여부 확인 -->
                     <div class="mega">
                         <div class="container mega-inner">
                             <ul class="mega-cats">
-                                <li><a href="index.html#best" class="on" data-tab="best">베스트셀러</a></li>
-                                <li><a href="list_24.html?cate_no=24" data-tab="keema">키마카레</a></li>
-                                <li><a href="list_25.html?cate_no=25" data-tab="jjajang">드라이짜장</a></li>
-                                <li><a href="list_26.html?cate_no=26" data-tab="new">말차 · 마라</a></li>
-                                <li><a href="list_27.html?cate_no=27" data-tab="set">세트 · 선물</a></li>
+                                <li><a href="index.html#best" class="on">베스트셀러</a></li>
+                                <li class="xans-element- xans-layout xans-layout-category" module="Layout_category" style="display:contents"><a href="list_24.html?cate_no=24" class="xans-record-">키마카레</a>
+<a href="list_25.html?cate_no=25" class="xans-record-">드라이짜장</a>
+<a href="list_26.html?cate_no=26" class="xans-record-">말차 · 마라</a>
+<a href="list_27.html?cate_no=27" class="xans-record-">세트 · 선물</a></li>
                                 <li><a href="list.html?cate_no=1">전체 상품</a></li>
                             </ul>
                             <div class="mega-panels">
-                                <ul class="mega-prds on" data-panel="best">
-                                    <li><a href="detail_11.html"><div class="img"><img src="../skin/img/d_org_bowl.jpg" alt=""></div><strong>저수분 키마카레 오리지널 200g</strong><span>5,900원</span></a></li>
-                                    <li><a href="detail_15.html"><div class="img"><img src="../skin/img/d_mat_plate.jpg" alt=""></div><strong>크리미 말차카레 160g × 2</strong><span>11,900원</span></a></li>
-                                    <li><a href="detail_17.html"><div class="img"><img src="../skin/img/prd_gift.jpg" alt=""></div><strong>홈런치 커리 세트</strong><span>35,900원 · 무료배송</span></a></li>
-                                    <li><a href="detail_18.html"><div class="img"><img src="../skin/img/d_org_table.jpg" alt=""></div><strong>[맛보기] 오리지널 + 토마토 + 짜장</strong><span>14,900원 · 무료배송</span></a></li>
-                                </ul>
-                                <ul class="mega-prds" data-panel="keema">
-                                    <li><a href="detail_11.html"><div class="img"><img src="../skin/img/d_org_bowl.jpg" alt=""></div><strong>저수분 키마카레 오리지널 200g</strong><span>5,900원</span></a></li>
-                                    <li><a href="detail_12.html"><div class="img"><img src="../skin/img/d_spicy_close.jpg" alt=""></div><strong>저수분 키마카레 매콤한맛 200g</strong><span>6,100원</span></a></li>
-                                    <li><a href="detail_13.html"><div class="img"><img src="../skin/img/d_tom_bowl.jpg" alt=""></div><strong>산마르자노 토마토카레 180g</strong><span>4,900원</span></a></li>
-                                    <li><a href="detail_18.html"><div class="img"><img src="../skin/img/d_org_table.jpg" alt=""></div><strong>[맛보기] 오리지널 + 토마토 + 짜장</strong><span>14,900원 · 무료배송</span></a></li>
-                                </ul>
-                                <ul class="mega-prds" data-panel="jjajang">
-                                    <li><a href="detail_14.html"><div class="img"><img src="../skin/img/d_jja_egg.jpg" alt=""></div><strong>드라이짜장 키마카레 190g</strong><span>4,900원</span></a></li>
-                                    <li><a href="detail_18.html"><div class="img"><img src="../skin/img/d_org_table.jpg" alt=""></div><strong>[맛보기] 오리지널 + 토마토 + 짜장</strong><span>14,900원 · 무료배송</span></a></li>
-                                    <li><a href="detail_21.html"><div class="img"><img src="../skin/img/d_spicy_set.jpg" alt=""></div><strong>[Mix] 오리지널 + 매콤 + 짜장 각 2팩</strong><span>34,900원 · 무료배송</span></a></li>
-                                    <li><a href="detail_23.html"><div class="img"><img src="../skin/img/col_best.jpg" alt=""></div><strong>[대용량] 저수분 카레 6종 25팩</strong><span>129,000원 · 무료배송</span></a></li>
-                                </ul>
-                                <ul class="mega-prds" data-panel="new">
-                                    <li><a href="detail_15.html"><div class="img"><img src="../skin/img/d_mat_plate.jpg" alt=""></div><strong>크리미 말차카레 160g × 2</strong><span>11,900원</span></a></li>
-                                    <li><a href="detail_16.html"><div class="img"><img src="../skin/img/d_mara_bowl.jpg" alt=""></div><strong>스트레스킬러 마라카레 160g</strong><span>5,900원</span></a></li>
-                                    <li><a href="detail_22.html"><div class="img"><img src="../skin/img/d_both_box.jpg" alt=""></div><strong>[맛보기] 말차 1팩 + 마라 1팩</strong><span>11,900원 · 무료배송</span></a></li>
-                                    <li><a href="detail_17.html"><div class="img"><img src="../skin/img/prd_gift.jpg" alt=""></div><strong>홈런치 커리 세트</strong><span>35,900원 · 무료배송</span></a></li>
-                                </ul>
-                                <ul class="mega-prds" data-panel="set">
-                                    <li><a href="detail_17.html"><div class="img"><img src="../skin/img/gift_set.jpg" alt=""></div><strong>홈런치 커리 세트 (선물상자)</strong><span>35,900원 · 무료배송</span></a></li>
-                                    <li><a href="detail_18.html"><div class="img"><img src="../skin/img/d_org_table.jpg" alt=""></div><strong>[맛보기] 오리지널 + 토마토 + 짜장</strong><span>14,900원 · 무료배송</span></a></li>
-                                    <li><a href="detail_21.html"><div class="img"><img src="../skin/img/d_spicy_set.jpg" alt=""></div><strong>[Mix] 오리지널 + 매콤 + 짜장 각 2팩</strong><span>34,900원 · 무료배송</span></a></li>
-                                    <li><a href="detail_23.html"><div class="img"><img src="../skin/img/col_best.jpg" alt=""></div><strong>[대용량] 저수분 카레 6종 25팩</strong><span>129,000원 · 무료배송</span></a></li>
+                                <ul class="mega-prds on xans-element- xans-product xans-product-listmain-1" module="product_listmain_1">
+                                    <!--
+                                        $count = 4
+                                    -->
+                                    
+                                    <li class="xans-record-"><a href="detail_11.html"><div class="img"><img src="../skin/img/d_org_bowl.jpg" alt="저수분 키마카레 오리지널 200g"></div><strong>저수분 키마카레 오리지널 200g</strong><span>5,900원</span></a></li>
+                                    
+
+                                    <li class="xans-record-"><a href="detail_12.html"><div class="img"><img src="../skin/img/d_spicy_close.jpg" alt="저수분 키마카레 매콤한맛 200g"></div><strong>저수분 키마카레 매콤한맛 200g</strong><span>6,100원</span></a></li>
+                                    
+
+                                    <li class="xans-record-"><a href="detail_13.html"><div class="img"><img src="../skin/img/d_tom_bowl.jpg" alt="산마르자노 토마토카레 180g"></div><strong>산마르자노 토마토카레 180g</strong><span>4,900원</span></a></li>
+                                    
+
+                                    <li class="xans-record-"><a href="detail_14.html"><div class="img"><img src="../skin/img/d_jja_egg.jpg" alt="드라이짜장 키마카레 190g"></div><strong>드라이짜장 키마카레 190g</strong><span>4,900원</span></a></li>
+                                    
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </li>
-                <!-- 분류 메뉴: cate_no 는 관리자 > 상품분류 관리의 실제 번호로 수정 -->
-                <li><a href="list_24.html?cate_no=24">키마카레</a></li>
-                <li><a href="list_25.html?cate_no=25">드라이짜장</a></li>
-                <li><a href="list_26.html?cate_no=26">말차 · 마라</a></li>
-                <li><a href="list_27.html?cate_no=27">선물세트</a></li>
+                <!-- 분류 메뉴: 관리자 > 상품분류 관리의 1단계 분류가 순서대로 자동 출력 (Layout_category) -->
+                <li class="xans-element- xans-layout xans-layout-category" module="Layout_category" style="display:contents"><a href="list_24.html?cate_no=24" class="xans-record-">키마카레</a>
+<a href="list_25.html?cate_no=25" class="xans-record-">드라이짜장</a>
+<a href="list_26.html?cate_no=26" class="xans-record-">말차 · 마라</a>
+<a href="list_27.html?cate_no=27" class="xans-record-">세트 · 선물</a></li>
                 <li><a href="index.html#story">브랜드</a></li>
                 <li><a href="index.html#recipes">레시피</a></li>
                 <li><a href="system.html?p=%2Fboard%2Freview%2Flist.html%3Fboard_no%3D4">리뷰</a></li>
@@ -823,7 +812,7 @@
             <ul>
                 <li><a href="list.html?cate_no=1">전체 상품</a></li>
                 <li><a href="index.html#best">베스트셀러</a></li>
-                <li><a href="list_27.html?cate_no=27">선물세트</a></li>
+                <li><a href="list_27.html?cate_no=27" data-cat="3">선물세트</a></li>
                 <li><a href="index.html#recipes">레시피</a></li>
             </ul>
         </div>
