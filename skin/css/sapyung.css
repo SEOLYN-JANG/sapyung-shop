@@ -179,7 +179,7 @@ body.has-sticky .float-sns{bottom:calc(92px + env(safe-area-inset-bottom))}
   .mega-cats a{display:table;padding:9px 0;font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ink);border-bottom:2px solid transparent}
   .mega-cats a:hover,.mega-cats a.on{border-bottom-color:var(--ink)}
   .mega-panels{position:relative;min-height:300px}
-  .mega-prds{display:none;grid-template-columns:repeat(4,1fr);gap:20px;text-align:left;animation:megaIn .25s ease}
+  .mega-prds{display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;text-align:left;animation:megaIn .25s ease}
   .mega-prds.on{display:grid}
   @keyframes megaIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   .mega-prds .img{aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:var(--paper);border:1px solid var(--line);margin-bottom:10px}
@@ -364,8 +364,8 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 @media(min-width:768px){.compare .table-wrap{margin-top:24px}.compare th,.compare td{padding:14px 16px;font-size:16px}.compare thead th{font-size:17px}.compare tbody th{width:auto;padding-left:20px}.compare .sub{font-size:13px}.compare .mark{width:26px;height:26px}.compare .mark svg{width:15px;height:15px}}
 
 /* ---------- 10. 상품 그리드 (카페24 product_listmain / product_listnormal) ---------- */
-.prdList{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 14px}
-.prdList li{position:relative}
+.prdList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+.prdList li{position:relative;min-width:0}   /* min-width:0 — nowrap 요약문이 1fr 열을 늘려 카드 폭·썸네일 높이가 달라지던 것(목록 2열, 2026-11-04) */
 .prd .thumb{position:relative;aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;background:var(--paper);border:1px solid var(--line)}
 .prd .thumb img{width:100%;height:100%;object-fit:cover}
 /* 썸네일 2장 슬라이드: 1장 = 목록이미지(연출컷), 2장 = 작은목록이미지(포장컷). 마우스 올리면 옆으로 넘어감, 모바일은 점 터치/스와이프 */
@@ -399,16 +399,16 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .prd .tags{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap}
 .prd .tags span{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--cream-2);color:var(--ink-2)}
 .prd .soldout-badge{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(251,247,238,.6);font-weight:800;letter-spacing:.1em}
-@media(min-width:768px){.prdList{grid-template-columns:repeat(3,1fr);gap:36px 22px}.prd .name{font-size:18px}}
-@media(min-width:1024px){.prdList{grid-template-columns:repeat(4,1fr)}}
-.prdList.grid3{grid-template-columns:repeat(2,1fr)}
-@media(min-width:768px){.prdList.grid3{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.prdList{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 22px}.prd .name{font-size:18px}}
+@media(min-width:1024px){.prdList{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.prdList.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:768px){.prdList.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* 메인 베스트/세트: 한 줄 4개 (모바일은 옆으로 넘기는 한 줄) */
 .prdList.row4{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 8px;scrollbar-width:none}
 .prdList.row4::-webkit-scrollbar{display:none}
 .prdList.row4>li{flex:0 0 46%;min-width:0;scroll-snap-align:start}   /* min-width:0 — nowrap 요약문 때문에 카드가 46%보다 넓어져 썸네일 높이가 들쭉날쭉하던 것 (2026-11-03) */
 .prdList.row4>li .desc{min-width:0}
-@media(min-width:768px){.prdList.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 18px;margin:0;padding:0;overflow:visible}.prdList.row4>li{flex:none}}
+@media(min-width:768px){.prdList.row4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 18px;margin:0;padding:0;overflow:visible}.prdList.row4>li{flex:none}}
 
 /* ---------- 11. 브랜드 스토리 (업체 문안 + 사진 4장 호버 시 제품 사진) ---------- */
 .story-v2{background:var(--bg)}
