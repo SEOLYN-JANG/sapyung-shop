@@ -1198,14 +1198,9 @@ ol.rc-steps{list-style:none;display:grid;gap:18px;padding:0}
 .pop-c{--bf:'Black Han Sans',var(--font-sans);--bl:2.5px solid var(--navy)}
 .dv-check{height:26px;background:repeating-conic-gradient(var(--navy) 0 25%,var(--yellow) 0 50%) 0 0/26px 26px;border-top:var(--bl);border-bottom:var(--bl)}
 .pop-c .compare{background:var(--yellow-2)}
-.pop-c .compare .h-section{font-family:var(--bf)}
-.pop-c .compare .h-section .hl{background:linear-gradient(transparent 62%,var(--orange) 62%,var(--orange) 90%,transparent 90%);padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.pop-c .compare .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--yellow);border:0;border-radius:0;padding:6px 12px;font-size:12px;letter-spacing:.2em;margin-bottom:16px}
-.pop-c .compare .eyebrow::after{display:none}
-.pop-c .compare .eyebrow::before{content:attr(data-no);font-family:var(--bf);letter-spacing:0;font-size:15px;color:var(--orange)}
 .pop-c .compare .table-wrap{border:var(--bl);border-radius:4px;outline:2px solid var(--navy);outline-offset:5px}
 .pop-c .compare table{border-radius:0}
-.pop-c .compare thead th{font-family:var(--bf);font-size:20px;border-bottom:var(--bl)}
+.pop-c .compare thead th{font-family:var(--cf);font-size:20px;border-bottom:var(--bl)}
 .pop-c .compare thead th.hl{background:var(--navy);color:var(--yellow)}
 .pop-c .compare td.hl{background:var(--yellow)}
 .pb-stamp{position:absolute;width:118px;height:118px;z-index:3;right:-34px;top:-56px;transform:rotate(-8deg)}
@@ -1216,4 +1211,6 @@ ol.rc-steps{list-style:none;display:grid;gap:18px;padding:0}
 .pop-c .rc-big .txt{position:static;flex:1}
 .pop-c .rc-big .time{background:var(--yellow-2);color:var(--navy);border:1.5px solid var(--navy)} /* 흰 글자 상자 위에서 소요시간·단계 배지가 보이게 */
 .pop-c .col-card{display:flex}.pop-c .col-card a{flex:1;text-align:center} /* 컬렉션 카드: 글자 가운데 정렬 + 카드 높이 통일(2026-11-11) */
+.pop-c .collections .track,.pop-c .reviews .track{padding-top:10px} /* 카드 윗부분(둥근 테두리)이 가로 스크롤 영역에 잘리지 않게 */
+.pop-c .story{background:#fff} /* 비교표(연노랑)와 물결 경계로 나뉘도록 흰 배경 */
 @media(max-width:767px){.pb-stamp{width:84px;height:84px;right:-8px;top:-46px}.pop-c .compare thead th{font-size:15px}}
