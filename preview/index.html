@@ -11,10 +11,11 @@
      (격동명조2·Noto Serif KR 은 업체가 고딕으로 변경 요청해 제거 — 복원 절차는 README 1-6) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
-<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101616">
-<script src="../skin/js/sapyung.js?v=202611101616" defer></script>
+<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101632">
+<script src="../skin/js/sapyung.js?v=202611101632" defer></script>
 <!-- ===== 쉬운 수정 (업체용) =====
      아래 숫자와 색만 바꾸고 저장하면 됩니다. 1 = 기본 크기, 1.1 = 10% 크게, 0.9 = 10% 작게.
      이 블록은 반드시 css 링크보다 아래에 있어야 적용됩니다. -->
@@ -199,7 +200,7 @@
      상품 진열: 관리자 > 상품진열 > 메인진열 에서 "진열1 = 베스트(4개)", "진열2 = 세트·선물" 로 상품 등록
      .main-page 래퍼: 메인에서만 명조(헤드라인)·마루부리(설명) 서체 적용. 상세·목록·카테고리 바는 Pretendard 유지
      ===================================================================== -->
-<div class="main-page">
+<div class="main-page pop-c">
 <!-- 손그림 일러스트 공통 필터(선 떨림). 아래 .ill 안의 <g filter="url(#hand)"> 가 참조 — 삭제 금지 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><filter id="hand" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
 
@@ -220,12 +221,13 @@
 </section>
 
 <!-- 2. 컬렉션 -->
+<div class="dv-check" aria-hidden="true"></div>
 <section class="section collections">
     <div class="container">
         <div class="section-head">
             <div>
                 <span class="eyebrow">Collections</span>
-                <h2 class="h-section">무엇부터 드셔볼까요</h2>
+                <h2 class="h-section"><span class="hl">무엇부터 드셔볼까요</span></h2><svg class="pc-blob b-col" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 6c18 0 30 10 40 22s16 30 10 46-20 34-40 38-42-2-54-18S2 52 12 34 42 6 60 6z" fill="var(--orange)" stroke="var(--navy)" stroke-width="3"/><text x="60" y="56" font-size="22" fill="#fff">NEW</text><text x="60" y="82" font-size="18" fill="#fff">마라·말차</text></svg>
             </div>
             <a href="list.html?cate_no=1" class="btn btn-line btn-sm more">전체 보기</a>
         </div>
@@ -277,11 +279,12 @@
 </section>
 
 <!-- 3. 사평의 약속 — 손그림 일러스트(시안 C 접시 통일 버전, 2026-11-03: 양파반쪽+카레 / 통양파+반양파 / 마늘·생강·버터 / 파우치+카레라이스 — 원 배경 없이 크게) + 그 아래 숫자(0 / 68.6% / 無 / 5분) + 설명 -->
+<div class="dv-wave" style="--a:var(--yellow-2);--b:var(--orange)" aria-hidden="true"></div>
 <section class="section promise center">
     <div class="container">
         <div class="section-head">
             <span class="eyebrow">Why Sapyung</span>
-            <h2 class="h-section">한 그릇에 담은 네 가지 약속</h2>
+            <h2 class="h-section"><span class="hl">한 그릇에 담은 네 가지 약속</span></h2>
         </div>
         <div class="grid p-ill">
             <div class="item">
@@ -321,12 +324,13 @@
 </section>
 
 <!-- 4. 베스트셀러 (메인진열 1) — 한 줄 4개, 썸네일 1:1 동일 크기 -->
+<div class="dv-wave" style="--a:var(--orange);--b:#fff" aria-hidden="true"></div>
 <section class="section best" id="best">
     <div class="container">
         <div class="section-head">
             <div>
                 <span class="eyebrow">Best Sellers</span>
-                <h2 class="h-section">가장 많이 다시 찾는 카레</h2>
+                <h2 class="h-section"><span class="hl">가장 많이 다시 찾는 카레</span></h2><svg class="pc-blob b-best" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 6c18 0 30 10 40 22s16 30 10 46-20 34-40 38-42-2-54-18S2 52 12 34 42 6 60 6z" fill="var(--yellow)" stroke="var(--navy)" stroke-width="3"/><text x="60" y="56" font-size="22" fill="var(--navy)">재구매</text><text x="60" y="82" font-size="18" fill="var(--navy)">1위!</text></svg>
             </div>
             <a href="list.html?cate_no=1" class="btn btn-line btn-sm more">전체 보기</a>
         </div>
@@ -419,16 +423,17 @@
 </section>
 
 <!-- 5. 비교표 — 한 화면에 들어오도록 행 간격 축소, 상단 손그림 일러스트(키마카레 오리지널 접시) -->
+<div class="dv-check" aria-hidden="true"></div>
 <section class="section compare center" id="compare">
     <div class="container">
         <div class="section-head with-ill">
             <div class="ill" aria-hidden="true">
                 <svg viewBox="0 0 160 120"><g filter="url(#hand)" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="84" cy="78" rx="72" ry="40" fill="#e8e2d6"></ellipse><ellipse cx="80" cy="72" rx="72" ry="40" fill="#fff" stroke="#5b4a3c" stroke-width="1.4"></ellipse><ellipse cx="80" cy="72" rx="60" ry="31" fill="none" stroke="#ddd5c7" stroke-width="1"></ellipse><path d="M20 74c-4-10 5-21 19-25 13-4 27-2 35 5 6 5 7 13 3 19-5 7-15 10-27 10-14 0-27-2-30-9z" fill="#fff" stroke="#5b4a3c" stroke-width="1.4"></path><g fill="none" stroke="#cfc5b3" stroke-width="1.3"><path d="M32 62c2-1 4-1 5 0M44 56c2-1 4 0 5 1M56 60c2-1 4 0 5 1M36 72c2-1 4-1 5 0M50 70c2-1 4 0 5 1M28 68c2-1 4 0 5 1M62 70c2-1 4-1 5 0M44 78c2-1 4 0 5 1M58 78c2-1 4-1 5 0M70 62c2-1 4 0 5 1"></path></g><path d="M62 56c10-9 30-12 48-8 14 3 24 11 24 20 0 11-11 20-28 23-16 3-34-2-42-11-6-7-7-16-2-24z" fill="#d47a2e" stroke="#5b4a3c" stroke-width="1.4"></path><path d="M66 78c10 9 26 13 40 11 10-2 18-6 22-12-3 11-14 17-27 19-15 2-29-5-35-18z" fill="#b85f1c"></path><ellipse cx="80" cy="66" rx="3" ry="2.2" transform="rotate(20 80 66)" fill="#8f4a20" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="96" cy="60" rx="3.4" ry="2.4" transform="rotate(-15 96 60)" fill="#8f4a20" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="112" cy="70" rx="3" ry="2.2" transform="rotate(30 112 70)" fill="#8f4a20" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="98" cy="80" rx="3.2" ry="2.3" transform="rotate(5 98 80)" fill="#8f4a20" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="86" cy="84" rx="2.8" ry="2" transform="rotate(-25 86 84)" fill="#8f4a20" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="122" cy="78" rx="3" ry="2.2" transform="rotate(15 122 78)" fill="#8f4a20" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="106" cy="88" rx="2.8" ry="2" transform="rotate(40 106 88)" fill="#8f4a20" stroke="#5b4a3c" stroke-width="0.9"></ellipse><circle cx="90" cy="72" r="1.6" fill="#f3d39a"></circle><circle cx="104" cy="66" r="1.6" fill="#f3d39a"></circle><circle cx="118" cy="84" r="1.6" fill="#f3d39a"></circle><circle cx="94" cy="90" r="1.6" fill="#f3d39a"></circle><circle cx="110" cy="78" r="1.6" fill="#f3d39a"></circle><g transform="rotate(-18 62 74)"><ellipse cx="62" cy="74" rx="11" ry="8" fill="#fff" stroke="#5b4a3c" stroke-width="1.2"></ellipse><ellipse cx="63" cy="74" rx="6" ry="4.4" fill="#f0c33c"></ellipse><path d="M59 76c3 2 7 2 9-1" fill="none" stroke="#d9a21f" stroke-width="1"></path></g><g transform="rotate(10 76 88)"><ellipse cx="76" cy="88" rx="11" ry="8" fill="#fff" stroke="#5b4a3c" stroke-width="1.2"></ellipse><ellipse cx="77" cy="88" rx="6" ry="4.4" fill="#f0c33c"></ellipse><path d="M73 90c3 2 7 2 9-1" fill="none" stroke="#d9a21f" stroke-width="1"></path></g><path d="M112 52c3-6 7-10 13-13" fill="none" stroke="#3a6d2a" stroke-width="1.1"></path><g transform="translate(125 39) rotate(-10) scale(1.1)"><path d="M0 0c-4-2-6-7-3-11 2 1 3 3 3 5 0-3 1-5 4-6 1 3 0 6-2 8 3-1 6 0 7 3-3 2-6 1-9 1z" fill="#4e8c3a" stroke="#3a6d2a" stroke-width="0.9"></path><path d="M0 0l0-7" fill="none" stroke="#3a6d2a" stroke-width="0.8"></path></g><g transform="translate(118 43) rotate(-60) scale(0.9)"><path d="M0 0c-4-2-6-7-3-11 2 1 3 3 3 5 0-3 1-5 4-6 1 3 0 6-2 8 3-1 6 0 7 3-3 2-6 1-9 1z" fill="#4e8c3a" stroke="#3a6d2a" stroke-width="0.9"></path><path d="M0 0l0-7" fill="none" stroke="#3a6d2a" stroke-width="0.8"></path></g><g transform="translate(129 45) rotate(40) scale(0.9)"><path d="M0 0c-4-2-6-7-3-11 2 1 3 3 3 5 0-3 1-5 4-6 1 3 0 6-2 8 3-1 6 0 7 3-3 2-6 1-9 1z" fill="#4e8c3a" stroke="#3a6d2a" stroke-width="0.9"></path><path d="M0 0l0-7" fill="none" stroke="#3a6d2a" stroke-width="0.8"></path></g></g></svg>
             </div>
-            <span class="eyebrow">Compare</span>
-            <h2 class="h-section">오늘 저녁, 카레를 먹는<br class="mo-br"> 세 가지 방법</h2>
+            <span class="eyebrow" data-no="04">Compare</span>
+            <h2 class="h-section"><span class="hl">오늘 저녁, 카레를 먹는<br class="mo-br"> 세 가지 방법</span></h2>
         </div>
-        <div class="table-wrap">
+        <div class="table-wrap"><svg class="pb-stamp" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="var(--yellow)" stroke="var(--navy)" stroke-width="3"/><circle cx="60" cy="60" r="46" fill="none" stroke="var(--navy)" stroke-width="1.5" stroke-dasharray="3 3"/><text x="60" y="44" font-size="12" fill="var(--navy)">물</text><text x="60" y="74" font-size="28" fill="var(--navy)">0%</text><text x="60" y="92" font-size="11" fill="var(--navy)">양파 수분만</text></svg>
             <table>
                 <thead>
                     <tr>
@@ -482,7 +487,7 @@
     <div class="container">
         <div class="section-head">
             <span class="eyebrow">Our Story</span>
-            <h2 class="h-section">일상에 특별함을 전합니다.</h2>
+            <h2 class="h-section"><span class="hl">일상에 특별함을 전합니다.</span></h2>
         </div>
         <div class="story-text">
             <!-- PC 줄바꿈은 <br class="pc-br"> 로 문장·구절 단위 고정, 모바일은 CSS(keep-all + balance)가 고르게 나눔 -->
@@ -527,7 +532,7 @@
         <div class="wrap">
             <div class="body">
                 <span class="eyebrow">Gift</span>
-                <h2 class="h-section">취향을 몰라도 되는 선물,<br>홈런치 커리 세트</h2>
+                <h2 class="h-section"><span class="hl">취향을 몰라도 되는 선물,<br>홈런치 커리 세트</span></h2>
                 <p>크리미 말차카레와 스트레스킬러 마라카레를 흰 상자에 나란히 담았습니다. 명절 선물, 집들이, 답례품으로 조리법 카드와 함께 보내드립니다.</p>
                 <ul>
                     <li><svg class="ico" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg>말차카레 · 마라카레 각 2팩, 총 4팩 구성</li>
@@ -553,7 +558,7 @@
         <div class="section-head">
             <div>
                 <span class="eyebrow">Sets &amp; Gifts</span>
-                <h2 class="h-section">세트로 사면 더 가볍게</h2>
+                <h2 class="h-section"><span class="hl">세트로 사면 더 가볍게</span></h2>
             </div>
             <a href="list_27.html?cate_no=27" data-cat="3" class="btn btn-line btn-sm more">전체 보기</a>
         </div>
@@ -646,11 +651,12 @@
 </section>
 
 <!-- 9. 고객 리뷰 (인스타그램) — 스마트스토어 리뷰 연동은 카페24 앱(리뷰 연동 앱) 설치 후 이 영역 아래 모듈 삽입. 현재는 스토어 리뷰 링크로 연결 -->
+<div class="dv-wave" style="--a:var(--yellow-2);--b:var(--orange)" aria-hidden="true"></div>
 <section class="section reviews center" id="reviews">
     <div class="container">
         <div class="section-head">
             <span class="eyebrow">Reviews</span>
-            <h2 class="h-section">식탁에 올라간 사평</h2>
+            <h2 class="h-section"><span class="hl">식탁에 올라간 사평</span></h2>
         </div>
         <div class="summary">
             <span class="score">4.8</span>
@@ -684,6 +690,7 @@
 </section>
 
 <!-- 10. 레시피 (큰 2열) — 제목 옆 손그림 일러스트(토마토카레 접시). 카드 클릭 → 매거진 레시피 게시판 글(board_no=101, no=1~4 는 초기글 등록 순서 가정 — 등록 후 실제 글 번호로 교체) -->
+<div class="dv-wave" style="--a:var(--orange);--b:var(--yellow)" aria-hidden="true"></div>
 <section class="section recipes recipes-r1" id="recipes">
     <div class="container">
         <div class="section-head">
@@ -691,7 +698,7 @@
                 <div class="ill" aria-hidden="true">
                     <svg viewBox="0 0 160 120"><g filter="url(#hand)" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="84" cy="78" rx="72" ry="40" fill="#e8e2d6"></ellipse><ellipse cx="80" cy="72" rx="72" ry="40" fill="#fff" stroke="#5b4a3c" stroke-width="1.4"></ellipse><ellipse cx="80" cy="72" rx="60" ry="31" fill="none" stroke="#ddd5c7" stroke-width="1"></ellipse><path d="M20 74c-4-10 5-21 19-25 13-4 27-2 35 5 6 5 7 13 3 19-5 7-15 10-27 10-14 0-27-2-30-9z" fill="#fff" stroke="#5b4a3c" stroke-width="1.4"></path><g fill="none" stroke="#cfc5b3" stroke-width="1.3"><path d="M32 62c2-1 4-1 5 0M44 56c2-1 4 0 5 1M56 60c2-1 4 0 5 1M36 72c2-1 4-1 5 0M50 70c2-1 4 0 5 1M28 68c2-1 4 0 5 1M62 70c2-1 4-1 5 0M44 78c2-1 4 0 5 1M58 78c2-1 4-1 5 0M70 62c2-1 4 0 5 1"></path></g><path d="M62 56c10-9 30-12 48-8 14 3 24 11 24 20 0 11-11 20-28 23-16 3-34-2-42-11-6-7-7-16-2-24z" fill="#c43f2b" stroke="#5b4a3c" stroke-width="1.4"></path><path d="M66 78c10 9 26 13 40 11 10-2 18-6 22-12-3 11-14 17-27 19-15 2-29-5-35-18z" fill="#a12f1f"></path><ellipse cx="82" cy="66" rx="3" ry="2.2" transform="rotate(20 82 66)" fill="#7a2a1c" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="98" cy="62" rx="3.4" ry="2.4" transform="rotate(-15 98 62)" fill="#7a2a1c" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="114" cy="72" rx="3" ry="2.2" transform="rotate(30 114 72)" fill="#7a2a1c" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="100" cy="84" rx="3.2" ry="2.3" transform="rotate(5 100 84)" fill="#7a2a1c" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="88" cy="88" rx="2.8" ry="2" transform="rotate(-25 88 88)" fill="#7a2a1c" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="108" cy="80" rx="4.5" ry="3.4" transform="rotate(-10 108 80)" fill="#e8705a" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="92" cy="74" rx="4" ry="3" transform="rotate(25 92 74)" fill="#e8705a" stroke="#5b4a3c" stroke-width="0.9"></ellipse><ellipse cx="120" cy="66" rx="3.8" ry="2.8" transform="rotate(10 120 66)" fill="#e8705a" stroke="#5b4a3c" stroke-width="0.9"></ellipse><g transform="rotate(-18 64 76)"><ellipse cx="64" cy="76" rx="11" ry="8" fill="#fff" stroke="#5b4a3c" stroke-width="1.2"></ellipse><ellipse cx="65" cy="76" rx="6" ry="4.4" fill="#f0c33c"></ellipse><path d="M61 78c3 2 7 2 9-1" fill="none" stroke="#d9a21f" stroke-width="1"></path></g><g transform="rotate(10 78 90)"><ellipse cx="78" cy="90" rx="11" ry="8" fill="#fff" stroke="#5b4a3c" stroke-width="1.2"></ellipse><ellipse cx="79" cy="90" rx="6" ry="4.4" fill="#f0c33c"></ellipse><path d="M75 92c3 2 7 2 9-1" fill="none" stroke="#d9a21f" stroke-width="1"></path></g><path d="M112 52c3-6 7-10 13-13" fill="none" stroke="#3a6d2a" stroke-width="1.1"></path><g transform="translate(125 39) rotate(-10) scale(1.1)"><path d="M0 0c-4-2-6-7-3-11 2 1 3 3 3 5 0-3 1-5 4-6 1 3 0 6-2 8 3-1 6 0 7 3-3 2-6 1-9 1z" fill="#4e8c3a" stroke="#3a6d2a" stroke-width="0.9"></path><path d="M0 0l0-7" fill="none" stroke="#3a6d2a" stroke-width="0.8"></path></g><g transform="translate(118 43) rotate(-60) scale(0.9)"><path d="M0 0c-4-2-6-7-3-11 2 1 3 3 3 5 0-3 1-5 4-6 1 3 0 6-2 8 3-1 6 0 7 3-3 2-6 1-9 1z" fill="#4e8c3a" stroke="#3a6d2a" stroke-width="0.9"></path><path d="M0 0l0-7" fill="none" stroke="#3a6d2a" stroke-width="0.8"></path></g><g transform="translate(129 45) rotate(40) scale(0.9)"><path d="M0 0c-4-2-6-7-3-11 2 1 3 3 3 5 0-3 1-5 4-6 1 3 0 6-2 8 3-1 6 0 7 3-3 2-6 1-9 1z" fill="#4e8c3a" stroke="#3a6d2a" stroke-width="0.9"></path><path d="M0 0l0-7" fill="none" stroke="#3a6d2a" stroke-width="0.8"></path></g></g></svg>
                 </div>
-                <div><span class="eyebrow">Recipes</span><h2 class="h-section">밥 말고도 올릴 데가 많습니다</h2></div>
+                <div><span class="eyebrow">Recipes</span><h2 class="h-section"><span class="hl">밥 말고도 올릴 데가 많습니다</span></h2></div>
             </div>
             <a href="magazine.html" class="btn btn-line btn-sm more">레시피 전체</a>
         </div>

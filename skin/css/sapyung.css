@@ -1109,3 +1109,108 @@ ol.rc-steps{list-style:none;display:grid;gap:18px;padding:0}
 /* ---------- 비교표 디벨롭 (2026-11-11): 그룹 행 · 사평 열 강조 · 굵은 핵심값 ---------- */
 @media(min-width:768px){
 }
+
+/* ---------- 20. 메인 디자인: C안 말랑 라운드(Jua) + 비교표 B안 (2026-11-11 업체 확정) ----------
+   index.html 의 <div class="main-page pop-c"> 안에서만 적용(매거진 등 다른 .main-page 페이지는 그대로).
+   폰트: layout.html 의 Google Fonts(Jua, Black Han Sans). 섹션 경계 = .dv-wave(--a 앞 섹션색 / --b 다음 섹션색), .dv-check(체크무늬) */
+.pop-c{--cf:'Jua',var(--font-sans);--cl:3px solid var(--navy)}
+.pop-c .h-section{font-family:var(--cf);font-weight:400;letter-spacing:-.01em;line-height:1.2;font-size:clamp(34px,4.2vw,58px);color:var(--navy)}
+.pop-c .h-section .hl{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'%3E%3Cpath d='M0 6 Q10 0 20 6 T40 6' fill='none' stroke='%23ff7d18' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x 0 100%/40px 12px;padding-bottom:12px}
+.pop-c .eyebrow{position:relative;display:inline-block;background:#fff;color:var(--navy);border:var(--cl);border-radius:18px;padding:6px 16px;font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:22px}
+.pop-c .eyebrow::after{content:"";position:absolute;left:22px;bottom:-11px;width:14px;height:14px;background:#fff;border-right:var(--cl);border-bottom:var(--cl);transform:rotate(45deg) skew(8deg,8deg)}
+.pop-c .section-head{position:relative}
+.pop-c .btn{border:var(--cl);border-radius:999px;font-family:var(--cf);font-weight:400;font-size:17px;box-shadow:none;transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.pop-c .btn:hover{transform:scale(1.07) rotate(-2deg)}
+.pop-c .btn-line{background:#fff;color:var(--navy)}
+.pop-c .btn-gold{background:var(--orange);color:#fff}
+
+/* 물결 경계: 앞 섹션 색(--a) 위로 다음 섹션 색(--b) 동그라미가 올라옴 */
+.dv-wave{height:22px;background:radial-gradient(circle at 50% 100%,var(--b) 15px,transparent 15.5px) 0 0/34px 22px repeat-x,var(--a);margin-bottom:-1px}
+
+/* 동글 스티커 */
+.pc-blob{position:absolute;width:112px;height:112px;z-index:3}
+.pc-blob text{font-family:var(--cf);text-anchor:middle}
+.pc-blob.b-col{left:430px;top:-24px;transform:rotate(10deg)}
+.pc-blob.b-best{left:600px;top:-28px;transform:rotate(-8deg)}
+.pc-blob.b-cmp{right:-30px;top:-50px;transform:rotate(12deg)}
+
+/* 카드: 아주 둥글고, 뒤에 색 도형이 비스듬히 깔림 */
+.pop-c .col-card a,.pop-c .prdList li{position:relative;display:block;background:#fff;border:var(--cl);border-radius:32px;padding:12px 12px 20px}
+.pop-c .collections .track,.pop-c .prdList{position:relative;z-index:0}
+.pop-c .col-card{position:relative}
+.pop-c .col-card::before,.pop-c .prdList li::before{content:"";position:absolute;inset:0;border-radius:32px;background:var(--blob,var(--orange));transform:rotate(-3.5deg) translate(4px,8px);z-index:-1;border:var(--cl)}
+.pop-c .col-card:nth-child(even)::before,.pop-c .prdList li:nth-child(even)::before{--blob:var(--yellow);transform:rotate(3deg) translate(-3px,8px)}
+.pop-c .col-card .img,.pop-c .prdList .thumb{border-radius:24px;overflow:hidden;border:none}
+.pop-c .col-card h3{font-family:var(--cf);font-weight:400;font-size:26px;margin-top:12px}
+.pop-c .collections .track,.pop-c .prdList{padding-bottom:14px}
+
+/* 섹션 색 */
+.pop-c .collections{background:var(--yellow-2)}
+.pop-c .promise{background:var(--orange)}
+.pop-c .promise .h-section{color:#fff}
+.pop-c .promise .h-section .hl{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'%3E%3Cpath d='M0 6 Q10 0 20 6 T40 6' fill='none' stroke='%231a2b4c' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}
+.pop-c .promise .item{background:#fff;color:var(--navy);border:var(--cl);border-radius:50% 50% 36px 36px / 34% 34% 36px 36px;padding:30px 16px 26px}
+.pop-c .promise .num b{font-family:var(--cf);font-weight:400;color:var(--orange)}
+.pop-c .promise .num small,.pop-c .promise h3{color:var(--navy)}
+.pop-c .promise h3{font-family:var(--cf);font-weight:400;font-size:22px}
+.pop-c .promise p{color:#4a5670}
+.pop-c .best{background:#fff}
+.pop-c .compare{background:var(--yellow)}
+.pop-c .compare .table-wrap{position:relative;overflow:visible;border:var(--cl);border-radius:34px;background:#fff}
+.pop-c .compare table{border-radius:31px;overflow:hidden}
+.pop-c .compare thead th{font-family:var(--cf);font-weight:400;font-size:20px}
+.pop-c .compare thead th.hl{background:var(--orange);color:#fff}
+.pop-c .compare td.hl{background:var(--yellow-2);font-weight:800}
+.pop-c .story{background:var(--yellow-2)}
+.pop-c .story-pics .faces{border:var(--cl);border-radius:999px 999px 28px 28px}
+.pop-c .story-pics li:nth-child(even) .faces{border-radius:28px 28px 999px 999px}
+.pop-c .story-pics .cap em{font-family:var(--cf);font-style:normal;font-size:18px}
+.pop-c .giftbanner{background:var(--yellow-2);padding-top:24px!important}
+.pop-c .giftbanner .wrap{background:var(--navy);border:var(--cl);border-radius:44px}
+.pop-c .giftbanner .h-section{font-size:clamp(30px,3.2vw,48px);color:var(--yellow)}
+.pop-c .giftbanner .eyebrow{align-self:flex-start;width:max-content}
+.pop-c .giftbanner .body>p,.pop-c .giftbanner .body li{color:#fff}
+.pop-c .giftbanner .body li .ico{stroke:var(--orange)}
+.pop-c .giftbanner .media{border-radius:0 40px 40px 0}
+.pop-c .giftbanner .media .tag{background:var(--orange);font-family:var(--cf);font-weight:400;font-size:16px;border:var(--cl);transform:rotate(-6deg)}
+.pop-c .sets{background:var(--yellow-2)}
+.pop-c .reviews{background:var(--orange)}
+.pop-c .reviews .h-section{color:#fff}
+.pop-c .reviews .summary .score{font-family:var(--cf);font-weight:400;color:#fff}
+.pop-c .reviews .summary p,.pop-c .reviews .summary .stars,.pop-c .reviews .store-link{color:var(--navy)}
+.pop-c .rv-card{border:var(--cl);border-radius:30px}
+.pop-c .recipes{background:var(--yellow)}
+.pop-c .rc-big{border:var(--cl);border-radius:36px}
+.pop-c .rc-big .txt{background:#fff;color:var(--navy);padding:16px 24px;border-top:var(--cl);border-radius:0 0 33px 33px}
+.pop-c .rc-big .txt h3{font-family:var(--cf);font-weight:400;color:var(--navy)}
+.pop-c .rc-big .txt p,.pop-c .rc-big .meta{color:var(--navy)}
+.pop-c .rc-big .txt small{display:inline-block;background:var(--yellow);border:2px solid var(--navy);border-radius:999px;padding:2px 10px;font-weight:800}
+@media(max-width:767px){
+  .pc-blob{width:80px;height:80px}
+  .pc-blob.b-col,.pc-blob.b-best{left:auto;right:4px;top:-40px}
+  .pc-blob.b-cmp{right:-8px;top:-44px}
+  .dv-wave{height:16px;background-size:24px 16px,auto;background-image:radial-gradient(circle at 50% 100%,var(--b) 11px,transparent 11.5px)}
+}
+
+/* 비교표만 B안(간판·포스터) 스타일 — 체크무늬 띠 + 번호 라벨 + 형광펜 제목 + 각진 이중 테두리 표 + 원형 도장 */
+.pop-c{--bf:'Black Han Sans',var(--font-sans);--bl:2.5px solid var(--navy)}
+.dv-check{height:26px;background:repeating-conic-gradient(var(--navy) 0 25%,var(--yellow) 0 50%) 0 0/26px 26px;border-top:var(--bl);border-bottom:var(--bl)}
+.pop-c .compare{background:var(--yellow-2)}
+.pop-c .compare .h-section{font-family:var(--bf)}
+.pop-c .compare .h-section .hl{background:linear-gradient(transparent 62%,var(--orange) 62%,var(--orange) 90%,transparent 90%);padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pop-c .compare .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--yellow);border:0;border-radius:0;padding:6px 12px;font-size:12px;letter-spacing:.2em;margin-bottom:16px}
+.pop-c .compare .eyebrow::after{display:none}
+.pop-c .compare .eyebrow::before{content:attr(data-no);font-family:var(--bf);letter-spacing:0;font-size:15px;color:var(--orange)}
+.pop-c .compare .table-wrap{border:var(--bl);border-radius:4px;outline:2px solid var(--navy);outline-offset:5px}
+.pop-c .compare table{border-radius:0}
+.pop-c .compare thead th{font-family:var(--bf);font-size:20px;border-bottom:var(--bl)}
+.pop-c .compare thead th.hl{background:var(--navy);color:var(--yellow)}
+.pop-c .compare td.hl{background:var(--yellow)}
+.pb-stamp{position:absolute;width:118px;height:118px;z-index:3;right:-34px;top:-56px;transform:rotate(-8deg)}
+.pb-stamp text{font-family:var(--bf);text-anchor:middle}
+/* 레시피 카드: 사진이 글자 상자에 가려지지 않게 — 사진(4:3) 위, 글자 아래 */
+.pop-c .rc-big{aspect-ratio:auto;display:flex;flex-direction:column;background:#fff}
+.pop-c .rc-big img{position:static;display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.pop-c .rc-big .txt{position:static;flex:1}
+.pop-c .rc-big .time{background:var(--yellow-2);color:var(--navy);border:1.5px solid var(--navy)} /* 흰 글자 상자 위에서 소요시간·단계 배지가 보이게 */
+@media(max-width:767px){.pb-stamp{width:84px;height:84px;right:-8px;top:-46px}.pop-c .compare thead th{font-size:15px}}
