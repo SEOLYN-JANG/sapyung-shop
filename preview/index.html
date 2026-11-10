@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
-<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101544">
-<script src="../skin/js/sapyung.js?v=202611101544" defer></script>
+<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101600">
+<script src="../skin/js/sapyung.js?v=202611101600" defer></script>
 <!-- ===== 쉬운 수정 (업체용) =====
      아래 숫자와 색만 바꾸고 저장하면 됩니다. 1 = 기본 크기, 1.1 = 10% 크게, 0.9 = 10% 작게.
      이 블록은 반드시 css 링크보다 아래에 있어야 적용됩니다. -->
@@ -418,7 +418,7 @@
     </div>
 </section>
 
-<!-- 5. 비교표 (2026-11-11 디벨롭: 스마트스토어 상세 비교 이미지 내용 반영 — 직접 제조·생양파 68.6%·냉장육 17%·냉동 볶음 양파 X) — 사평 / 시판 레토르트 / 직접 끓이기 -->
+<!-- 5. 비교표 — 한 화면에 들어오도록 행 간격 축소, 상단 손그림 일러스트(키마카레 오리지널 접시) -->
 <section class="section compare center" id="compare">
     <div class="container">
         <div class="section-head with-ill">
@@ -429,76 +429,50 @@
             <h2 class="h-section">오늘 저녁, 카레를 먹는<br class="mo-br"> 세 가지 방법</h2>
         </div>
         <div class="table-wrap">
-            <table class="cmp">
+            <table>
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="hl"><small>Sapyung</small>사평 저수분 카레</th>
-                        <th>시판 레토르트 카레</th>
+                        <th class="hl">사평 저수분 카레</th>
                         <th>직접 끓이기</th>
+                        <th>배달 주문</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="grp"><th colspan="4" scope="rowgroup">재료와 만드는 방식</th></tr>
                     <tr>
-                        <th scope="row">만드는 곳</th>
-                        <td class="hl"><span class="mark ok"><svg class="ico" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><b>직접 제조</b><span class="sub">직접 개발한 배합으로 조리</span></td>
-                        <td>OEM 또는<br>시판 레시피</td>
-                        <td>고형 카레 ·<br>카레 가루</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">양파</th>
-                        <td class="hl"><span class="mark ok"><svg class="ico" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><b>국산 생양파 68.6%</b><span class="sub">매일 직접 세척 · 절단<br>냉동 볶음 양파 X</span></td>
-                        <td>함량 미표기<br>또는 가공 양파</td>
-                        <td>1~2개<br>직접 손질</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">고기</th>
-                        <td class="hl"><span class="mark ok"><svg class="ico" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><b>국산 냉장육 17%</b></td>
-                        <td><span class="mark no"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sub">미표기 또는<br>적은 함량</span></td>
-                        <td>넣는 만큼</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">물</th>
-                        <td class="hl"><span class="mark ok"><svg class="ico" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><b>넣지 않음</b><span class="sub">양파에서 나온 수분만</span></td>
-                        <td><span class="mark no"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sub">물을 넣어<br>묽은 제품이 많음</span></td>
-                        <td>물 넣고 끓임</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">첨가물</th>
-                        <td class="hl"><span class="mark ok"><svg class="ico" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><b>무첨가</b><span class="sub">착색료 · 합성감미료 · 방부제</span></td>
-                        <td>제품마다 다름</td>
-                        <td>넣는 재료에 따라</td>
-                    </tr>
-                    <tr class="grp"><th colspan="4" scope="rowgroup">시간과 편의</th></tr>
-                    <tr>
-                        <th scope="row">식탁까지</th>
-                        <td class="hl"><b>5분</b> 중탕<br><b>2~3분</b> 전자레인지</td>
-                        <td>3~5분</td>
+                        <th scope="row">식탁까지 걸리는 시간</th>
+                        <td class="hl">5분 (중탕) / 2~3분 (전자레인지)</td>
                         <td>40분 이상</td>
+                        <td>30~50분 대기</td>
                     </tr>
                     <tr>
                         <th scope="row">설거지</th>
                         <td class="hl">팩만 버리면 끝</td>
-                        <td>팩만 버리면 끝</td>
                         <td>냄비 · 도마 · 칼</td>
+                        <td>일회용 용기 쓰레기</td>
                     </tr>
                     <tr>
-                        <th scope="row">보관</th>
-                        <td class="hl">1인분씩 냉동 3개월</td>
-                        <td>실온 보관</td>
-                        <td>남은 양 냉장 2~3일</td>
+                        <th scope="row">영양가(高영양) 여부</th>
+                        <td class="hl"><span class="mark ok"><svg class="ico" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><span class="sub">양파 68.6% · 돼지고기 17%</span></td>
+                        <td>재료에 따라 다름</td>
+                        <td><span class="mark no"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sub">확인 어려움</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">보관 및 편의성</th>
+                        <td class="hl"><span class="mark ok"><svg class="ico" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><span class="sub">1인분씩 냉동 3개월</span></td>
+                        <td>남은 양은 냉장 2~3일</td>
+                        <td>당일 소비</td>
                     </tr>
                     <tr>
                         <th scope="row">1인분 가격</th>
-                        <td class="hl"><b>4,900원</b>부터</td>
-                        <td>저렴한 편</td>
+                        <td class="hl">4,900원부터</td>
                         <td>재료비 + 시간</td>
+                        <td>배달비 포함 10,000원 이상</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p class="cap">* 사평 수치는 저수분 키마카레 오리지널 기준입니다. 시판 레토르트 카레는 일반적인 제품 기준이며 제품마다 다를 수 있습니다.</p>
+        <p class="cap">* 직접 끓이기 · 배달 주문 수치는 일반적인 가정식/배달 기준의 예시입니다.</p>
     </div>
 </section>
 

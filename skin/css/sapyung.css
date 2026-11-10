@@ -423,7 +423,7 @@ html[data-shot] .hero-y .st .ring{animation:none}
 .compare th,.compare td{padding:10px 6px;text-align:center;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:middle;line-height:1.4;word-break:keep-all}
 .compare tr:last-child td{border-bottom:0}
 .compare thead th{font-size:13px;font-weight:800;background:var(--bg)}
-.compare tbody th{text-align:left;font-weight:700;color:var(--ink);padding-left:12px;width:22%}
+.compare tbody th{text-align:left;font-weight:700;color:var(--ink);padding-left:12px;width:27%}
 .compare .hl{background:var(--yellow-2);font-weight:700}
 .compare thead th.hl{background:var(--yellow)}
 .compare .mark{display:inline-flex;width:22px;height:22px;border-radius:50%;align-items:center;justify-content:center;margin:0 auto}
@@ -1107,19 +1107,5 @@ ol.rc-steps{list-style:none;display:grid;gap:18px;padding:0}
 @media(min-width:768px){.rc-move .next{grid-column:2}}
 
 /* ---------- 비교표 디벨롭 (2026-11-11): 그룹 행 · 사평 열 강조 · 굵은 핵심값 ---------- */
-.compare .cmp thead th small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:2px}
-.compare .cmp tr.grp th{background:var(--navy);color:var(--yellow);font-size:12px;font-weight:800;letter-spacing:.04em;text-align:left;padding:8px 12px}
-.compare .cmp td.hl{background:var(--yellow-2);color:var(--navy)}
-.compare .cmp td.hl b{font-weight:900;color:var(--orange-3)}
-.compare .cmp thead th:first-child{width:22%}
-.compare .cmp td.hl .mark{display:flex;margin:0 auto 4px}
-.compare .cmp td b{font-weight:800}
-.compare .cmp td:not(.hl){color:var(--ink-2)}
-.compare .cmp td .mark.no{display:flex;margin:0 auto 4px}
 @media(min-width:768px){
-  .compare .cmp thead th small{font-size:11px}
-  .compare .cmp thead th:first-child{width:16%}
-  .compare .cmp tr.grp th{font-size:13px;padding:10px 20px}
-  .compare .cmp td.hl{box-shadow:inset 3px 0 0 var(--orange),inset -3px 0 0 var(--orange)}
-  .compare .cmp tbody tr:last-child td.hl{box-shadow:inset 3px 0 0 var(--orange),inset -3px 0 0 var(--orange),inset 0 -3px 0 var(--orange)}
 }
