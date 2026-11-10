@@ -294,12 +294,12 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 
 /* ---------- 5-1. Main: Hero 사진형 (2026-11-10 업체 확정 — 사진 파일만 바꾸면 교체) ----------
    슬라이드마다 style 로 --slide-bg / --slide-ink / --slide-btn / --slide-btn-ink 지정.
-   PC: 사진(hero_N.jpg 1920x900)이 슬라이드 전체를 덮고 글자는 왼쪽 위에 올림 / 모바일: 사진(hero_N_m.jpg) 위 + 같은 배경색 위 글자 */
+   PC: 사진(hero_N.jpg 2400x1000, 12:5)을 비율 그대로 깔고 글자는 왼쪽 위에 올림 / 모바일: 사진(hero_N_m.jpg 1080x900) 위 + 같은 배경색 위 글자 */
 .hero-photo{background:var(--slide-bg,#FDEEA7);color:var(--slide-ink,var(--navy))}
 .hero-photo .slides{position:relative}
 .hero-photo .slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s;background:var(--slide-bg);color:var(--slide-ink)}
 .hero-photo .slide.on{position:relative;opacity:1;visibility:visible;z-index:1}
-.hero-photo .ph{display:block;aspect-ratio:1080/860;overflow:hidden}
+.hero-photo .ph{display:block;aspect-ratio:1080/900;overflow:hidden}
 .hero-photo .ph img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .hero-photo .container{position:relative;z-index:2;padding-top:4px;padding-bottom:78px}
 .hero-photo .copy{position:relative;max-width:100%}
@@ -311,7 +311,12 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .hero-photo .btn-line{border-color:currentColor;color:inherit;background:transparent}
 .hero-photo .btn-line:hover{background:var(--slide-ink);color:var(--slide-bg)}
 .hero-photo .hero-dots li{color:var(--hero-dot,var(--navy))}
-.hero-photo .hero-dots li.on{background:rgba(127,127,127,.3)}
+.hero-photo .hero-dots li.on{background:rgba(255,255,255,.45)}
+.hero-photo.hero-slider .hero-dots li.on::after{background:var(--hero-dot,var(--navy))}
+/* 모바일: 사진 아래쪽을 글자 영역 색으로 자연스럽게 이어줌 */
+.hero-photo .ph{position:relative}
+.hero-photo .ph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(to bottom,transparent,var(--slide-bg));pointer-events:none}
+@media(min-width:768px){.hero-photo .ph::after{display:none}}
 .hero-photo .hero-nav button{color:var(--hero-dot,var(--navy))}
 .hero-photo .hero-nav button:hover{background:var(--hero-dot,var(--navy));color:var(--hero-dot-bg,#fff)}
 .hero-photo.hero-slider .slide .copy{transform:translateY(14px);opacity:0;transition:transform .7s ease .15s,opacity .7s ease .15s}
@@ -319,17 +324,20 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .hero-photo.hero-slider .slide .ph img{transform:scale(1.03);transition:transform 1.4s ease}
 .hero-photo.hero-slider .slide.on .ph img{transform:none}
 @media(min-width:768px){
-  .hero-photo .ph{position:absolute;inset:0;aspect-ratio:auto}
-  .hero-photo .ph img{object-position:right center}
-  .hero-photo .container{display:flex;align-items:center;min-height:560px;padding-top:40px;padding-bottom:96px}
-  .hero-photo .copy{max-width:46%}
+  /* PC: 사진 비율(12:5) 그대로 — 잘림 없이 가로에 딱 맞음. 글자는 사진 위 왼쪽 */
+  .hero-photo .ph{aspect-ratio:12/5}
+  .hero-photo .container{position:absolute;inset:0;display:flex;align-items:center;padding-top:0;padding-bottom:24px}
+  .hero-photo .copy{max-width:44%}
   .hero-photo .eyebrow{font-size:14px;margin-bottom:12px}
   .hero-photo .h-display{font-size:calc(52px*var(--tune-hero,1))}
   .hero-photo .lead{font-size:calc(20px*var(--tune-body,1));margin-top:16px}
   .hero-photo .btns{margin-top:28px}
 }
-@media(min-width:1024px){.hero-photo .container{min-height:600px}.hero-photo .h-display{font-size:calc(62px*var(--tune-hero,1))}}
-@media(min-width:1280px){.hero-photo .container{min-height:660px}.hero-photo .h-display{font-size:calc(72px*var(--tune-hero,1))}}
+@media(min-width:768px) and (max-width:1023px){.hero-photo .h-display{font-size:calc(36px*var(--tune-hero,1))}.hero-photo .lead{font-size:calc(16px*var(--tune-body,1));margin-top:10px}.hero-photo .btns{margin-top:16px}.hero-photo .eyebrow{display:none}}
+@media(min-width:1024px){.hero-photo .h-display{font-size:calc(50px*var(--tune-hero,1))}}
+@media(min-width:1280px){.hero-photo .h-display{font-size:calc(60px*var(--tune-hero,1))}}
+@media(min-width:1600px){.hero-photo .h-display{font-size:calc(70px*var(--tune-hero,1))}}
+
 
 /* ---------- 6. Section commons ---------- */
 .section{padding:48px 0}
@@ -392,7 +400,7 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .compare th,.compare td{padding:10px 6px;text-align:center;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:middle;line-height:1.4;word-break:keep-all}
 .compare tr:last-child td{border-bottom:0}
 .compare thead th{font-size:13px;font-weight:800;background:var(--bg)}
-.compare tbody th{text-align:left;font-weight:700;color:var(--ink);padding-left:12px;width:27%}
+.compare tbody th{text-align:left;font-weight:700;color:var(--ink);padding-left:12px;width:22%}
 .compare .hl{background:var(--yellow-2);font-weight:700}
 .compare thead th.hl{background:var(--yellow)}
 .compare .mark{display:inline-flex;width:22px;height:22px;border-radius:50%;align-items:center;justify-content:center;margin:0 auto}
@@ -1071,3 +1079,21 @@ ol.rc-steps{list-style:none;display:grid;gap:18px;padding:0}
 @media(min-width:768px){ul.rc-ing{grid-template-columns:1fr 1fr;column-gap:36px}.rc-move{grid-template-columns:1fr 1fr}}
 .rc-content figure{margin:0}.rc-content .rc-cover{margin:0 0 22px}
 @media(min-width:768px){.rc-move .next{grid-column:2}}
+
+/* ---------- 비교표 디벨롭 (2026-11-11): 그룹 행 · 사평 열 강조 · 굵은 핵심값 ---------- */
+.compare .cmp thead th small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:2px}
+.compare .cmp tr.grp th{background:var(--navy);color:var(--yellow);font-size:12px;font-weight:800;letter-spacing:.04em;text-align:left;padding:8px 12px}
+.compare .cmp td.hl{background:var(--yellow-2);color:var(--navy)}
+.compare .cmp td.hl b{font-weight:900;color:var(--orange-3)}
+.compare .cmp thead th:first-child{width:22%}
+.compare .cmp td.hl .mark{display:flex;margin:0 auto 4px}
+.compare .cmp td b{font-weight:800}
+.compare .cmp td:not(.hl){color:var(--ink-2)}
+.compare .cmp td .mark.no{display:flex;margin:0 auto 4px}
+@media(min-width:768px){
+  .compare .cmp thead th small{font-size:11px}
+  .compare .cmp thead th:first-child{width:16%}
+  .compare .cmp tr.grp th{font-size:13px;padding:10px 20px}
+  .compare .cmp td.hl{box-shadow:inset 3px 0 0 var(--orange),inset -3px 0 0 var(--orange)}
+  .compare .cmp tbody tr:last-child td.hl{box-shadow:inset 3px 0 0 var(--orange),inset -3px 0 0 var(--orange),inset 0 -3px 0 var(--orange)}
+}
