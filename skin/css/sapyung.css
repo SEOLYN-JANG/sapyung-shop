@@ -462,8 +462,8 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 .story-v2{background:var(--bg)}
 .story-v2 .section-head{flex-direction:column;align-items:center;text-align:center;margin-bottom:28px}   /* 제목–본문 간격 16→28 (PC 40), 2026-11-04 업체 "너무 다닥 붙어있는 느낌" */
 @media(min-width:768px){.story-v2 .section-head{margin-bottom:40px}}
-.story-text{max-width:720px;margin:0 auto;text-align:center}
-.story-text p{font-size:16px;line-height:1.85;color:var(--ink-2);margin-bottom:12px}
+.story-text{max-width:760px;margin:0 auto;text-align:center}
+.story-text p{font-size:16px;line-height:1.85;color:var(--ink-2);margin-bottom:12px;word-break:keep-all;text-wrap:balance} /* 어절 단위로만 끊고 줄 길이를 고르게(한두 단어만 다음 줄로 넘어가는 것 방지) */
 .story-pics{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:40px calc(var(--gutter) * -1) 0;padding:0 var(--gutter) 6px;scrollbar-width:none}
 .story-pics::-webkit-scrollbar{display:none}
 .story-pics li{flex:0 0 62vw;max-width:300px;scroll-snap-align:start}
@@ -540,6 +540,9 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 /* 모바일 전용 줄바꿈 (<br class="mo-br">): PC에서는 무시 */
 .mo-br{display:none}
 @media(max-width:767px){.mo-br{display:inline}}
+/* PC 전용 줄바꿈 (<br class="pc-br">): 모바일에서는 무시 */
+.pc-br{display:none}
+@media(min-width:768px){.pc-br{display:inline}}
 .giftbanner .body p{color:var(--ink-2)}
 .giftbanner .body ul{margin-top:18px;display:grid;gap:8px}
 .giftbanner .body li{display:flex;gap:8px;align-items:flex-start;font-size:16px;color:var(--ink-2)}
