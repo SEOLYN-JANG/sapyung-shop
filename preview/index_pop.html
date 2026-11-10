@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
-<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101606">
-<script src="../skin/js/sapyung.js?v=202611101606" defer></script>
+<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101607">
+<script src="../skin/js/sapyung.js?v=202611101607" defer></script>
 <!-- ===== 쉬운 수정 (업체용) =====
      아래 숫자와 색만 바꾸고 저장하면 됩니다. 1 = 기본 크기, 1.1 = 10% 크게, 0.9 = 10% 작게.
      이 블록은 반드시 css 링크보다 아래에 있어야 적용됩니다. -->
@@ -27,7 +27,131 @@
   --hero-blob: #fdeea7;  /* 메인 맨 위 오른쪽 노란 패널색 */
 }
 </style>
-<style>.xans-layout-statelogon{display:none !important}</style><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet"><link rel="stylesheet" href="pop.css">
+<style>.xans-layout-statelogon{display:none !important}</style><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet"><style>
+/* pop.css — 메인 '레트로 팝 / 네오 브루탈리즘' 시안 (히어로 제외, 2026-11-11)
+   대표색만 사용: navy #1a2b4c · yellow #fdeea7 · yellow-2 #fff6d2 · orange #ff7d18 · white
+   공통 언어: 굵은 네이비 테두리 + 흐림 없는 딱딱한 그림자 · 두툼한 제목(Bagel Fat One) · 비스듬한 스티커 · 흐르는 띠 배너 */
+html.pop{--pl:3px solid var(--navy);--psh:6px 6px 0 var(--navy);--pfont:'Bagel Fat One',var(--font-sans)}
+
+/* ---- 제목 · 라벨 · 버튼 ---- */
+html.pop .main-page .h-section{font-family:var(--pfont);font-weight:400;letter-spacing:-.01em;line-height:1.12;font-size:clamp(32px,4.2vw,58px);color:var(--navy)}
+html.pop .main-page .eyebrow{display:inline-block;background:var(--orange);color:var(--navy);border:2px solid var(--navy);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;box-shadow:3px 3px 0 var(--navy);transform:rotate(-3deg);margin-bottom:14px}
+html.pop .main-page .btn{border:2.5px solid var(--navy);border-radius:999px;box-shadow:4px 4px 0 var(--navy);font-weight:800;transition:transform .15s,box-shadow .15s}
+html.pop .main-page .btn:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--navy)}
+html.pop .main-page .btn-line{background:#fff;color:var(--navy)}
+html.pop .main-page .btn-gold{background:var(--yellow);color:var(--navy)}
+html.pop .main-page .section-head{position:relative}
+
+/* ---- 띠 배너(흐르는 글자) ---- */
+.pop-mq{overflow:hidden;border-top:var(--pl);border-bottom:var(--pl);white-space:nowrap;position:relative;z-index:2}
+.pop-mq .mq-in{display:inline-flex;align-items:center;gap:22px;padding:14px 0;animation:mq 38s linear infinite}
+.pop-mq span{font-family:var(--pfont);font-size:22px;letter-spacing:.01em}
+.pop-mq .mq-star{width:20px;height:20px;flex:none}
+.mq-navy{background:var(--navy);color:var(--yellow)}.mq-navy .mq-star{fill:var(--orange)}
+.mq-orange{background:var(--orange);color:var(--navy);transform:rotate(-1.2deg);margin:-6px -10px;width:calc(100% + 20px)}.mq-orange .mq-star{fill:var(--yellow);stroke:var(--navy);stroke-width:1.5}
+.mq-yellow{background:var(--yellow);color:var(--navy)}.mq-yellow .mq-star{fill:var(--orange);stroke:var(--navy);stroke-width:1.5}
+@keyframes mq{to{transform:translateX(-50%)}}
+html[data-shot] .pop-mq .mq-in{animation:none}
+
+/* ---- 스티커(별 모양 배지) ---- */
+.pop-st{position:absolute;width:104px;height:104px;z-index:3;filter:drop-shadow(3px 3px 0 var(--navy))}
+.pop-st text{font-family:var(--pfont);text-anchor:middle;font-size:19px}
+.pop-st text.s2{font-size:15px}
+.pop-st.st-col{left:430px;top:-18px;transform:rotate(12deg)}
+.pop-st.st-best{left:560px;top:-26px;transform:rotate(-10deg)}
+.pop-st.st-cmp{right:-28px;top:-40px;transform:rotate(14deg);width:96px;height:96px}
+.pop-st.st-gift{right:18px;bottom:18px;transform:rotate(-12deg)}
+
+/* ---- 1. 컬렉션: 연노랑 + 흰 카드 ---- */
+html.pop .collections{background:var(--yellow-2)}
+html.pop .col-card a{display:block;background:#fff;border:var(--pl);border-radius:22px;padding:12px 12px 18px;box-shadow:var(--psh);transition:transform .15s,box-shadow .15s}
+html.pop .col-card a:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--navy)}
+html.pop .col-card .img{border:2px solid var(--navy);border-radius:14px}
+html.pop .col-card h3{font-family:var(--pfont);font-weight:400;font-size:24px;margin-top:14px}
+html.pop .collections .track{padding:6px 8px 14px}
+
+/* ---- 2. 약속: 주황 + 기울어진 흰 카드 ---- */
+html.pop .promise{background:var(--orange)}
+html.pop .promise .h-section{color:#fff;text-shadow:4px 4px 0 var(--navy)}
+html.pop .promise .eyebrow{background:var(--yellow)}
+html.pop .promise .item{background:#fff;color:var(--navy);border:var(--pl);border-radius:24px;padding:22px 16px 26px;box-shadow:var(--psh)}
+html.pop .promise .item:nth-child(odd){transform:rotate(-1.6deg)}
+html.pop .promise .item:nth-child(even){transform:rotate(1.4deg) translateY(10px)}
+html.pop .promise .num b{font-family:var(--pfont);font-weight:400;color:var(--orange);-webkit-text-stroke:2px var(--navy);paint-order:stroke fill;text-shadow:3px 3px 0 var(--navy)}
+html.pop .promise .num small{color:var(--navy)}
+html.pop .promise h3{color:var(--navy)}
+html.pop .promise p{color:#4a5670}
+
+/* ---- 3. 베스트: 네이비 + 주황 그림자 카드 ---- */
+html.pop .best{background:var(--navy)}
+html.pop .best .h-section{color:var(--yellow);text-shadow:4px 4px 0 var(--orange)}
+html.pop .best .prdList li,html.pop .sets .prdList li{background:#fff;border:var(--pl);border-radius:22px;padding:10px 10px 16px;box-shadow:6px 6px 0 var(--orange)}
+html.pop .sets .prdList li{box-shadow:var(--psh)}
+html.pop .best .prdList .thumb,html.pop .sets .prdList .thumb{border:2px solid var(--navy);border-radius:14px;overflow:hidden}
+html.pop .best .prdList .desc,html.pop .sets .prdList .desc{padding:0 4px}
+html.pop .best .prdList .name,html.pop .best .prdList .summary,html.pop .best .prdList .price{color:var(--navy)}
+
+/* ---- 4. 비교표: 노랑 + 두꺼운 테두리 표 ---- */
+html.pop .compare .table-wrap{position:relative;overflow:visible;border:var(--pl);border-radius:22px;box-shadow:8px 8px 0 var(--navy);background:#fff}
+html.pop .compare table{border-radius:19px;overflow:hidden}
+html.pop .compare thead th{background:#fff;font-family:var(--pfont);font-weight:400;font-size:18px;border-bottom:var(--pl)}
+html.pop .compare thead th.hl{background:var(--orange);color:var(--navy)}
+html.pop .compare td.hl{background:var(--yellow-2);font-weight:800}
+
+/* ---- 5. 스토리: 연노랑 물방울 무늬 + 기울어진 사진 ---- */
+html.pop .story{background-color:var(--yellow-2);background-image:radial-gradient(rgba(26,43,76,.14) 1.6px,transparent 1.7px);background-size:22px 22px}
+html.pop .story-pics .faces{border:var(--pl);box-shadow:var(--psh);border-radius:20px}
+html.pop .story-pics li:nth-child(odd) .faces{transform:rotate(-2deg)}
+html.pop .story-pics li:nth-child(even) .faces{transform:rotate(2deg)}
+html.pop .story-pics .cap{margin-top:16px}
+html.pop .story-pics .cap em{display:inline-block;background:#fff;border:2px solid var(--navy);border-radius:999px;padding:4px 12px;font-style:normal;font-weight:700;box-shadow:2px 2px 0 var(--navy)}
+
+/* ---- 6. 선물 배너: 주황 블록 ---- */
+html.pop .giftbanner{background:var(--yellow-2);padding-top:24px!important}
+html.pop .giftbanner .wrap{background:var(--orange);border:var(--pl);border-radius:30px;box-shadow:10px 10px 0 var(--navy)}
+html.pop .giftbanner .h-section{color:#fff;text-shadow:4px 4px 0 var(--navy)}
+html.pop .giftbanner .eyebrow{background:var(--yellow)}
+html.pop .giftbanner .body>p,html.pop .giftbanner .body li{color:var(--navy);font-weight:600}
+html.pop .giftbanner .media{border-left:var(--pl)}
+html.pop .giftbanner .media .tag{background:var(--yellow);color:var(--navy);border:2px solid var(--navy);transform:rotate(-6deg);box-shadow:3px 3px 0 var(--navy);font-size:14px}
+
+/* ---- 7. 세트: 연노랑 계속 ---- */
+html.pop .sets{background:var(--yellow-2)}
+
+/* ---- 8. 리뷰: 네이비 ---- */
+html.pop .reviews{background:var(--navy)}
+html.pop .reviews .h-section{color:var(--yellow);text-shadow:4px 4px 0 var(--orange)}
+html.pop .reviews .summary .score{font-family:var(--pfont);font-weight:400;color:var(--orange);text-shadow:3px 3px 0 #fff}
+html.pop .reviews .summary p,html.pop .reviews .summary .stars{color:var(--yellow)}
+html.pop .reviews .store-link{color:#fff}
+html.pop .rv-card{border:3px solid var(--yellow);border-radius:20px;box-shadow:6px 6px 0 var(--orange)}
+html.pop .reviews .eyebrow{background:var(--yellow)}
+
+/* ---- 9. 레시피: 주황 + 카드 ---- */
+html.pop .recipes{background:var(--yellow)}
+html.pop .rc-big{border:var(--pl);border-radius:24px;box-shadow:var(--psh)}
+html.pop .rc-big .txt{background:#fff;color:var(--navy);padding:16px 20px;border-top:var(--pl)}
+html.pop .rc-big .txt h3{font-family:var(--pfont);font-weight:400;color:var(--navy)}
+html.pop .rc-big .txt p,html.pop .rc-big .txt small,html.pop .rc-big .meta{color:var(--navy)}
+html.pop .rc-big .txt small{display:inline-block;background:var(--orange);border:2px solid var(--navy);border-radius:999px;padding:2px 10px;font-weight:800}
+
+@media(max-width:767px){
+  html.pop{--psh:4px 4px 0 var(--navy)}
+  .pop-st{width:76px;height:76px}
+  .pop-st.st-col{left:auto;right:4px;top:-30px}
+  .pop-st.st-best{left:auto;right:4px;top:-34px}
+  .pop-st.st-cmp{right:-6px;top:-34px;width:70px;height:70px}
+  .pop-mq span{font-size:17px}
+  html.pop .promise .item:nth-child(even){transform:rotate(1.4deg)}
+}
+
+/* 보정 */
+html.pop .giftbanner .eyebrow{align-self:flex-start;width:max-content}
+html.pop .giftbanner .h-section{font-size:clamp(30px,3.2vw,46px)}
+html.pop .giftbanner .body li .ico{stroke:var(--navy)}
+html.pop .best .btn,html.pop .reviews .btn{box-shadow:4px 4px 0 var(--orange)}
+
+</style>
 </head>
 <body>
 <div id="wrap">
