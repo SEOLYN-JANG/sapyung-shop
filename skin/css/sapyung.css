@@ -699,7 +699,9 @@ html[data-shot] .hero-y .st .ring{animation:none}
 
 /* 선택 상품/수량 (카페24 totalProducts) */
 #totalProducts{margin-top:14px}
-#totalProducts table{width:100%}
+#totalProducts table{width:100%;border:0;border-collapse:separate;border-spacing:0} /* 카페24 마크업의 <table border="1"> 기본 검은 테두리 제거 */
+#totalProducts th,#totalProducts td{border:0}
+#totalProducts #totalProductsOption:not(:has(select,input,textarea)){display:none} /* 추가옵션이 없을 때 생기는 빈 줄 숨김 */
 #totalProducts caption,#totalProducts thead{display:none}
 #totalProducts tbody tr{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:var(--paper)}
 #totalProducts tbody tr td{padding:0;border:0;font-size:15px}
@@ -1213,4 +1215,5 @@ ol.rc-steps{list-style:none;display:grid;gap:18px;padding:0}
 .pop-c .rc-big img{position:static;display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .pop-c .rc-big .txt{position:static;flex:1}
 .pop-c .rc-big .time{background:var(--yellow-2);color:var(--navy);border:1.5px solid var(--navy)} /* 흰 글자 상자 위에서 소요시간·단계 배지가 보이게 */
+.pop-c .col-card{display:flex}.pop-c .col-card a{flex:1;text-align:center} /* 컬렉션 카드: 글자 가운데 정렬 + 카드 높이 통일(2026-11-11) */
 @media(max-width:767px){.pb-stamp{width:84px;height:84px;right:-8px;top:-46px}.pop-c .compare thead th{font-size:15px}}
