@@ -292,6 +292,29 @@ html[data-hero="3"] .hero-clean .word{color:transparent;-webkit-text-stroke:2px 
 @media(min-width:1024px){.hero-clean .container{min-height:660px}.hero-clean .h-display{font-size:calc(62px*var(--tune-hero,1))}}
 @media(min-width:1280px){.hero-clean .container{min-height:700px}.hero-clean .h-display{font-size:calc(72px*var(--tune-hero,1))}}
 
+/* ---------- 5-0. Main: Hero 노란 배경 + 회전 SHOP 스탬프 (2026-11-11 업체 확정) ----------
+   사진 한 장(hero_y2.jpg PC 12:5 / hero_y2_m.jpg 모바일 1080x1100) 위에 스탬프만 올림. 둘레 글자는 14초에 한 바퀴.
+   스탬프 위치 = .stamp-wrap left/top(스탬프 중심), 크기 = --st */
+.hero-y{position:relative;background:#FDEEA7;overflow:hidden}
+.hero-y .ph{display:block;aspect-ratio:1080/1100}
+.hero-y .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-y .stamp-wrap{position:absolute;left:23%;top:76%;transform:translate(-50%,-50%)}
+.hero-y .st{--st:108px;position:relative;width:var(--st);height:var(--st);border-radius:50%;background:var(--navy);display:grid;place-items:center;text-decoration:none;box-shadow:0 10px 24px rgba(26,43,76,.22);transition:transform .25s}
+.hero-y .st:hover{transform:scale(1.06)}
+.hero-y .st .ring{position:absolute;inset:5%;width:90%;height:90%;animation:stSpin 14s linear infinite}
+.hero-y .st .ring text{font:800 15px/1 var(--font-sans,'Pretendard',sans-serif);letter-spacing:.1em;fill:var(--yellow)}
+.hero-y .st .mid{display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:900;font-size:calc(var(--st) * .13);letter-spacing:.08em;color:#fff;line-height:1.1}
+.hero-y .st .mid svg{width:calc(var(--st) * .135);height:calc(var(--st) * .135);stroke:var(--orange);fill:none;stroke-width:2.4}
+@keyframes stSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.hero-y .st .ring{animation:none}}
+html[data-shot] .hero-y .st .ring{animation:none}
+@media(min-width:768px){.hero-y .ph{aspect-ratio:12/5}.hero-y .stamp-wrap{left:50%;top:77%}.hero-y .st{--st:116px}}
+@media(min-width:1024px){.hero-y .st{--st:132px}}
+@media(min-width:1280px){.hero-y .st{--st:148px}}
+@media(min-width:1600px){.hero-y .st{--st:164px}}
+/* 메인 상단: 헤더와 히어로가 같은 노란색이라 경계 줄을 숨김(히어로를 지나 스크롤하면 줄이 다시 생김 — js header()) */
+.header.flat{border-bottom-color:transparent}
+
 /* ---------- 5-1. Main: Hero 사진형 (2026-11-10 업체 확정 — 사진 파일만 바꾸면 교체) ----------
    슬라이드마다 style 로 --slide-bg / --slide-ink / --slide-btn / --slide-btn-ink 지정.
    PC: 사진(hero_N.jpg 2400x1000, 12:5)을 비율 그대로 깔고 글자는 왼쪽 위에 올림 / 모바일: 사진(hero_N_m.jpg 1080x900) 위 + 같은 배경색 위 글자 */

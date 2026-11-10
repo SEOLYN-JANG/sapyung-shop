@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
-<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101537">
-<script src="../skin/js/sapyung.js?v=202611101537" defer></script>
+<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101544">
+<script src="../skin/js/sapyung.js?v=202611101544" defer></script>
 <!-- ===== 쉬운 수정 (업체용) =====
      아래 숫자와 색만 바꾸고 저장하면 됩니다. 1 = 기본 크기, 1.1 = 10% 크게, 0.9 = 10% 작게.
      이 블록은 반드시 css 링크보다 아래에 있어야 적용됩니다. -->
@@ -203,41 +203,20 @@
 <!-- 손그림 일러스트 공통 필터(선 떨림). 아래 .ill 안의 <g filter="url(#hand)"> 가 참조 — 삭제 금지 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><filter id="hand" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
 
-<!-- 1. 히어로 슬라이더 (사진형 2장, 2026-11-11) — 6초 자동 전환 · 화살표 · 점 · 스와이프
-     사진 = 업체 드라이브 예시 사진(단색 배경 연출컷)에서 글자를 지우고 가로로 맞춘 것 (images\tools\hero-from-drive.py)
-     사진 교체: 웹FTP img 폴더의 hero_N.jpg(PC 2400x1000 = 12:5, 피사체 오른쪽 · 왼쪽 45%는 글자 자리로 비움)와
-                hero_N_m.jpg(모바일 1080x900, 피사체 가운데)를 같은 이름으로 덮어쓰기. 비율이 같아야 잘리지 않음
-     색 교체: 각 slide 의 style 값 — --slide-bg(모바일에서 사진 아래 글자 영역 색 = 사진 배경색) / --slide-ink(글자) / --slide-btn·--slide-btn-ink(첫 버튼) -->
-<section class="hero hero-photo hero-slider" id="top" data-interval="6000">
-    <div class="slides">
-        <div class="slide on" style="--slide-bg:#EA8834;--slide-ink:#1A2B4C;--slide-btn:#1A2B4C;--slide-btn-ink:#FFFFFF">
-            <picture class="ph"><source media="(max-width:767px)" srcset="../skin/img/hero_1_m.jpg"><img src="../skin/img/hero_1.jpg" alt="사평 카레 한 숟갈" fetchpriority="high"></picture>
-            <div class="container">
-                <div class="copy">
-                    <span class="eyebrow">All in one meal — 한 그릇만으로 충만하게</span>
-                    <h2 class="h-display">마음으로 담아낸<br>온기 한 그릇</h2>
-                    <p class="lead">보이지 않는 시간이 맛의 바탕이 됩니다.</p>
-                    <div class="btns"><a href="list_24.html?cate_no=24" data-cat="0" class="btn btn-gold btn-lg">키마카레 보러 가기</a><a href="list.html?cate_no=1" class="btn btn-line btn-lg">전체 상품</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="slide" style="--slide-bg:#DD8396;--slide-ink:#1A2B4C;--slide-btn:#1A2B4C;--slide-btn-ink:#FFFFFF">
-            <picture class="ph"><source media="(max-width:767px)" srcset="../skin/img/hero_2_m.jpg"><img src="../skin/img/hero_2.jpg" alt="사평 카레 한 접시" loading="lazy"></picture>
-            <div class="container">
-                <div class="copy">
-                    <span class="eyebrow">Made by Sapyung — 직접 만드는 저수분 카레</span>
-                    <h2 class="h-display">국산 생양파 68.6%,<br>물 없이 끓였습니다</h2>
-                    <p class="lead">냉동 볶음 양파 대신, 매일 직접 씻고 썬 양파로 끓입니다.</p>
-                    <div class="btns"><a href="index.html#best" class="btn btn-gold btn-lg">베스트셀러 보기</a><a href="index.html#compare" class="btn btn-line btn-lg">무엇이 다른가요</a></div>
-                </div>
-            </div>
-        </div>
+<!-- 1. 히어로 (2026-11-11 업체 확정) — 노란 배경 사진 한 장 + 둘레 글자가 도는 SHOP 스탬프(네이비)
+     사진 = 레드커리 접시(왼쪽) + 마라·말차 숟가락(오른쪽) 누끼 합성 (images\tools\hero-yellow-shop.py)
+     사진 교체: 웹FTP img 폴더의 hero_y2.jpg(PC 2400x1000 = 12:5, 가운데 아래는 스탬프 자리로 비움)와
+                hero_y2_m.jpg(모바일 1080x1100, 왼쪽 아래는 스탬프 자리로 비움)를 같은 이름으로 덮어쓰기. 비율이 같아야 잘리지 않음
+     스탬프 위치: css 의 .hero-y .stamp-wrap top/left 값 / 링크: 아래 href -->
+<section class="hero-y" id="top">
+    <picture class="ph"><source media="(max-width:767px)" srcset="../skin/img/hero_y2_m.jpg"><img src="../skin/img/hero_y2.jpg" alt="사평 레드커리 한 접시와 마라카레·크리미 말차카레 한 숟갈" fetchpriority="high"></picture>
+    <h1 class="blind">사평 저수분 카레</h1>
+    <div class="stamp-wrap">
+        <a href="list.html?cate_no=1" class="st" aria-label="사평 카레 쇼핑하러 가기">
+            <svg class="ring" viewBox="0 0 190 190" aria-hidden="true"><defs><path id="stRing" d="M95,95 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#stRing" textLength="486" lengthAdjust="spacing">SAPYUNG CURRY · SHOP NOW · SAPYUNG CURRY · SHOP NOW · </textPath></text></svg>
+            <span class="mid">SHOP<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
     </div>
-    <div class="hero-nav">
-        <button type="button" class="prev" aria-label="이전 슬라이드"><svg class="ico" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
-        <button type="button" class="next" aria-label="다음 슬라이드"><svg class="ico" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
-    </div>
-    <ol class="hero-dots" aria-label="슬라이드 선택"></ol>
 </section>
 
 <!-- 2. 컬렉션 -->

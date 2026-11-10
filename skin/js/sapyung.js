@@ -332,7 +332,13 @@
     var pg = $('.mg-paging'); if (pg && (!grid || !grid.querySelector('li'))) pg.style.display = 'none';
   }
 
-  function init() { header(); heroSlider(); tracks(); discountRates(); detail(); magazine(); reveal(); }
+  /* 메인 노란 히어로: 헤더 아래 줄을 히어로 위에서는 숨기고, 히어로를 지나면 다시 보임 */
+  function flatHeader() {
+    var hero = $('.hero-y'), hd = $('.header'); if (!hero || !hd) return;
+    function upd() { hd.classList.toggle('flat', window.scrollY < hero.offsetTop + hero.offsetHeight - hd.offsetHeight); }
+    upd(); window.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd);
+  }
+  function init() { header(); flatHeader(); heroSlider(); tracks(); discountRates(); detail(); magazine(); reveal(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   window.SAPYUNG = { init: init, discountRates: discountRates };
 })();
