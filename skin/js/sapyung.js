@@ -61,6 +61,8 @@
     var go = function (i) {
       idx = (i + slides.length) % slides.length;
       slides.forEach(function (s, k) { s.classList.toggle('on', k === idx); });
+      /* 사진형 히어로: 점·화살표 색을 현재 슬라이드 글자색/배경색에 맞춤 */
+      var cs = getComputedStyle(slides[idx]); h.style.setProperty('--hero-dot', cs.getPropertyValue('--slide-ink') || '#1a2b4c'); h.style.setProperty('--hero-dot-bg', cs.getPropertyValue('--slide-bg') || '#fff');
       dl.forEach(function (d, k) { d.classList.remove('on'); if (k === idx) { void d.offsetWidth; d.classList.add('on'); } });
     };
     var start = function () { if (document.documentElement.hasAttribute('data-shot')) return; timer = setInterval(function () { go(idx + 1); }, iv); }; /* ?shot=1 캡처 시 자동 넘김 정지 */
@@ -310,7 +312,27 @@
     $$('[data-reveal]').forEach(function (el) { io.observe(el); });
   }
 
-  function init() { header(); heroSlider(); tracks(); discountRates(); detail(); reveal(); }
+  /* ---------- 매거진 게시판 (2026-11-10): 현재 탭 표시·제목/설명 교체·빈 목록 안내 ---------- */
+  function magazine() {
+    var mg = $('.magazine'); if (!mg) return;
+    var bno = (location.search.match(/board_no=(\d+)/) || [])[1];
+    var tabs = $$('.mg-tabs a'), cur = null;
+    tabs.forEach(function (a) { var hit = bno ? a.dataset.board === bno : false; a.classList.toggle('on', hit); if (hit) cur = a; });
+    if (!cur && tabs.length && /magazine(\.html)?$/.test(location.pathname)) { cur = tabs[0]; cur.classList.add('on'); }
+    if (cur) {
+      var t = $('[data-mg-title]'), l = $('[data-mg-lead]');
+      if (t) t.textContent = cur.dataset.title; if (l) l.textContent = cur.dataset.lead;
+      cur.scrollIntoView && cur.parentNode.scrollWidth > cur.parentNode.clientWidth && (cur.parentNode.scrollLeft = cur.offsetLeft - 16);
+    }
+    /* 글 보기: 빵부스러기·라벨에 게시판 이름 */
+    var lab = $('[data-mg-label]'), crumb = $('[data-mg-crumb]');
+    if (lab || crumb) { var src = $$('.gnb .has-drop .sub a').filter(function (a) { return bno && (a.getAttribute('href') || '').indexOf('board_no=' + bno) > -1; })[0]; if (src) { if (lab) lab.textContent = 'Magazine · ' + src.textContent; if (crumb) { crumb.textContent = '매거진 · ' + src.textContent; crumb.setAttribute('href', src.getAttribute('href')); } } }
+    var grid = $('.mg-grid'), empty = $('.mg-empty');
+    if (grid && empty) empty.style.display = grid.querySelector('li') ? 'none' : 'block';
+    var pg = $('.mg-paging'); if (pg && (!grid || !grid.querySelector('li'))) pg.style.display = 'none';
+  }
+
+  function init() { header(); heroSlider(); tracks(); discountRates(); detail(); magazine(); reveal(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   window.SAPYUNG = { init: init, discountRates: discountRates };
 })();

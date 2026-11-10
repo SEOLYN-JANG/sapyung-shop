@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
-<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611061546">
-<script src="../skin/js/sapyung.js?v=202611061546" defer></script>
+<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101107">
+<script src="../skin/js/sapyung.js?v=202611101107" defer></script>
 <!-- ===== 쉬운 수정 (업체용) =====
      아래 숫자와 색만 바꾸고 저장하면 됩니다. 1 = 기본 크기, 1.1 = 10% 크게, 0.9 = 10% 작게.
      이 블록은 반드시 css 링크보다 아래에 있어야 적용됩니다. -->
@@ -98,13 +98,13 @@
                         </div>
                     </div>
                 </li>
-                <!-- 분류 메뉴: 관리자 > 상품분류 관리의 1단계 분류가 순서대로 자동 출력 (Layout_category) -->
+                <!-- 분류 메뉴: 관리자 > 상품분류 관리의 1단계 분류가 순서대로 자동 출력 (Layout_category). 매거진 = 게시판 3개(board_no 101/102/103 가정값) -->
                 <li class="xans-element- xans-layout xans-layout-category" module="Layout_category" style="display:contents"><a href="list_24.html?cate_no=24" class="xans-record-">키마카레</a>
 <a href="list_25.html?cate_no=25" class="xans-record-">드라이짜장</a>
 <a href="list_26.html?cate_no=26" class="xans-record-">말차 · 마라</a>
 <a href="list_27.html?cate_no=27" class="xans-record-">세트 · 선물</a></li>
                 <li><a href="index.html#story">브랜드</a></li>
-                <li><a href="recipe_index.html">레시피</a></li>
+                <li class="has-drop"><a href="magazine.html">매거진</a><div class="sub"><a href="magazine.html">레시피</a><a href="magazine_news.html">소식</a><a href="magazine_event.html">이벤트</a></div></li>
                 <li><a href="system.html?p=%2Fboard%2Freview%2Flist.html%3Fboard_no%3D4">리뷰</a></li>
             </ul>
         </nav>
@@ -181,7 +181,7 @@
             </li>
             <li><a href="index.html#best">베스트셀러</a></li>
             <li><a href="index.html#story">브랜드 스토리</a></li>
-            <li><a href="recipe_index.html">레시피</a></li>
+            <li><strong>매거진</strong><div class="sub"><a href="magazine.html">레시피</a><a href="magazine_news.html">소식</a><a href="magazine_event.html">이벤트</a></div></li>
             <li><a href="system.html?p=%2Fboard%2Freview%2Flist.html%3Fboard_no%3D4">리뷰</a></li>
             <li><a href="system.html?p=%2Forder%2Fbasket.html">장바구니</a></li>
             <li><a href="system.html?p=%2Fmyshop%2Forder%2Flist.html">주문조회</a></li>
@@ -194,74 +194,64 @@
         <div id="contents">
             
 <!-- =====================================================================
-     레시피 칼럼 (recipe/ramen.html) — tools\build-recipes.ps1 이 recipe\_template.html + recipes.json 으로 생성. 이 파일을 직접 고치지 말고 JSON 수정 후 다시 빌드
-     카페24 적용: 디자인 편집창 > 새 파일 추가 > recipe/ramen.html 에 붙여넣기 → 주소 /recipe/ramen.html
+     매거진 글 보기 (board/gallery/read.html) — 2026-11-10
+     본문(<div class="rcol">
+<figure class="rc-cover"><img src="../skin/img/recipe_ramen.jpg" alt="카레 라면"></figure>
+<p class="rc-lead">끓인 라면 위에 데운 카레 한 팩. 새우와 튀긴 양파를 올리면 끝.</p>
+<ul class="rc-meta"><li>7분</li><li>2단계</li><li>1인분</li><li>난이도 쉬움</li><li>키마카레 오리지널</li></ul>
+<p class="rc-intro">야근하고 들어온 날, 라면은 끓이고 싶은데 국물만 마시고 끝내기는 아쉬울 때가 있습니다. 끓는 물에 카레 팩을 같이 넣어 두면 라면이 익는 동안 카레도 데워지니, 설거지는 냄비 하나로 끝납니다.</p>
+<p class="rc-intro">키마카레 오리지널은 물을 넣지 않고 양파 수분만으로 끓여 되직합니다. 면 위에 올려도 국물에 풀어지지 않고 면에 감기듯 붙어 있어서, 비빔라면과 국물라면의 중간쯤 되는 맛이 납니다.</p>
+<h2>재료</h2>
+<ul class="rc-ing"><li><span>저수분 키마카레 오리지널</span><b>1팩 (200g)</b></li><li><span>라면</span><b>1봉</b></li><li><span>물</span><b>500ml</b></li><li><span>튀긴 양파 (프라이드 어니언)</span><b>한 줌</b></li><li><span>새우 (선택)</span><b>3마리</b></li><li><span>쪽파</span><b>조금</b></li></ul>
+<h2>만드는 법</h2>
+<ol class="rc-steps">
+<li><span class="n">1</span><div class="t"><strong>카레 팩을 끓는 물에 넣어 데웁니다</strong><p>냄비에 물 500ml를 끓이고, 카레 파우치를 봉지째 넣습니다. 5분이면 충분합니다. 전자레인지를 쓸 때는 내용물을 그릇에 옮겨 2~3분.</p></div><figure><img src="../skin/img/d_org_spoon.jpg" alt=""></figure></li>
+<li><span class="n">2</span><div class="t"><strong>같은 물에 라면을 끓입니다</strong><p>카레 팩을 건진 물에 면과 스프 절반을 넣고 3분. 스프를 반만 넣어야 카레 맛이 살아납니다. 새우를 넣는다면 이때 같이 넣습니다.</p></div></li>
+<li><span class="n">3</span><div class="t"><strong>면을 건져 카레를 올립니다</strong><p>면만 건져 그릇에 담고 국물은 두세 숟갈만 남깁니다. 그 위에 카레를 전부 올리고, 튀긴 양파와 쪽파를 뿌리면 끝.</p></div><figure><img src="../skin/img/d_spicy_noodle.jpg" alt=""></figure></li>
+</ol>
+<div class="rc-tip"><strong>사평의 팁</strong><p>국물을 많이 남기면 카레가 묽어집니다. 면이 잠기지 않을 만큼만 남기세요. 매콤한 걸 좋아하면 오리지널 대신 매콤한맛 팩으로 바꾸면 됩니다.</p></div>
+<div class="rc-prd"><a href="detail_11.html" class="img"><img src="../skin/img/d_org_bowl.jpg" alt="저수분 키마카레 오리지널 200g"></a><div class="txt"><small>이 레시피에 쓴 제품</small><strong>저수분 키마카레 오리지널 200g</strong><p>국산 양파 68.6%, 돼지고기 17%. 물 없이 끓여 라면 국물에 섞여도 묽어지지 않습니다.</p><a href="detail_11.html" class="btn btn-gold btn-sm">상품 보기</a></div></div>
+</div>
+)은 업체가 관리자 게시물 관리에서 쓴 내용 그대로. 레시피 초기 4건은 cafe24_적용패키지\3_매거진_초기글 의 HTML 을
+     글쓰기 에디터의 HTML(< >) 모드에 붙여넣어 등록(클래스 이름이 있어야 칼럼 디자인이 적용됨)
+     모듈: board_read(제목·날짜·본문) / board_movement(이전글·다음글) — 카페24 스마트디자인 가이드 기준 변수
      ===================================================================== -->
-<div class="main-page recipe-col">
+<div class="main-page magazine recipe-col">
     <article class="container">
-        <nav class="rc-crumb" aria-label="현재 위치"><a href="index.html">홈</a><span>/</span><a href="recipe_index.html">레시피</a><span>/</span><em>카레 라면</em></nav>
-        <header class="rc-head">
-            <span class="eyebrow">Recipe · 키마카레 오리지널</span>
-            <h1 class="h-display">카레 라면</h1>
-            <p class="lead">끓인 라면 위에 데운 카레 한 팩. 새우와 튀긴 양파를 올리면 끝.</p>
-            <ul class="rc-meta">
-                <li><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7분</li>
-                <li>2단계</li>
-                <li>1인분</li>
-                <li>난이도 쉬움</li>
-            </ul>
-        </header>
-        <figure class="rc-cover"><img src="../skin/img/recipe_ramen.jpg" alt="카레 라면"></figure>
-
-        <div class="rc-body">
-            <p class="rc-intro">야근하고 들어온 날, 라면은 끓이고 싶은데 국물만 마시고 끝내기는 아쉬울 때가 있습니다. 끓는 물에 카레 팩을 같이 넣어 두면 라면이 익는 동안 카레도 데워지니, 설거지는 냄비 하나로 끝납니다.</p>
-            <p class="rc-intro">키마카레 오리지널은 물을 넣지 않고 양파 수분만으로 끓여 되직합니다. 면 위에 올려도 국물에 풀어지지 않고 면에 감기듯 붙어 있어서, 비빔라면과 국물라면의 중간쯤 되는 맛이 납니다.</p>
-
-            <section class="rc-ing">
-                <h2>재료</h2>
-                <ul>
-                    <li><span>저수분 키마카레 오리지널</span><b>1팩 (200g)</b></li>
-                    <li><span>라면</span><b>1봉</b></li>
-                    <li><span>물</span><b>500ml</b></li>
-                    <li><span>튀긴 양파 (프라이드 어니언)</span><b>한 줌</b></li>
-                    <li><span>새우 (선택)</span><b>3마리</b></li>
-                    <li><span>쪽파</span><b>조금</b></li>
-                </ul>
-            </section>
-
-            <section class="rc-steps">
-                <h2>만드는 법</h2>
-                <ol>
-                    <li><span class="n">1</span><div class="t"><strong>카레 팩을 끓는 물에 넣어 데웁니다</strong><p>냄비에 물 500ml를 끓이고, 카레 파우치를 봉지째 넣습니다. 5분이면 충분합니다. 전자레인지를 쓸 때는 내용물을 그릇에 옮겨 2~3분.</p></div><figure><img src="../skin/img/d_org_spoon.jpg" alt="" loading="lazy"></figure></li>
-                    <li><span class="n">2</span><div class="t"><strong>같은 물에 라면을 끓입니다</strong><p>카레 팩을 건진 물에 면과 스프 절반을 넣고 3분. 스프를 반만 넣어야 카레 맛이 살아납니다. 새우를 넣는다면 이때 같이 넣습니다.</p></div></li>
-                    <li><span class="n">3</span><div class="t"><strong>면을 건져 카레를 올립니다</strong><p>면만 건져 그릇에 담고 국물은 두세 숟갈만 남깁니다. 그 위에 카레를 전부 올리고, 튀긴 양파와 쪽파를 뿌리면 끝.</p></div><figure><img src="../skin/img/d_spicy_noodle.jpg" alt="" loading="lazy"></figure></li>
-                </ol>
-            </section>
-
-            <aside class="rc-tip">
-                <strong>사평의 팁</strong>
-                <p>국물을 많이 남기면 카레가 묽어집니다. 면이 잠기지 않을 만큼만 남기세요. 매콤한 걸 좋아하면 오리지널 대신 매콤한맛 팩으로 바꾸면 됩니다.</p>
-            </aside>
-
-            <!-- 이 레시피에 쓴 제품: product_no 는 카페24 실제 번호로 교체 -->
-            <aside class="rc-prd">
-                <a href="detail_11.html" class="img"><img src="../skin/img/d_org_bowl.jpg" alt="저수분 키마카레 오리지널 200g"></a>
-                <div class="txt">
-                    <small>이 레시피에 쓴 제품</small>
-                    <strong>저수분 키마카레 오리지널 200g</strong>
-                    <p>국산 양파 68.6%, 돼지고기 17%. 물 없이 끓여 라면 국물에 섞여도 묽어지지 않습니다.</p>
-                    <a href="detail_11.html" class="btn btn-gold btn-sm">상품 보기</a>
-                </div>
-            </aside>
+        <nav class="rc-crumb" aria-label="현재 위치"><a href="index.html">홈</a><span>/</span><a href="magazine.html" data-mg-crumb>매거진</a></nav>
+        <div class="xans-element- xans-board xans-board-read" module="board_read_8">
+            <!--
+                $login_page_url = /member/login.html
+                $deny_access_url = /board/gallery/list.html
+            -->
+            <header class="rc-head">
+                <span class="eyebrow" data-mg-label>Magazine</span>
+                <h1 class="h-display">카레 라면</h1>
+                <p class="rc-date">2026-11-11</p>
+            </header>
+            <div class="rc-body rc-content"><div class="rcol">
+<figure class="rc-cover"><img src="../skin/img/recipe_ramen.jpg" alt="카레 라면"></figure>
+<p class="rc-lead">끓인 라면 위에 데운 카레 한 팩. 새우와 튀긴 양파를 올리면 끝.</p>
+<ul class="rc-meta"><li>7분</li><li>2단계</li><li>1인분</li><li>난이도 쉬움</li><li>키마카레 오리지널</li></ul>
+<p class="rc-intro">야근하고 들어온 날, 라면은 끓이고 싶은데 국물만 마시고 끝내기는 아쉬울 때가 있습니다. 끓는 물에 카레 팩을 같이 넣어 두면 라면이 익는 동안 카레도 데워지니, 설거지는 냄비 하나로 끝납니다.</p>
+<p class="rc-intro">키마카레 오리지널은 물을 넣지 않고 양파 수분만으로 끓여 되직합니다. 면 위에 올려도 국물에 풀어지지 않고 면에 감기듯 붙어 있어서, 비빔라면과 국물라면의 중간쯤 되는 맛이 납니다.</p>
+<h2>재료</h2>
+<ul class="rc-ing"><li><span>저수분 키마카레 오리지널</span><b>1팩 (200g)</b></li><li><span>라면</span><b>1봉</b></li><li><span>물</span><b>500ml</b></li><li><span>튀긴 양파 (프라이드 어니언)</span><b>한 줌</b></li><li><span>새우 (선택)</span><b>3마리</b></li><li><span>쪽파</span><b>조금</b></li></ul>
+<h2>만드는 법</h2>
+<ol class="rc-steps">
+<li><span class="n">1</span><div class="t"><strong>카레 팩을 끓는 물에 넣어 데웁니다</strong><p>냄비에 물 500ml를 끓이고, 카레 파우치를 봉지째 넣습니다. 5분이면 충분합니다. 전자레인지를 쓸 때는 내용물을 그릇에 옮겨 2~3분.</p></div><figure><img src="../skin/img/d_org_spoon.jpg" alt=""></figure></li>
+<li><span class="n">2</span><div class="t"><strong>같은 물에 라면을 끓입니다</strong><p>카레 팩을 건진 물에 면과 스프 절반을 넣고 3분. 스프를 반만 넣어야 카레 맛이 살아납니다. 새우를 넣는다면 이때 같이 넣습니다.</p></div></li>
+<li><span class="n">3</span><div class="t"><strong>면을 건져 카레를 올립니다</strong><p>면만 건져 그릇에 담고 국물은 두세 숟갈만 남깁니다. 그 위에 카레를 전부 올리고, 튀긴 양파와 쪽파를 뿌리면 끝.</p></div><figure><img src="../skin/img/d_spicy_noodle.jpg" alt=""></figure></li>
+</ol>
+<div class="rc-tip"><strong>사평의 팁</strong><p>국물을 많이 남기면 카레가 묽어집니다. 면이 잠기지 않을 만큼만 남기세요. 매콤한 걸 좋아하면 오리지널 대신 매콤한맛 팩으로 바꾸면 됩니다.</p></div>
+<div class="rc-prd"><a href="detail_11.html" class="img"><img src="../skin/img/d_org_bowl.jpg" alt="저수분 키마카레 오리지널 200g"></a><div class="txt"><small>이 레시피에 쓴 제품</small><strong>저수분 키마카레 오리지널 200g</strong><p>국산 양파 68.6%, 돼지고기 17%. 물 없이 끓여 라면 국물에 섞여도 묽어지지 않습니다.</p><a href="detail_11.html" class="btn btn-gold btn-sm">상품 보기</a></div></div>
+</div>
+</div>
+            <div class="rc-actions"><a href="magazine.html" class="btn btn-line btn-sm">목록으로</a></div>
         </div>
-
-        <nav class="rc-more">
-            <div class="section-head"><div><span class="eyebrow">More</span><h2 class="h-section">다른 레시피</h2></div><a href="recipe_index.html" class="btn btn-line btn-sm more">레시피 전체</a></div>
-            <ul class="rc-list">
-                <li><a href="recipe_bread.html" class="rcol-card"><span class="img"><img src="../skin/img/recipe_bread.jpg" alt="카레 바게트" loading="lazy"></span><span class="txt"><small>토마토카레</small><strong>카레 바게트</strong><span class="desc">구운 바게트에 토마토카레를 듬뿍. 파르메산 치즈 한 줌.</span><span class="meta"><span>5분</span><span>2단계</span></span></span></a></li>
-                <li><a href="recipe_matcha.html" class="rcol-card"><span class="img"><img src="../skin/img/recipe_matcha.jpg" alt="말차카레 치킨볼" loading="lazy"></span><span class="txt"><small>크리미 말차카레</small><strong>말차카레 치킨볼</strong><span class="desc">구운 너겟을 말차카레에 찍어 밥과 함께. 아이들 메뉴.</span><span class="meta"><span>10분</span><span>3단계</span></span></span></a></li>
-                <li><a href="recipe_egg.html" class="rcol-card"><span class="img"><img src="../skin/img/recipe_egg.jpg" alt="반숙 짜장 덮밥" loading="lazy"></span><span class="txt"><small>드라이짜장</small><strong>반숙 짜장 덮밥</strong><span class="desc">밥 위에 짜장, 그 위에 반숙 하나. 오이채와 참기름.</span><span class="meta"><span>6분</span><span>2단계</span></span></span></a></li>
-            </ul>
+        <nav class="rc-move xans-element- xans-board xans-board-movement" module="board_movement_8">
+            <a href="system.html?p=%2Fboard%2Fgallery%2Fread.html" class="prev displaynone"><small>이전 글</small><span></span></a>
+            <a href="magazine_bread.html" class="next T"><small>다음 글</small><span>카레 바게트</span></a>
         </nav>
     </article>
 </div>
@@ -299,7 +289,7 @@
                 <li><a href="list.html?cate_no=1">전체 상품</a></li>
                 <li><a href="index.html#best">베스트셀러</a></li>
                 <li><a href="list_27.html?cate_no=27" data-cat="3">선물세트</a></li>
-                <li><a href="recipe_index.html">레시피</a></li>
+                <li><a href="magazine.html">매거진</a></li>
             </ul>
         </div>
         <div>

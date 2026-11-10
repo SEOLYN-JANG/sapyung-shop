@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
 <!-- 컬러 시안 전환: 주소 뒤 ?theme=a|b|c|d (시안 확정 후 이 스크립트는 삭제하고 CSS의 :root 값을 확정안으로 고정) -->
 <script>(function(){var t=(location.search.match(/[?&]theme=([a-d])/)||[])[1];if(t)document.documentElement.setAttribute('data-theme',t);if(/[?&]shot=1/.test(location.search))document.documentElement.setAttribute('data-shot','1');var hv=(location.search.match(/[?&]hero=([1-3])/)||[])[1];if(hv)document.documentElement.setAttribute('data-hero',hv);var sf=(location.search.match(/[?&]serif=(gm)/)||[])[1];if(sf)document.documentElement.setAttribute('data-serif',sf);var vw=(location.search.match(/[?&]vw=(\d+)/)||[])[1];if(vw){document.documentElement.setAttribute('data-vw',vw);document.documentElement.style.setProperty('--shot-vw',vw+'px');}})();</script>
-<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611061546">
-<script src="../skin/js/sapyung.js?v=202611061546" defer></script>
+<link rel="stylesheet" href="../skin/css/sapyung.css?v=202611101107">
+<script src="../skin/js/sapyung.js?v=202611101107" defer></script>
 <!-- ===== 쉬운 수정 (업체용) =====
      아래 숫자와 색만 바꾸고 저장하면 됩니다. 1 = 기본 크기, 1.1 = 10% 크게, 0.9 = 10% 작게.
      이 블록은 반드시 css 링크보다 아래에 있어야 적용됩니다. -->
@@ -98,13 +98,13 @@
                         </div>
                     </div>
                 </li>
-                <!-- 분류 메뉴: 관리자 > 상품분류 관리의 1단계 분류가 순서대로 자동 출력 (Layout_category) -->
+                <!-- 분류 메뉴: 관리자 > 상품분류 관리의 1단계 분류가 순서대로 자동 출력 (Layout_category). 매거진 = 게시판 3개(board_no 101/102/103 가정값) -->
                 <li class="xans-element- xans-layout xans-layout-category" module="Layout_category" style="display:contents"><a href="list_24.html?cate_no=24" class="xans-record-">키마카레</a>
 <a href="list_25.html?cate_no=25" class="xans-record-">드라이짜장</a>
 <a href="list_26.html?cate_no=26" class="xans-record-">말차 · 마라</a>
 <a href="list_27.html?cate_no=27" class="xans-record-">세트 · 선물</a></li>
                 <li><a href="index.html#story">브랜드</a></li>
-                <li><a href="recipe_index.html">레시피</a></li>
+                <li class="has-drop"><a href="magazine.html">매거진</a><div class="sub"><a href="magazine.html">레시피</a><a href="magazine_news.html">소식</a><a href="magazine_event.html">이벤트</a></div></li>
                 <li><a href="system.html?p=%2Fboard%2Freview%2Flist.html%3Fboard_no%3D4">리뷰</a></li>
             </ul>
         </nav>
@@ -181,7 +181,7 @@
             </li>
             <li><a href="index.html#best">베스트셀러</a></li>
             <li><a href="index.html#story">브랜드 스토리</a></li>
-            <li><a href="recipe_index.html">레시피</a></li>
+            <li><strong>매거진</strong><div class="sub"><a href="magazine.html">레시피</a><a href="magazine_news.html">소식</a><a href="magazine_event.html">이벤트</a></div></li>
             <li><a href="system.html?p=%2Fboard%2Freview%2Flist.html%3Fboard_no%3D4">리뷰</a></li>
             <li><a href="system.html?p=%2Forder%2Fbasket.html">장바구니</a></li>
             <li><a href="system.html?p=%2Fmyshop%2Forder%2Flist.html">주문조회</a></li>
@@ -194,73 +194,64 @@
         <div id="contents">
             
 <!-- =====================================================================
-     레시피 칼럼 (recipe/matcha.html) — tools\build-recipes.ps1 이 recipe\_template.html + recipes.json 으로 생성. 이 파일을 직접 고치지 말고 JSON 수정 후 다시 빌드
-     카페24 적용: 디자인 편집창 > 새 파일 추가 > recipe/matcha.html 에 붙여넣기 → 주소 /recipe/matcha.html
+     매거진 글 보기 (board/gallery/read.html) — 2026-11-10
+     본문(<div class="rcol">
+<figure class="rc-cover"><img src="../skin/img/recipe_bread.jpg" alt="카레 바게트"></figure>
+<p class="rc-lead">구운 바게트에 토마토카레를 듬뿍. 파르메산 치즈 한 줌.</p>
+<ul class="rc-meta"><li>5분</li><li>2단계</li><li>2인분</li><li>난이도 쉬움</li><li>토마토카레</li></ul>
+<p class="rc-intro">토마토카레는 사평 제품 중에서 밥 없이 먹기 가장 좋은 카레입니다. 산미가 있는 산마르자노 토마토와 다진 돼지고기가 라구처럼 되직해서, 빵에 얹으면 브루스케타처럼 먹을 수 있습니다.</p>
+<p class="rc-intro">주말 아침이나 와인 안주로 좋습니다. 바게트가 없으면 식빵을 두껍게 썰어 구워도 됩니다.</p>
+<h2>재료</h2>
+<ul class="rc-ing"><li><span>산마르자노 토마토카레</span><b>1팩 (180g)</b></li><li><span>바게트</span><b>4조각 (2cm 두께)</b></li><li><span>버터</span><b>1큰술</b></li><li><span>파르메산 치즈</span><b>한 줌</b></li><li><span>바질 또는 루콜라</span><b>조금</b></li></ul>
+<h2>만드는 법</h2>
+<ol class="rc-steps">
+<li><span class="n">1</span><div class="t"><strong>바게트를 굽습니다</strong><p>바게트 단면에 버터를 얇게 바르고 토스터나 팬에 2~3분. 가장자리가 노릇해질 때까지만 굽습니다.</p></div></li>
+<li><span class="n">2</span><div class="t"><strong>카레를 데웁니다</strong><p>토마토카레를 그릇에 옮겨 전자레인지 2분. 끓는 물 중탕이면 5분. 데운 뒤 한 번 저어 주세요.</p></div><figure><img src="../skin/img/d_tom_plate.jpg" alt=""></figure></li>
+<li><span class="n">3</span><div class="t"><strong>올리고 치즈를 갈아 올립니다</strong><p>구운 바게트 위에 카레를 두툼하게 올리고 파르메산을 갈아 뿌립니다. 바질 잎 한두 장이면 끝.</p></div><figure><img src="../skin/img/d_tom_bread.jpg" alt=""></figure></li>
+</ol>
+<div class="rc-tip"><strong>사평의 팁</strong><p>카레를 빵에 올리기 전에 올리브오일을 몇 방울 떨어뜨리면 식어도 뻑뻑해지지 않습니다. 남은 카레는 파스타 면에 비벼 드세요.</p></div>
+<div class="rc-prd"><a href="detail_13.html" class="img"><img src="../skin/img/d_tom_bowl.jpg" alt="산마르자노 토마토카레 180g"></a><div class="txt"><small>이 레시피에 쓴 제품</small><strong>산마르자노 토마토카레 180g</strong><p>토마토의 산미와 라구에 가까운 질감. 밥보다 빵과 파스타에 먼저 써 보세요.</p><a href="detail_13.html" class="btn btn-gold btn-sm">상품 보기</a></div></div>
+</div>
+)은 업체가 관리자 게시물 관리에서 쓴 내용 그대로. 레시피 초기 4건은 cafe24_적용패키지\3_매거진_초기글 의 HTML 을
+     글쓰기 에디터의 HTML(< >) 모드에 붙여넣어 등록(클래스 이름이 있어야 칼럼 디자인이 적용됨)
+     모듈: board_read(제목·날짜·본문) / board_movement(이전글·다음글) — 카페24 스마트디자인 가이드 기준 변수
      ===================================================================== -->
-<div class="main-page recipe-col">
+<div class="main-page magazine recipe-col">
     <article class="container">
-        <nav class="rc-crumb" aria-label="현재 위치"><a href="index.html">홈</a><span>/</span><a href="recipe_index.html">레시피</a><span>/</span><em>말차카레 치킨볼</em></nav>
-        <header class="rc-head">
-            <span class="eyebrow">Recipe · 크리미 말차카레</span>
-            <h1 class="h-display">말차카레 치킨볼</h1>
-            <p class="lead">구운 너겟을 말차카레에 찍어 밥과 함께. 아이들 메뉴.</p>
-            <ul class="rc-meta">
-                <li><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>10분</li>
-                <li>3단계</li>
-                <li>1~2인분</li>
-                <li>난이도 쉬움</li>
-            </ul>
-        </header>
-        <figure class="rc-cover"><img src="../skin/img/recipe_matcha.jpg" alt="말차카레 치킨볼"></figure>
-
-        <div class="rc-body">
-            <p class="rc-intro">말차카레는 색 때문에 처음엔 낯설어하다가 한 입 먹고 나면 아이들이 먼저 찾는 카레입니다. 매운맛이 없고 크림 맛이 앞서서, 치킨 너겟이나 돈가스처럼 튀긴 것과 잘 맞습니다.</p>
-            <p class="rc-intro">너겟을 소스에 찍어 먹는 방식이라 아이가 직접 먹기 좋고, 밥을 조금만 담아도 한 끼가 됩니다.</p>
-
-            <section class="rc-ing">
-                <h2>재료</h2>
-                <ul>
-                    <li><span>크리미 말차카레</span><b>1봉 (160g)</b></li>
-                    <li><span>치킨 너겟 (냉동)</span><b>6~8개</b></li>
-                    <li><span>밥</span><b>1공기</b></li>
-                    <li><span>브로콜리</span><b>4~5송이</b></li>
-                    <li><span>검은깨 (선택)</span><b>조금</b></li>
-                </ul>
-            </section>
-
-            <section class="rc-steps">
-                <h2>만드는 법</h2>
-                <ol>
-                    <li><span class="n">1</span><div class="t"><strong>너겟을 굽습니다</strong><p>에어프라이어 180도 8분, 또는 팬에 기름 없이 중불로 앞뒤 4분씩. 브로콜리는 끓는 물에 1분 데칩니다.</p></div><figure><img src="../skin/img/d_mat_chicken.jpg" alt="" loading="lazy"></figure></li>
-                    <li><span class="n">2</span><div class="t"><strong>말차카레를 데웁니다</strong><p>레토르트라 끓는 물에 봉지째 5분, 전자레인지는 그릇에 옮겨 2분. 데우면 색이 더 선명해집니다.</p></div><figure><img src="../skin/img/d_mat_bowl.jpg" alt="" loading="lazy"></figure></li>
-                    <li><span class="n">3</span><div class="t"><strong>밥 옆에 카레, 그 위에 너겟</strong><p>접시 한쪽에 밥, 다른 쪽에 카레를 붓고 너겟을 카레에 반쯤 걸치듯 올립니다. 브로콜리와 검은깨로 마무리.</p></div><figure><img src="../skin/img/d_mat_spoon.jpg" alt="" loading="lazy"></figure></li>
-                </ol>
-            </section>
-
-            <aside class="rc-tip">
-                <strong>사평의 팁</strong>
-                <p>카레를 소스 그릇에 따로 담아 주면 아이가 찍어 먹는 재미가 생깁니다. 어른은 후추를 조금 뿌리면 단맛이 잡힙니다.</p>
-            </aside>
-
-            <!-- 이 레시피에 쓴 제품: product_no 는 카페24 실제 번호로 교체 -->
-            <aside class="rc-prd">
-                <a href="detail_15.html" class="img"><img src="../skin/img/d_mat_plate.jpg" alt="크리미 말차카레 160g × 2"></a>
-                <div class="txt">
-                    <small>이 레시피에 쓴 제품</small>
-                    <strong>크리미 말차카레 160g × 2</strong>
-                    <p>국산 닭다리살과 유기농 말차, 유크림. 맵지 않아 아이와 같이 먹습니다.</p>
-                    <a href="detail_15.html" class="btn btn-gold btn-sm">상품 보기</a>
-                </div>
-            </aside>
+        <nav class="rc-crumb" aria-label="현재 위치"><a href="index.html">홈</a><span>/</span><a href="magazine.html" data-mg-crumb>매거진</a></nav>
+        <div class="xans-element- xans-board xans-board-read" module="board_read_8">
+            <!--
+                $login_page_url = /member/login.html
+                $deny_access_url = /board/gallery/list.html
+            -->
+            <header class="rc-head">
+                <span class="eyebrow" data-mg-label>Magazine</span>
+                <h1 class="h-display">카레 바게트</h1>
+                <p class="rc-date">2026-11-12</p>
+            </header>
+            <div class="rc-body rc-content"><div class="rcol">
+<figure class="rc-cover"><img src="../skin/img/recipe_bread.jpg" alt="카레 바게트"></figure>
+<p class="rc-lead">구운 바게트에 토마토카레를 듬뿍. 파르메산 치즈 한 줌.</p>
+<ul class="rc-meta"><li>5분</li><li>2단계</li><li>2인분</li><li>난이도 쉬움</li><li>토마토카레</li></ul>
+<p class="rc-intro">토마토카레는 사평 제품 중에서 밥 없이 먹기 가장 좋은 카레입니다. 산미가 있는 산마르자노 토마토와 다진 돼지고기가 라구처럼 되직해서, 빵에 얹으면 브루스케타처럼 먹을 수 있습니다.</p>
+<p class="rc-intro">주말 아침이나 와인 안주로 좋습니다. 바게트가 없으면 식빵을 두껍게 썰어 구워도 됩니다.</p>
+<h2>재료</h2>
+<ul class="rc-ing"><li><span>산마르자노 토마토카레</span><b>1팩 (180g)</b></li><li><span>바게트</span><b>4조각 (2cm 두께)</b></li><li><span>버터</span><b>1큰술</b></li><li><span>파르메산 치즈</span><b>한 줌</b></li><li><span>바질 또는 루콜라</span><b>조금</b></li></ul>
+<h2>만드는 법</h2>
+<ol class="rc-steps">
+<li><span class="n">1</span><div class="t"><strong>바게트를 굽습니다</strong><p>바게트 단면에 버터를 얇게 바르고 토스터나 팬에 2~3분. 가장자리가 노릇해질 때까지만 굽습니다.</p></div></li>
+<li><span class="n">2</span><div class="t"><strong>카레를 데웁니다</strong><p>토마토카레를 그릇에 옮겨 전자레인지 2분. 끓는 물 중탕이면 5분. 데운 뒤 한 번 저어 주세요.</p></div><figure><img src="../skin/img/d_tom_plate.jpg" alt=""></figure></li>
+<li><span class="n">3</span><div class="t"><strong>올리고 치즈를 갈아 올립니다</strong><p>구운 바게트 위에 카레를 두툼하게 올리고 파르메산을 갈아 뿌립니다. 바질 잎 한두 장이면 끝.</p></div><figure><img src="../skin/img/d_tom_bread.jpg" alt=""></figure></li>
+</ol>
+<div class="rc-tip"><strong>사평의 팁</strong><p>카레를 빵에 올리기 전에 올리브오일을 몇 방울 떨어뜨리면 식어도 뻑뻑해지지 않습니다. 남은 카레는 파스타 면에 비벼 드세요.</p></div>
+<div class="rc-prd"><a href="detail_13.html" class="img"><img src="../skin/img/d_tom_bowl.jpg" alt="산마르자노 토마토카레 180g"></a><div class="txt"><small>이 레시피에 쓴 제품</small><strong>산마르자노 토마토카레 180g</strong><p>토마토의 산미와 라구에 가까운 질감. 밥보다 빵과 파스타에 먼저 써 보세요.</p><a href="detail_13.html" class="btn btn-gold btn-sm">상품 보기</a></div></div>
+</div>
+</div>
+            <div class="rc-actions"><a href="magazine.html" class="btn btn-line btn-sm">목록으로</a></div>
         </div>
-
-        <nav class="rc-more">
-            <div class="section-head"><div><span class="eyebrow">More</span><h2 class="h-section">다른 레시피</h2></div><a href="recipe_index.html" class="btn btn-line btn-sm more">레시피 전체</a></div>
-            <ul class="rc-list">
-                <li><a href="recipe_ramen.html" class="rcol-card"><span class="img"><img src="../skin/img/recipe_ramen.jpg" alt="카레 라면" loading="lazy"></span><span class="txt"><small>키마카레 오리지널</small><strong>카레 라면</strong><span class="desc">끓인 라면 위에 데운 카레 한 팩. 새우와 튀긴 양파를 올리면 끝.</span><span class="meta"><span>7분</span><span>2단계</span></span></span></a></li>
-                <li><a href="recipe_bread.html" class="rcol-card"><span class="img"><img src="../skin/img/recipe_bread.jpg" alt="카레 바게트" loading="lazy"></span><span class="txt"><small>토마토카레</small><strong>카레 바게트</strong><span class="desc">구운 바게트에 토마토카레를 듬뿍. 파르메산 치즈 한 줌.</span><span class="meta"><span>5분</span><span>2단계</span></span></span></a></li>
-                <li><a href="recipe_egg.html" class="rcol-card"><span class="img"><img src="../skin/img/recipe_egg.jpg" alt="반숙 짜장 덮밥" loading="lazy"></span><span class="txt"><small>드라이짜장</small><strong>반숙 짜장 덮밥</strong><span class="desc">밥 위에 짜장, 그 위에 반숙 하나. 오이채와 참기름.</span><span class="meta"><span>6분</span><span>2단계</span></span></span></a></li>
-            </ul>
+        <nav class="rc-move xans-element- xans-board xans-board-movement" module="board_movement_8">
+            <a href="magazine_ramen.html" class="prev T"><small>이전 글</small><span>카레 라면</span></a>
+            <a href="magazine_matcha.html" class="next T"><small>다음 글</small><span>말차카레 치킨볼</span></a>
         </nav>
     </article>
 </div>
@@ -298,7 +289,7 @@
                 <li><a href="list.html?cate_no=1">전체 상품</a></li>
                 <li><a href="index.html#best">베스트셀러</a></li>
                 <li><a href="list_27.html?cate_no=27" data-cat="3">선물세트</a></li>
-                <li><a href="recipe_index.html">레시피</a></li>
+                <li><a href="magazine.html">매거진</a></li>
             </ul>
         </div>
         <div>
