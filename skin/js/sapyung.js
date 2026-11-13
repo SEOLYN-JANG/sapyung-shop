@@ -200,10 +200,6 @@
       window.addEventListener('load', fitInfo);
     }
 
-    /* 1-3) 장바구니 문구: 숫자가 비어 있으면 줄 전체 숨김 */
-    var cpop = $('.cart-pop', root);
-    if (cpop && !($('[data-cart-count]', cpop) || {}).textContent.trim()) cpop.style.display = 'none';
-
     /* 1-4) 포토리뷰 화살표: 보이는 폭만큼 넘김 */
     var pw = $('.rv-summary .photos-wrap', root);
     if (pw) {
